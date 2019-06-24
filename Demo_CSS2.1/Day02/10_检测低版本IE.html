@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>自定义检测低版本 IE 的函数</title>
+	</head>
+	<body>
+		
+	</body>
+	<script>
+		console.log(isIE(7));
+		
+		// js 中的作用域都是函数作用域
+		function isIE(version) {
+			var b = document.createElement("b");
+			b.innerHTML = "<!--[if IE " + version + "]><i></i><![endif]-->";
+			return b.getElementsByTagName("i").length == 1;
+		}
+	</script>
+</html>

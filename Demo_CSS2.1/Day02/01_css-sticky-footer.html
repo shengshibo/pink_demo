@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+		<title></title>
+		<!-- 这种布局方式也叫粘连布局 -->
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,
+			body{
+				height: 100%;
+			}
+			.wrap{
+				min-height: 100%;
+				background-color: pink;
+				text-align: center;
+				/* 在移动端清除浮动一般就用以下方式就可以了，因为没有 IE，哈哈哈哈 */
+				overflow: hidden;
+			}
+			.wrap .main{
+				padding-bottom: 50px;
+			}
+			.footer{
+				height: 50px;
+				line-height: 50px;
+				background-color: deeppink;
+				text-align: center;
+				margin-top: -50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="main">
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+				main<br />
+			</div>
+		</div>
+		<div class="footer">
+			footer
+		</div>
+	</body>
+</html>

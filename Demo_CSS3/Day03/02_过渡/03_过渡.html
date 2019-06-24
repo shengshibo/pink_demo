@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			html{
+				height: 100%;
+			}
+			body{
+				height: 70%;
+				border: 1px solid;
+				margin: 30px auto;
+			}
+			.test{
+				width: 200px;
+				height: 200px;
+				background-color: pink;
+				border: 1px solid deeppink;
+				text-align: center;
+				font: 40px/200px "微软雅黑";
+				
+				position: absolute;
+				top: 0px;
+				right: 0px;
+				bottom: 0px;
+				left: 0px;
+				margin: auto;
+				/* 过渡的属性名称 */
+				transition-property: width, height, font;
+				/* 过渡的周期时间 */
+				transition-duration: 1000ms, 2000ms, 1000ms;
+				
+			}
+			/* .test:hover{
+				width: 100px;
+				height: 100px;
+				font: 20px/100px "微软雅黑";
+			} */
+			body:hover .test{
+				width: 100px;
+				height: 100px;
+				font: 20px/100px "微软雅黑";
+			}
+		</style>
+	</head>
+	<body>
+		<div class="test">
+			过渡练习
+		</div>
+	</body>
+	<script type="text/javascript">
+		// 验证过渡是否完成
+		// 前端一定要有异步的概念
+		window.onload = function () {
+			var testNode = document.querySelector(".test");
+			var bodyNode = document.querySelector("body");
+			// dom0 事件
+			bodyNode.onmouseover = function () {
+				testNode.style.width = "300px";
+				setTimeout(function () {
+					textNode.style.display = "none";
+				}, 3000);
+			}
+			// dom2 事件
+			testNode.addEventListener("transitionend", function () {
+				alert("transitionend");
+			});
+		}
+	</script>
+</html>

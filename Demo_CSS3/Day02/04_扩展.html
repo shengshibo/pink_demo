@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			html,
+			body{
+				height: 100%;
+				overflow: hidden;
+			}
+			.wrap{
+				width: 100%;
+				height: 100%;
+				overflow: auto;
+				border: 1px solid pink;
+			}
+			.test{
+				height: 3000px;
+			}
+			/* 初始包含块是一个视窗大小的矩形，但是注意：和视窗没有关系，只是大小一样和一开始的位置一样而已 */
+			/* 滚动条在什么情况下都不可能出现在 html 元素的身上，当 html 和 body 都有 overflow 属性，滚动条才会作用到 body 身上 */
+			/* 如果 html 和 body 当中，只有一个元素身上有 overflow 滚动条，则会出现在 html 上一层 */
+			/* 一般比较严谨的写法就是在 html body 上都设置 overflow: hidden 这样在这三种元素身上谁都不会出现滚动条 */
+			/* 一般我们都会这么做：禁止系统滚动条，并且让 wrap 出现滚动条 + 让 wrap 模拟视口 */
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="test"></div>
+		</div>
+	</body>
+</html>

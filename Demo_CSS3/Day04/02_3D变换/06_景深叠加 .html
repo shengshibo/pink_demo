@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css" class="css">
+			/* 
+				景深：让 3D 场景有近大远小的效果（我们肉眼距离屏幕的距离）
+					是一个不可继承属性，但他可以作用于后代元素（不是作用于本身的）
+					原理：
+						景深越大，灭点越远，元素变形更小
+						景深越小，灭点越近，元素变形更大
+					景深基点：
+						控制视角的位置，perspective-origin：50% 50%；（默认值）
+					景深叠加：
+						尽量避免景深叠加
+				transform-styles
+					营造有层级的 3d 舞台
+						是一个不可继承属性，他作用于子元素
+			*/
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			.wrap{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				width: 200px;
+				height: 200px;
+				transform: translate(-50%, -50%);
+				/* 景深 */
+				/* 景深不继承，但是效果会作用在后代元素上 */
+				perspective: 200px;
+				/* perspective-origin 景深基点 */
+				perspective-origin: left top;
+				/* 以下写法不是作用在后代 而是作用在当前元素上 */
+				/* transform: perspective(200px); */
+				border: 1px solid;
+				
+				transform-style: preserve-3d;
+			}
+			.wrap > .inner{
+				width: 200px;
+				height: 200px;
+				border: 1px solid;
+				border-radius: 50%;
+				background: pink;
+				
+				text-align: center;
+				font: bold 30px/200px "微软雅黑";
+				transition: 1s;
+			}
+			.wrap .inner:hover{
+				transform: scale3d(2, 2, 2);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="inner">
+				测试文本
+			</div>
+		</div>
+	</body>
+</html>

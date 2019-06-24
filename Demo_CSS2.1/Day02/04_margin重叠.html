@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.up,
+			.down{
+				width: 200px;
+				height: 200px;
+				background-color: pink;
+				margin: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="up"></div>
+		<div style="overflow: hidden;">
+			<!-- 这个 div 的作用就是用来开启 BFC 的 -->
+			<div class="down"></div>
+			<!-- 这样就不会重叠 margin 了 -->
+		</div>
+		
+	</body>
+</html>

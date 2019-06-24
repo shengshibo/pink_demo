@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 未知高宽的元素水平垂直居中方案 -->
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.wrap{
+				position: relative;
+				width: 400px;
+				height: 400px;
+				background-color: pink;
+				margin: 0 auto;
+			}
+			.inner{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%, 0);
+				background-color: deeppink;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="inner">
+				innerinnerinnerinnerinnerinnerinner<br />
+				innerinnerinnerinnerinnerinnerinner<br />
+				innerinnerinnerinnerinnerinnerinner<br />
+				innerinnerinnerinnerinnerinnerinner<br />
+				innerinnerinnerinnerinnerinnerinner<br />
+				innerinnerinnerinnerinnerinnerinner<br />
+				innerinnerinnerinnerinnerinnerinner<br />
+			</div>
+		</div>
+	</body>
+</html>

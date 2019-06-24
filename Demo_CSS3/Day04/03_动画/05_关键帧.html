@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			html,
+			body{
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			.wrap{
+				position: relative;
+				width: 300px;
+				height: 300px;
+				border: 1px solid;
+				margin: 200px auto;
+			}
+			.test{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				/* transform: translate3d(-50%, -50%, 0); */
+				margin-left: -50px;
+				margin-top: -50px;
+				width: 100px;
+				height: 100px;
+				background-color: pink;
+				text-align: center;
+				font: 20px/ 100px "微软雅黑";
+				border-radius: 50%;
+				
+				animation: move 4s 2s both running 3 alternate steps(1, end);
+			}
+			@keyframes move{
+				0% {
+					transform: translateY(-100px);
+				}
+				25% {
+					transform: translateY(-50px);
+				}
+				50% {
+					transform: translateY(0px);
+				}
+				75% {
+					transform: translateY(50px);
+				}
+				100% {
+					transform: translateY(100px);
+				}
+			}
+			.wrap:hover .test{
+				animation-play-state: paused;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="test">
+				测试文本
+			</div>
+		</div>
+	</body>
+</html>

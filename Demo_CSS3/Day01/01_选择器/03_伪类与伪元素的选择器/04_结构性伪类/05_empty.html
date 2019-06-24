@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				height: 200px;
+				background-color: skyblue;
+			}
+			/* 选中 div 中空的 */
+			/* 必须是空的 有个空格都不行 */
+			div:empty{
+				background-color: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div>aa</div>
+		<div></div>
+		<div>xxx</div>
+	</body>
+</html>

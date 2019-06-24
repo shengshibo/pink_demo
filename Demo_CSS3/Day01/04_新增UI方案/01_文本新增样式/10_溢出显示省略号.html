@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				border: 1px solid;
+				
+				/* display: block; */
+				/* 一般溢出显示省略号使用以下三个样式，但有个隐藏条件就是盒子不能靠内容撑开 */
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+		</style>
+	</head>
+	<body>
+		<div>这是一段用于测试溢出显示省略号的文本</div>
+	</body>
+</html>

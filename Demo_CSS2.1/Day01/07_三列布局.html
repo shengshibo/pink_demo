@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				/* 2*left + right */
+				min-width: 600px;
+			}
+			div{
+				height: 100px;
+			}
+			.left,
+			.right{
+				width: 200px;
+				background-color: pink;
+				position: absolute;
+				top: 0;
+			}
+			.left{
+				left: 0;
+			}
+			.right{
+				right: 0;
+			}
+			.middle{
+				background-color: deeppink;
+				padding: 0 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			1.两边固定，中间自适应
+			2.当中列要完整显示
+		-->
+		<div class="left">left</div>
+		<div class="middle">middle</div>
+		<div class="right">right</div>
+	</body>
+</html>

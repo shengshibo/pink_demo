@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!--
+			清除浮动
+				让浮动的子元素库撑开父级的高度
+			05 伪元素清除浮动
+				最主流的就是这种清除浮动的方式
+		-->
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			/* 直接加高度 */
+			.wrap{
+				border: 1px solid;
+			}
+			.inner{
+				float: left;
+				width: 200px;
+				height: 200px;
+				background-color: pink;
+			}
+			/* 开启 haslayout */
+			.clearfix{
+				*zoom: 1;
+			}
+			.clearfix:after{
+				content: "";
+				display: block;
+				clear: both;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap clearfix">
+			<div class="inner">
+				
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			@font-face {
+				font-family: "MyFont";
+				src: url(font/Inkfree.ttf);
+			}
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.wrap{
+				font: 30px "MyFont";
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			字体测试 XXXzzz
+		</div>
+		<!--
+			做一个项目，我们的第一考虑点应该是需求（业务）
+			业务要放在首位，在实现业务的基础之上再去考虑性能，这就是为什么都说是性能优化而不是性能开发
+			@font-face：允许网页开发者为其网页指定在线字体。通过这种作者自备字体的方式，可以消除对用户电脑字体的依赖
+				font-family
+					所指定的字体名字将会被用于 font 或 font-family 属性
+				src
+					字体资源
+			注意：
+				不能在一个 CSS 选择器中定义 @font-face
+			自定义字体是 CSS3 为我们新提供的一种功能
+		-->
+	</body>
+</html>

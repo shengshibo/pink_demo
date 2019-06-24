@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css" class="css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			.wrap{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				width: 200px;
+				height: 200px;
+				transform: translate(-50%, -50%);
+				/* 景深 */
+				perspective: 200px;
+				border: 1px solid;
+			}
+			.wrap > .inner{
+				width: 200px;
+				height: 200px;
+				border: 1px solid;
+				border-radius: 50%;
+				background: pink;
+				
+				text-align: center;
+				font: bold 30px/200px "微软雅黑";
+				transition: 1s;
+			}
+			.wrap .inner:hover{
+				/* transform: translateZ(100px); */
+				/* transform: translate3d(10%, 10%, 100px); */
+				transform: scale3d(2, 2, 2);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="inner">
+				测试文本
+			</div>
+		</div>
+	</body>
+</html>

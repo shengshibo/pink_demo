@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!--
+			1.两边固定，中间自适应
+			2.当中列要完整显示
+			3.当中列要优先加载
+		-->
+		<!--
+			浮动：搭建完整的布局框架
+			margin 为负值：调整旁边两列的位置（使三列布局到一行上）
+			使用相对定位：调整旁边两列的位置（使两列位置调整到两头）
+		-->
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.header,
+			.footer{
+				height: 20px;
+				text-align: center;
+				border: 1px solid deeppink;
+				background-color: grey;
+			}
+			.content{
+				padding: 0 200px;
+			}
+			.content .middle{
+				float: left;
+				/*padding: 0 200px;*/
+				width: 100%;
+				background-color: pink;
+			}
+			.content .left{
+				float: left;
+				margin-left: -100%;
+				width: 200px;
+				background-color: skyblue;
+				position: relative;
+				left: -200px;
+			}
+			.content .right{
+				float: left;
+				margin-left: -200px;
+				width: 200px;
+				background-color: skyblue;
+				position: relative;
+				right: -200px;
+			}
+			.clearfix{
+				*zoom: 1;
+			}
+			.clearfix:after{
+				content: "";
+				display: block;
+				clear: both;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">header</div>
+		<div class="content clearfix">
+			<div class="middle">middle</div>
+			<div class="left">left</div>
+			<div class="right">right</div>
+		</div>
+		<div class="footer">footer</div>
+	</body>
+</html>

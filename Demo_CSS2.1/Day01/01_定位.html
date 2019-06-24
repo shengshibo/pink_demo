@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html{
+				margin: 30px;
+				border: 1px solid deeppink;
+			}
+			body{
+				margin: 30px;
+				border: 1px solid yellow;
+			}
+			#test{
+				position: absolute;
+				left: 10px;
+				top: 10px;
+				width: 100px;
+				height: 100px;
+				background-color: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			包含块
+				对于浮动元素，其包含块定义为最近的块级祖先元素，对于定位，情况则没有这么简单，CSS2.1 定义了一下行为：
+				- "根元素"的包含块（也称为初始包含块）由用户代理建立。在 HTML 中，根元素就是 html 元素，不过有些浏览器会使用 body 作为根元素。
+					在大多数浏览器中，初始包含块是一个视窗大小的矩形
+				- 对于一个非根元素，如果其 position 值是 relative 或 static，包含块则由最近的块级框，表单元格或行内块祖先框的内容边界构成
+				- 对于一个非根元素，如果其 position 值是 absolute，包含块设置为最近的 position 值不是 static 的祖先元素（可以是任何类型）。这个过程如下：
+					- 如果这个祖先是块级元素，包含块则设置为该元素的内边距边界；换句话说，就是由边框界定的区域。
+					- 如果没有祖先，元素的包含块定义为初始包含块。
+					- 如果这个祖先元素是行内元素，我就不讨论了。这种情况基本不会发生，而且解决比较麻烦。
+		-->
+		<div id="test">
+			
+		</div>
+	</body>
+</html>

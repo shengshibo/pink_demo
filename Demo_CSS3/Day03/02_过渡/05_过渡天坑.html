@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			html{
+				height: 100%;
+			}
+			body{
+				height: 70%;
+				border: 1px solid;
+				margin: 30px auto;
+			}
+			.test{
+				width: 200px;
+				height: 200px;
+				background-color: pink;
+				border: 1px solid deeppink;
+				text-align: center;
+				
+				position: absolute;
+				top: 0px;
+				right: 0px;
+				bottom: 0px;
+				left: 0px;
+				margin: auto;
+				
+				transition-property: width;
+				transition-duration: 2s;
+				transition-timing-function: linear;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="test">
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		// alert("1");
+		// transition 在元素首次渲染还没有结束的情况下是不会被触发的
+		var test = document.querySelector(".test");
+		test.style.width = "300px";
+		// window.onload = function () {
+		// 	var test = document.querySelector(".test");
+		// 	test.style.width = "300px";
+		// };
+	</script>
+</html>

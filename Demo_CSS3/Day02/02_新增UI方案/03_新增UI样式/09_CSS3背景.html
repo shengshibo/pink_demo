@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			html,
+			body{
+				overflow: hidden;
+			}
+			/* 默认情况下，背景图片是从 padding box 开始绘制的 */
+			/* 从 border box 开始裁剪 */
+			.test{
+				width: 600px;
+				height: 600px;
+				position: absolute;
+				top: 0px;
+				right: 0px;
+				bottom: 0px;
+				left: 0px;
+				margin: auto;
+				border: 30px solid rgba(0, 0, 0, 0.2);
+				padding: 30px;
+				background-repeat: no-repeat;
+				background-image: url(../../../Day01/04_新增UI方案/01_文本新增样式/images/hc.jpg);
+				/* 控制背景图片从什么位置开始渲染 */
+				background-origin: border-box;
+				/* 控制背景图片从什么位置开始裁剪 */
+				background-clip: content-box;
+				/* 设置背景图片的大小 */
+				/* 当只指定了一个值时，另一个值默认为 auto */
+				background-size: 100% 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="test">
+			
+		</div>
+	</body>
+</html>

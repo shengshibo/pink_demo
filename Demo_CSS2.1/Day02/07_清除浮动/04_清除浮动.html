@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!--
+			清除浮动
+				让浮动的子元素库撑开父级的高度
+			04 空标签清除浮动（违反了 结构 行为 样式 相分离的原则）
+		-->
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			/* 直接加高度 */
+			.wrap{
+				border: 1px solid;
+			}
+			.inner{
+				float: left;
+				width: 200px;
+				height: 200px;
+				background-color: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="inner">
+				
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+	</body>
+</html>

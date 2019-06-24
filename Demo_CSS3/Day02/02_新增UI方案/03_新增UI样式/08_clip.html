@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			html,
+			body{
+				overflow: hidden;
+			}
+			/* 默认情况下，背景图片是从 padding box 开始绘制的 */
+			/* 从 border box 开始裁剪 */
+			.test{
+				width: 600px;
+				height: 600px;
+				position: absolute;
+				top: 0px;
+				right: 0px;
+				bottom: 0px;
+				left: 0px;
+				margin: auto;
+				border: 30px solid rgba(0, 0, 0, 0.2);
+				padding: 30px;
+				background-repeat: no-repeat;
+				background-image: url(images/zl.jpg);
+				/* 以下样式只有 webkit 才有，剪切到字体 */
+				-webkit-background-clip: text;
+				color: rgba(0, 0, 0, 0.2);
+				font: bold 36px "微软雅黑";
+				/* 按文字剪切背景 */
+			}
+		</style>
+	</head>
+	<body>
+		<div class="test">
+			这是一个测试裁剪文字的文本
+		</div>
+	</body>
+</html>

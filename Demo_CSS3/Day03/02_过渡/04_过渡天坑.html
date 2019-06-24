@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			html{
+				height: 100%;
+			}
+			body{
+				height: 70%;
+				border: 1px solid;
+				margin: 30px auto;
+			}
+			.test{
+				width: 200px;
+				height: 200px;
+				background-color: pink;
+				border: 1px solid deeppink;
+				text-align: center;
+				
+				position: absolute;
+				top: 0px;
+				right: 0px;
+				bottom: 0px;
+				left: 0px;
+				margin: auto;
+				
+				transition-property: width;
+				transition-duration: 2s;
+				transition-timing-function: linear;
+			}
+			/* .test:hover{
+				width: 100px;
+				height: 100px;
+				font: 20px/100px "微软雅黑";
+			} */
+			body:hover .test{
+				transition-property: height;
+				width: 100px;
+				height: 100px;
+			}
+			/* 这个坑就是渲染顺序之类的 */
+		</style>
+	</head>
+	<body>
+		<div class="test">
+		</div>
+	</body>
+</html>
