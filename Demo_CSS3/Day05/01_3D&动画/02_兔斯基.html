@@ -3,7 +3,41 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			html,
+			body{
+				height: 100%;
+				overflow: hidden;
+			}
+			.tsj{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate3d(-50%, -50%, 0);
+				width: 48px;
+				height: 48px;
+				background-image: url(images/animation.png);
+				background-position: 0px 0px;
+				/* start 看不到第一帧，end 看不到最后一帧 */
+				animation: move 1s steps(12, end) infinite;
+			}
+			@keyframes move{
+				from{
+					background-position: 0px 0px;
+				}
+				to{
+					background-position: -576px 0px;
+				}
+			}
+		</style>
 	</head>
 	<body>
+		<div class="tsj">
+			
+		</div>
 	</body>
 </html>
