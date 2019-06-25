@@ -27,14 +27,15 @@
 				white-space: nowrap;
 			}
 			.wrap > .inner > span{
-				animation: move;
+				position: relative;
+				animation: move 1s linear infinite alternate;
 			}
 			@keyframes move{
 				from{
-					
+					top: 0px;
 				}
 				to{
-					
+					top: -10px;
 				}
 			}
 		</style>
