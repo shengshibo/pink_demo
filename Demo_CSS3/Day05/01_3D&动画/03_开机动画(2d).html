@@ -28,7 +28,7 @@
 			}
 			.wrap > .inner > span{
 				position: relative;
-				animation: move 1s linear infinite alternate;
+				/* animation: move 1s linear infinite alternate; */
 			}
 			@keyframes move{
 				from{
@@ -54,4 +54,14 @@
 			</div>
 		</div>
 	</body>
+	<script type="text/javascript">
+		window.onload = function () {
+			var spanNodes = document.querySelectorAll(".wrap > .inner > span");
+			var colors = ["red", "orange", "yellow", "green", "blue", "pink", "deeppink","red", "orange", "yellow"];
+			for (var i = 0; i < spanNodes.length; i++) {
+				spanNodes[i].style.animation = "move 0.3s " + (i * 50) + "ms linear infinite alternate";
+				spanNodes[i].style.color = colors[i];
+			}
+		}
+	</script>
 </html>

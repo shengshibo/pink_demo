@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			html,
+			body{
+				height: 100%;
+				overflow: hidden;
+			}
+			.wrap{
+				width: 400px;
+				height: 300px;
+				border: 1px solid;
+				margin: 200px auto;
+				display: -webkit-box;
+				/* -webkit-box-oriend 控制主轴和侧轴分别是哪一根 */
+				/* -webkit-box-orient: horizontal; */
+				-webkit-box-orient: vertical;
+				/* -webkit-box-direction 控制主轴的方向 */
+				/* -webkit-box-direction: normal; */
+				-webkit-box-direction: reverse;
+				/*
+					ps--------------老版本的富裕空间不会随着主轴的方向改变而改变，但是会随着主轴改变而改变
+					start：富裕空间在右边（x）下边（y）
+					end：富裕空间在左边（x）上边（y）
+					center：富裕空间在两边
+					justify：富裕空间在项目之间
+				*/
+				-webkit-box-pack: justify;
+				/*
+					start：富裕空间在右边（x）下边（y）
+					end：富裕空间在左边（x）上边（y）
+					center：富裕空间在两边
+				*/
+				-webkit-box-align: center;
+			}
+			.wrap > .item{
+				width: 50px;
+				height: 50px;
+				background: pink;
+				text-align: center;
+				line-height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="item">1</div>
+			<div class="item">2</div>
+			<div class="item">3</div>
+			<div class="item">4</div>
+			<div class="item">5</div>
+		</div>
+	</body>
+</html>
