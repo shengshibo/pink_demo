@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			html,
+			body{
+				height: 100%;
+				overflow: hidden;
+			}
+			.wrap{
+				width: 100px;
+				height: 300px;
+				border: 1px solid;
+				margin: 200px auto;
+				display: flex;
+				/* flex-direction: row; */
+				justify-content: flex-start;
+				align-items: flex-start;
+				/* 控制侧轴的方向 */
+				/* flex-wrap: wrap; */
+				/* 控制多行多列时，富裕空间的管理，会把所有行或者列看成一个整体 */
+				align-content: flex-start;
+				/* flex-flow 属性是 flex-direction 和 flex-wrap 的简写属性 */
+				flex-flow: row nowrap;
+			}
+			.wrap > .item{
+				width: 50px;
+				height: 50px;
+				background: pink;
+				text-align: center;
+				line-height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="item">1</div>
+			<div class="item">2</div>
+			<div class="item">3</div>
+			<div class="item">4</div>
+			<div class="item">5</div>
+		</div>
+	</body>
+</html>
