@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			#nav > .row{
+				display: flex;
+			}
+			#nav > .row > .item{
+				text-align: center;
+				flex: 1;
+			}
+			#nav > .row > .item > a:before{
+				content: "";
+				display: block;
+				width: 64px;
+				height: 64px;
+				background-size: 100% 100%;
+				margin: 0 auto;
+			}
+			#nav > .row:nth-child(1) > .item:nth-child(1) > a:before{
+				background-image: url(img/a.png);
+			}
+			#nav > .row:nth-child(1) > .item:nth-child(2) > a:before{
+				background-image: url(img/b.png);
+			}
+			#nav > .row:nth-child(1) > .item:nth-child(3) > a:before{
+				background-image: url(img/c.png);
+			}
+			#nav > .row:nth-child(1) > .item:nth-child(4) > a:before{
+				background-image: url(img/d.png);
+			}
+			#nav > .row:nth-child(1) > .item:nth-child(5) > a:before{
+				background-image: url(img/e.png);
+			}
+			#nav > .row:nth-child(2) > .item:nth-child(1) > a:before{
+				background-image: url(img/f.png);
+			}
+			#nav > .row:nth-child(2) > .item:nth-child(2) > a:before{
+				background-image: url(img/g.png);
+			}
+			#nav > .row:nth-child(2) > .item:nth-child(3) > a:before{
+				background-image: url(img/h.png);
+			}
+			#nav > .row:nth-child(2) > .item:nth-child(4) > a:before{
+				background-image: url(img/i.png);
+			}
+			#nav > .row:nth-child(2) > .item:nth-child(5) > a:before{
+				background-image: url(img/j.png);
+			}
+			a{
+				text-decoration: none;
+				color: gray;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="nav">
+			<div class="row">
+				<div class="item">
+					<a href="javascript:;">地狗</a>
+				</div>
+				<div class="item">
+					<a href="javascript:;">菊花酸</a>
+				</div>
+				<div class="item">
+					<a href="javascript:;">地狗国际</a>
+				</div>
+				<div class="item">
+					<a href="javascript:;">外卖</a>
+				</div>
+				<div class="item">
+					<a href="javascript:;">地狗超市</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="item">
+					<a href="javascript:;">充值中心</a>
+				</div>
+				<div class="item">
+					<a href="javascript:;">游羊旅行</a>
+				</div>
+				<div class="item">
+					<a href="javascript:;">领金币</a>
+				</div>
+				<div class="item">
+					<a href="javascript:;">拍卖</a>
+				</div>
+				<div class="item">
+					<a href="javascript:;">分类</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -4,10 +4,6 @@
 		<meta charset="utf-8">
 		<title></title>
 		<style type="text/css">
-			/*
-				flex-grow
-				box-flex 默认值都为 0
-			*/
 			*{
 				margin: 0px;
 				padding: 0px;
@@ -22,29 +18,30 @@
 				height: 300px;
 				border: 1px solid;
 				margin: 200px auto;
+				
 				display: flex;
-				flex-direction: row;
-				justify-content: flex-start;
-				align-items: flex-start;
 			}
 			.wrap > .item{
-				width: 50px;
 				height: 50px;
 				background: pink;
 				text-align: center;
 				line-height: 50px;
-				/* 弹性因子 */
-				/* flex-grow: 1; */
+				
+				/* flex-shrink: 1;
+				flex-grow: 1;
+				flex-basis: 0; */
+				/* 以下的简写属性 flex: 1; 就等同于上面的三个 */
+				flex: 1;
 			}
 		</style>
 	</head>
 	<body>
 		<div class="wrap">
 			<div class="item">1</div>
-			<div class="item">2</div>
-			<div class="item">3</div>
-			<div class="item">4</div>
-			<div class="item">5</div>
+			<div class="item">22</div>
+			<div class="item">333</div>
+			<div class="item">4444</div>
+			<div class="item">55555</div>
 		</div>
 	</body>
 </html>
