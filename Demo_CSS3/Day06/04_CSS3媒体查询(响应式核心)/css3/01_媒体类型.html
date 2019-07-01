@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			/*
+				css3 媒体查询
+					css3 媒体查询是响应式方案核心
+				媒体类型
+					all 所有媒体（默认值）
+					screen 彩色屏幕
+					print 打印预览
+					projection 手持设备
+					tv 电视
+					braille 盲文触觉设备
+					embossed 盲文打印机
+					speech “听觉”类似的媒体设备
+					tty 不适用像素的设备
+				
+			*/
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			#wrap{
+				width: 100px;
+				height: 100px;
+				border: 1px solid;
+				margin: 100px auto;
+			}
+			@media screen {
+				/* 规则 */
+				#wrap{
+					border: 10px solid;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			
+		</div>
+	</body>
+</html>

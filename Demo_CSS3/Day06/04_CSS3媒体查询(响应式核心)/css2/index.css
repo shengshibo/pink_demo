@@ -1,0 +1,10 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+#wrap{
+	width: 100px;
+	height: 100px;
+	margin: 100px auto;
+	border: 10px solid;
+}
