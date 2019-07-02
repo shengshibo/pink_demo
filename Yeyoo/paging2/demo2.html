@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+	<meta name="renderer" content="webkit">
+	<!-- <link rel="shortcut icon" type="image/x-icon" href="b.jpg" /> -->
+	<title>有鱼设集邀请函</title>
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+			font-size: 12px;
+		}
+		html,
+		body{
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+		.innerWrap{
+			width: 100%;
+			height: 100%;
+		}
+		.contentImg{
+			width: 100%;
+		}
+		.wrap{
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgb(88, 100, 220);
+		}
+		.loading{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(50, 60, 100, 0.95);
+			z-index: 1;
+			text-align: center;
+			box-sizing: border-box;
+			padding-top: 400px;
+		}
+		.innerContent{
+			background-color: white;
+			display: flex;
+			flex-direction: column;
+			padding: 50px 35px 0px 35px;
+		}
+		.innerImg1{
+			width: 92%;
+			margin-bottom: 30px;
+		}
+		.innerText3{
+			font: 1.2em "微软雅黑";
+			color: rgb(87, 100, 215);
+			margin-bottom: 7px;
+		}
+		.innerText2{
+			font: 1.8em "微软雅黑";
+			color: rgb(87, 100, 215);
+			margin-bottom: 15px;
+		}
+		.innerText4{
+			font: bold 1em "微软雅黑";
+			color: rgb(87, 100, 215);
+			margin-bottom: 9px;
+		}
+		.smallText{
+			margin-bottom: 0px;
+		}
+		.bottomText{
+			margin-bottom: 30px;
+		}
+		/* 这里就不遍历着写了，偷个懒直接写上去 */
+		.loading > span{
+			position: relative;
+			font: bold 24px/24px "微软雅黑";
+		}
+		.loading > span:nth-child(1){
+			animation: move 0.5s linear infinite alternate;
+			color: red;
+		}
+		.loading > span:nth-child(2){
+			animation: move 0.5s 50ms linear infinite alternate;
+			color: orange;
+		}
+		.loading > span:nth-child(3){
+			animation: move 0.5s 100ms linear infinite alternate;
+			color: yellow;
+		}
+		.loading > span:nth-child(4){
+			animation: move 0.5s 150ms linear infinite alternate;
+			color: green;
+		}
+		.loading > span:nth-child(5){
+			animation: move 0.5s 200ms linear infinite alternate;
+			color: skyblue;
+		}
+		.loading > span:nth-child(6){
+			animation: move 0.5s 250ms linear infinite alternate;
+			color: blue;
+		}
+		.loading > span:nth-child(7){
+			animation: move 0.5s 300ms linear infinite alternate;
+			color: purple;
+		}
+		.loading > span:nth-child(8){
+			animation: move 0.5s 350ms linear infinite alternate;
+			color: red;
+		}
+		.loading > span:nth-child(9){
+			animation: move 0.5s 400ms linear infinite alternate;
+			color: orange;
+		}
+		.loading > span:nth-child(10){
+			animation: move 0.5s 450ms linear infinite alternate;
+			color: yellow;
+		}
+		@keyframes move{
+			from{
+				top: 0px;
+			}
+			to{
+				top: -10px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="loading">
+			<span>L</span>
+			<span>o</span>
+			<span>a</span>
+			<span>d</span>
+			<span>i</span>
+			<span>n</span>
+			<span>g</span>
+			<span>.</span>
+			<span>.</span>
+			<span>.</span>
+		</div>
+		<div class="innerWrap">
+			<img class="contentImg" src="b750.png" />
+		</div>
+		<div class="innerContent">
+			<img class="innerImg1" src="yoyeedesign.png" />
+			<span class="innerText3">经过几个月的加班加点</span>
+			<span class="innerText3">我们终于迎来了"YOYEE"的</span>
+			<span class="innerText3">第一个版本</span>
+			<span class="innerText2">现正招募第一批独立设计师</span>
+			<span class="innerText4">作品集发送到邮箱：</span>
+			<span class="innerText4">yoyeedesign@outlook.com</span>
+			<span class="innerText3 smallText">YOYEE保证用最负责的态度</span>
+			<span class="innerText3 smallText">为您打造独立设计师专属在线</span>
+			<span class="innerText3 smallText">不用竞标接项目平台</span>
+			<span class="innerText3 smallText">我们的理念是</span>
+			<span class="innerText3 smallText bottomText">使创意设计有其本身的价值</span>
+		</div>
+		<img class="contentImg" src="banner.jpg" />
+	</div>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript">
+		window.onload = function () {
+			document.querySelector(".loading").style.display = "none";
+		}
+	</script>
+</body>
+</html>
