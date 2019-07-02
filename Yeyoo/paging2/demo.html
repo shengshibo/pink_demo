@@ -43,6 +43,15 @@
 		.wrap{
 			overflow: auto;
 		}
+		.loading{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.8);
+			z-index: 1;
+			text-align: center;
+			color: rgb(255, 255, 255);
+		}
 	</style>
 	<!--[if lte IE 8]>
 	<style type="text/css">
@@ -52,6 +61,9 @@
 </head>
 <body>
 	<section class="section-wrap">
+		<div class="loading">
+			Loading...
+		</div>
 		<div class="section section-1">
 			<div class="title active">
 				<div class="home"></div>
@@ -132,6 +144,9 @@
 			setTimeout(function(){$(document).one('keydown',k)},1000);
 		}
 	});
+	window.onload = function () {
+		document.querySelector(".loading").style.display = "none";
+	}
 </script>
 
 </body>
