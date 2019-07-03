@@ -19,8 +19,13 @@
 			overflow: hidden;
 		}
 		.innerWrap{
+			position: absolute;
+			left: 0px;
+			top: 0px;
 			width: 100%;
 			height: 100%;
+			background-color: rgb(88, 100, 220);
+			
 		}
 		.contentImg{
 			width: 100%;
@@ -202,25 +207,35 @@
 				top: -10px;
 			}
 		}
+		@keyframes homeMove{
+			from{
+				/* top: 0px; */
+				transform: translate(0, 0);
+			}
+			to{
+				/* top: -100%; */
+				transform: translate(0, -100%);
+			}
+		}
 	</style>
 </head>
 <body>
+	<div class="loading">
+		<span>L</span>
+		<span>o</span>
+		<span>a</span>
+		<span>d</span>
+		<span>i</span>
+		<span>n</span>
+		<span>g</span>
+		<span>.</span>
+		<span>.</span>
+		<span>.</span>
+	</div>
+	<div class="innerWrap" id="homeButton">
+		<img class="contentImg" src="b750.png" />
+	</div>
 	<div class="wrap">
-		<div class="loading">
-			<span>L</span>
-			<span>o</span>
-			<span>a</span>
-			<span>d</span>
-			<span>i</span>
-			<span>n</span>
-			<span>g</span>
-			<span>.</span>
-			<span>.</span>
-			<span>.</span>
-		</div>
-		<div class="innerWrap">
-			<img class="contentImg" src="b750.png" />
-		</div>
 		<div class="innerContent">
 			<img class="innerImg1" src="yoyeedesign.png" />
 			<span class="innerText3 blueText">经过几个月的加班加点</span>
@@ -307,6 +322,11 @@
 	<script type="text/javascript">
 		window.onload = function () {
 			document.querySelector(".loading").style.display = "none";
+			document.getElementById("homeButton").onclick=homeMove;
+			function homeMove() {
+				// this.style.top = "-100%";
+				this.style.animation = "homeMove 0.5s forwards";
+			}
 		}
 	</script>
 </body>
