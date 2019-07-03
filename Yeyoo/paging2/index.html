@@ -322,10 +322,12 @@
 	<script type="text/javascript">
 		window.onload = function () {
 			document.querySelector(".loading").style.display = "none";
-			document.getElementById("homeButton").onmousedown=homeMove;
+			// document.getElementById("homeButton").onmousedown=homeMove;
+			document.getElementById("homeButton").addEventListener("touchstart", e => {
+				homeMove()
+			})
 			function homeMove() {
-				// this.style.top = "-100%";
-				this.style.animation = "homeMove 0.5s forwards";
+				document.getElementById("homeButton").style.animation = "homeMove 0.5s forwards";
 			}
 		}
 	</script>
