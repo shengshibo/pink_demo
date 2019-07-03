@@ -47,23 +47,45 @@
 			flex-direction: column;
 			padding: 50px 35px 0px 35px;
 		}
+		.innerContentBlue{
+			background-color: rgb(88, 100, 220);
+			display: flex;
+			flex-direction: column;
+			padding: 50px 35px 0px 35px;
+		}
+		.innerContent2{
+			background-color: rgb(88, 100, 220);
+			padding: 20px 0px 0px 0px;
+		}
 		.innerImg1{
 			width: 92%;
 			margin-bottom: 30px;
 		}
+		.innerImg2{
+			width: 58%;
+			margin: 20px 0px;
+		}
+		.innerImg3{
+			width: 100%;
+			margin: 20px 0px;
+		}
+		.blueText{
+			color: rgb(88, 100, 220);
+		}
+		.whiteText{
+			color: white;
+		}
 		.innerText3{
 			font: 1.2em "微软雅黑";
-			color: rgb(87, 100, 215);
+			
 			margin-bottom: 7px;
 		}
 		.innerText2{
 			font: 1.8em "微软雅黑";
-			color: rgb(87, 100, 215);
 			margin-bottom: 15px;
 		}
 		.innerText4{
 			font: bold 1em "微软雅黑";
-			color: rgb(87, 100, 215);
 			margin-bottom: 9px;
 		}
 		.smallText{
@@ -71,6 +93,61 @@
 		}
 		.bottomText{
 			margin-bottom: 30px;
+		}
+		.bottomMargin{
+			margin-bottom: 20px;
+		}
+		.topMargin{
+			padding-top: 50px;
+		}
+		.bigNum{
+			font: 7em "微软雅黑";
+		}
+		.lighterText{
+			font-size: 1.1em;
+			font-weight: lighter;
+			color: rgb(194, 200, 232);
+			margin-left: 10px;
+		}
+		.innerContentLine{
+			display: flex;
+			flex-direction: column;
+			padding: 0px 0px 0px 35px;
+			background-image: url(line.png);
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			background-clip: content-box;
+		}
+		.innerContentNotLine{
+			display: flex;
+			flex-direction: column;
+			padding: 0px 35px 0px 35px;
+		}
+		.blueLine{
+			padding-bottom: 10px;
+			border-bottom: 1px solid rgb(194, 200, 232);
+		}
+		.topPadding10{
+			padding-top: 10px;
+		}
+		.aBold{
+			font-weight: bolder;
+		}
+		.blueBlock:before{
+			content: "";
+			display: inline-block;
+			width: 1.5em;
+			height: 0.8em;
+			background-color:rgb(80, 100, 220);
+			margin-right: 0.5em;
+		}
+		.grayBlock:before{
+			content: "";
+			display: inline-block;
+			width: 1.5em;
+			height: 0.8em;
+			background-color:rgb(204, 208, 245);
+			margin-right: 0.5em;
 		}
 		/* 这里就不遍历着写了，偷个懒直接写上去 */
 		.loading > span{
@@ -146,19 +223,85 @@
 		</div>
 		<div class="innerContent">
 			<img class="innerImg1" src="yoyeedesign.png" />
-			<span class="innerText3">经过几个月的加班加点</span>
-			<span class="innerText3">我们终于迎来了"YOYEE"的</span>
-			<span class="innerText3">第一个版本</span>
-			<span class="innerText2">现正招募第一批独立设计师</span>
-			<span class="innerText4">作品集发送到邮箱：</span>
-			<span class="innerText4">yoyeedesign@outlook.com</span>
-			<span class="innerText3 smallText">YOYEE保证用最负责的态度</span>
-			<span class="innerText3 smallText">为您打造独立设计师专属在线</span>
-			<span class="innerText3 smallText">不用竞标接项目平台</span>
-			<span class="innerText3 smallText">我们的理念是</span>
-			<span class="innerText3 smallText bottomText">使创意设计有其本身的价值</span>
+			<span class="innerText3 blueText">经过几个月的加班加点</span>
+			<span class="innerText3 blueText">我们终于迎来了"YOYEE"的</span>
+			<span class="innerText3 blueText">第一个版本</span>
+			<span class="innerText2 blueText">现正招募第一批独立设计师</span>
+			<span class="innerText4 blueText">作品集发送到邮箱：</span>
+			<span class="innerText4 blueText">yoyeedesign@outlook.com</span>
+			<span class="innerText3 blueText smallText">YOYEE保证用最负责的态度</span>
+			<span class="innerText3 blueText smallText">为您打造独立设计师专属在线</span>
+			<span class="innerText3 blueText smallText">不用竞标接项目平台</span>
+			<span class="innerText3 blueText smallText">我们的理念是</span>
+			<span class="innerText3 blueText smallText bottomText">使创意设计有其本身的价值</span>
 		</div>
 		<img class="contentImg" src="banner.jpg" />
+		<div class="innerContent2">
+			<div class="innerContentLine">
+				<span class="whiteText innerText2">为什么你需要YOYEE？</span>
+				<span class="whiteText innerText3 smallText">因为有设计师和甲方之间</span>
+				<span class="whiteText innerText3 smallText">那些头疼的事</span>
+				<span class="whiteText bigNum">01</span>
+				<span class="whiteText innerText3">时间紧迫/无限催稿<span class="lighterText">PRESS THE DRAFT</span></span>
+				<span class="whiteText innerText3 smallText">甲方："快快快！！！急急急！！！</span>
+				<span class="whiteText innerText3 smallText">明天下班前能给我吗？"</span>
+				<span class="whiteText bigNum">02</span>
+			</div>
+			<div class="innerContentNotLine">
+				<span class="whiteText innerText3">需求不明/无限改稿<span class="lighterText">REVISE</span></span>
+				<span class="whiteText innerText3 smallText">甲方："我唯一的要求就是能突出我们</span>
+				<span class="whiteText innerText3 smallText">产品的与众不同！"</span>
+				<span class="whiteText innerText3 smallText">甲方："我们希望..."</span>
+				<span class="whiteText innerText3 smallText">甲方："老总希望..."</span>
+				<span class="whiteText innerText3 smallText">甲方："老总夫人想把这个、还有那个去掉。"</span>
+				<span class="whiteText bigNum">03</span>
+				<span class="whiteText innerText3">梦回初稿/原地爆炸<span class="lighterText">FIRST DRAFT</span></span>
+			</div>
+			<div class="innerContentLine bottomText">
+				<span class="whiteText innerText3 smallText">甲方："这一稿感觉还不错，但还是用第一稿吧！"</span>
+				<span class="whiteText bigNum">04</span>
+				<span class="whiteText innerText3">付款变卦/无话可说<span class="lighterText">PAYMENT CHANGE</span></span>
+				<span class="whiteText innerText3 smallText">甲方："中间改了那么多稿，我们也给你提了</span>
+				<span class="whiteText innerText3 smallText">那么多意见价格你再优惠一点吧！"</span>
+			</div>
+		</div>
+		<div class="innerContent">
+			<img class="innerImg1" src="yoyeedesign.png" />
+			<span class="innerText3 blueText bottomText aBold">在有鱼，获得更好的体验</span>
+			<span class="innerText3 blueText smallText blueLine">时间：在有鱼，每种设计项目都有明确而合理的时间安排，无连夜赶稿之苦。</span>
+			<span class="innerText3 blueText smallText blueLine topPadding10">需求：在有鱼，提交需求的时候会有详细的需求表让用户填写，且专属客服经理负责传达与沟通，无笼统需求之恼。</span>
+			<span class="innerText3 blueText smallText blueLine topPadding10">修改：在有鱼，有明确的修改次数限制，无无脑修改之烦。</span>
+			<span class="innerText3 blueText smallText topPadding10 bottomText">付款：在有鱼，项目开始时款项将会冻结，确认交稿后尾款会直接从平台打入设计师账户，无追款风险之愁。</span>
+			<span class="innerText3 blueText bottomText aBold blueBlock">这些问题，在有鱼将得到全部解决</span>
+		</div>
+		<div class="innerContentBlue">
+				<img class="innerImg1" src="logo.jpg" />
+				<span class="whiteText innerText3 bottomMargin">关于招募第一批独立设计师</span>
+				<span class="whiteText innerText3 grayBlock bottomMargin">本次招募是YOYEE 1.0版本的正式内测</span>
+				<span class="whiteText innerText3 grayBlock blueLine bottomMargin">本次内测主要是面向独立设计师</span>
+				<span class="whiteText innerText3 smallText">如果您满足以下一个条件</span>
+				<span class="whiteText innerText3 bottomMargin">那么您就是我们想找的人</span>
+				<span class="whiteText innerText3 grayBlock bottomMargin">您要热爱设计，热爱设计行业</span>
+				<span class="whiteText innerText3 grayBlock bottomMargin">您对独立设计师发展合作交流有自己的想法</span>
+				<span class="whiteText innerText3 grayBlock bottomMargin">您对设计本身有自己的认识和思考，比如商业价值和审美，艺术的碰撞</span>
+				<span class="whiteText innerText3">您不再是一个人在战斗（设计交流，协作）</span>
+				<span class="whiteText innerText3 blueLine">坚持独立设计群体可改变整个设计行业体制变化</span>
+				<img class="innerImg2" src="logo2.jpg" />
+				<span class="whiteText innerText3">如果身边有合适的朋友</span>
+				<span class="whiteText innerText3 blueLine">也请把这封邀请函分享给他/她</span>
+				<span class="whiteText innerText3">作品集发送到邮箱：</span>
+				<span class="whiteText innerText3 bottomText">yoyeedesign@outlook.com</span>
+		</div>
+		<div class="innerContent" style="padding-top: 0px;">
+			<img class="innerImg2" src="logo3.jpg" />
+			<span class="innerText3 blueText bottomText">感谢 THANKS</span>
+			<span class="innerText3 blueText">所有关心YOYEE的朋友们</span>
+			<span class="innerText3 blueText">您的每一次反馈和交流都是我们最宝贵的成长养料，YOYEE的每一个成员都会时刻关注您的意见和建议</span>
+			<img class="innerImg2" src="logo3.jpg" />
+			<span class="innerText3 blueText bottomText">关于我们 ABOUT US</span>
+			<span class="innerText3 blueText">YOYEE的成员有经验多年的独立设计师和互联网团队，他们不断反思和思考独立设计师或者设计师行业的现状，希望可以为这个群体或行业作出改变，所以有了YOYEE，YOYEE想打造属于独立设计师自己的平台，改变目前独立设计师的接项目方式，使创意设计有其本身的价值</span>
+			<img class="innerImg3" src="logo4.jpg" />
+		</div>
 	</div>
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript">
