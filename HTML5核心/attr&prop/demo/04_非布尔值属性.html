@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="checkbox" checked="checked" name="qhf" />
+		<script type="text/javascript">
+			// 布尔值属性: 你的 property 是布尔值类型
+			// 非布尔值属性: 你的 property 是非布尔值类型
+			
+			// 非布尔值属性 property 和 attribute 的同步问题
+			// 不管什么情况 property 和 attribute 都会同步
+			var qhf = document.querySelector("input[type=checkbox]");
+			debugger;
+			qhf.setAttribute("name", "qhf1");
+			qhf.setAttribute("name", "qhf2");
+			qhf.setAttribute("name", "qhf3");
+			
+			qhf.name = "qhf4";
+			qhf.name = "qhf5";
+			qhf.name = "qhf6";
+			
+			qhf.setAttribute("name", "qhf7");
+			qhf.setAttribute("name", "qhf8");
+			qhf.setAttribute("name", "qhf9");
+		</script>
+	</body>
+</html>
