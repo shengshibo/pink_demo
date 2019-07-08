@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="test" data-qhf="qhf"></div>
+		<div id="test2" data-qhf-demo="qhf"></div>
+		<script type="text/javascript">
+			var testNode = document.querySelector("#test");
+			var testNode2 = document.querySelector("#test2");
+			console.log(testNode.dataset.qhf);
+			// 注意下面的驼峰命名
+			console.log(testNode2.dataset.qhfDemo);
+		</script>
+	</body>
+</html>
