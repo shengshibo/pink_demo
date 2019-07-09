@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			html,
+			body{
+				height: 100%;
+				overflow: hidden;
+			}
+			body{
+				background-color: gray;
+			}
+			#test{
+				background-color: pink;
+				position: absolute;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="test" width="300px" height="300px"></canvas>
+		<script type="text/javascript">
+			// 做 canvas 必须要有同步思维 有别于浏览器本身的渲染机制
+			// 覆盖渲染
+			window.onload = function () {
+				var canvas = document.querySelector("#test");
+				if (canvas.getContext) {
+					var ctx = canvas.getContext("2d");
+					// 填充颜色,相当于给画笔放颜料
+					ctx.fillStyle = "deeppink";
+					// 边框颜色
+					ctx.strokeStyle = "red";
+					// 边框宽度(不能带单位)
+					ctx.lineWidth = 20;
+					// 边框样式 直角/斜角/圆角
+					ctx.lineJoin = "miter";
+					ctx.fillRect(10, 10, 100, 100);
+					ctx.strokeRect(100, 100, 100, 100);
+					// 这个不是擦除而是覆盖,canvas性能是极高的
+					ctx.clearRect(100, 100, 100, 100);
+					// 以上是画矩形的三种方式
+					// x y 是参照于画布的原点 并不是参照于屏幕或者是别的什么
+				}
+			}
+		</script>
+	</body>
+</html>

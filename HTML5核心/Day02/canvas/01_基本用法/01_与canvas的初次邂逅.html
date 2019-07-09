@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			html,
+			body{
+				height: 100%;
+				overflow: hidden;
+			}
+			body{
+				background-color: pink;
+			}
+			#test{
+				background-color: gray;
+				position: absolute;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			<canvas> 很容易定义一些替代内容，由于某些较老的浏览器不支持 HTML 元素，
+			在这些浏览器上应该给用户展示替代的内容，
+			只需要在 <canvas> 标签中提供替换的内容就可以了
+				支持 <canvas> 的浏览器会忽略在容器中包含的内容，只正常渲染 canvas
+				不支持 <canvas> 的浏览器会显示代替内容
+		-->
+		<canvas id="test">
+			<span>您的浏览器不支持画布元素，请您换成萌萌的谷歌浏览器</span>
+		</canvas>
+		<script type="text/javascript">
+			/**
+			 * <canvas> 元素只是创造了一个固定大小的画布，要想在它上面绘制内容
+			 * 我们需要找到它的渲染上下文（画笔）
+			 * <canvas> 元素有个叫做 getContext() 的方法，这个方法是用来获得渲染上下文和它的绘画功能。
+			 * getContext() 只有一个参数，上下文的格式
+			 * ---> 获取方式
+			 * var canvas = document.getElementById("box");
+			 * var ctx = canvas.getContext("2d");
+			 * ---> 检查支持性
+			 * var canvas = document.getElementById("tutorial");
+			 * if (canvas.getContext) { 
+			 *     var ctx = canvas.getContext("2d");
+			 * }
+			 */
+			window.onload = function () {
+				// querySelector 身上有坑
+				var testNode = document.querySelector("#test");
+				if (testNode.getContext) {
+					// 一般画笔叫 ctx
+					var ctx = testNode.getContext("2d");
+				}
+			}
+		</script>
+	</body>
+</html>

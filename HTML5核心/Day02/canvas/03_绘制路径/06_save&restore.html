@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			html,
+			body{
+				height: 100%;
+				overflow: hidden;
+			}
+			body{
+				background-color: pink;
+			}
+			#test{
+				background-color: gray;
+				position: absolute;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="test" width="300px" height="300px"></canvas>
+		<script type="text/javascript">
+			window.onload = function () {
+				var canvans = document.querySelector("#test");
+				
+				if (canvans.getContext) {
+					var ctx = canvans.getContext("2d");
+					
+					// ctx.fillRect(50, 50, 100, 100);
+					// 养成一个良好的习惯,每次画新图形的时候 beginPath(); 一下
+					// ctx.beginPath();
+					// ctx.fillRect(100, 100, 200, 200);
+					
+					// save() 叫做压栈
+					ctx.save();
+					ctx.fillStyle = "pink";
+					ctx.beginPath();
+					ctx.fillRect(50, 50, 100, 100);
+					// restore() 叫做弹栈
+					ctx.restore();
+					
+					// 颜色容器和栈不是一个东西
+				}
+			}
+		</script>
+	</body>
+</html>

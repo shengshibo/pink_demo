@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			html,
+			body{
+				height: 100%;
+				overflow: hidden;
+			}
+			body{
+				background-color: pink;
+			}
+			#test{
+				background-color: gray;
+				position: absolute;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="test" width="300px" height="300px"></canvas>
+		<script type="text/javascript">
+			window.onload = function () {
+				/**
+				 * 1. 路径容器
+				 * 每次调用路径 api 时，都会往路径容器里做登记
+				 * 调用 beginPath 时，清空整个路径容器
+				 * 2. 样式容器
+				 * 每次调用样式 api 时，都会往样式容器里做登记
+				 * 调用 save 时候，将样式容器里的状态压入样式栈
+				 * 调用 restore 时候，将样式栈的栈顶状态弹出到样式容器里，进行覆盖
+				 * 3. 样式栈
+				 * 调用 save 时候，将样式容器里的状态压入样式栈
+				 * 调用 restore 时候，将样式栈的栈顶状态弹出到样式容器里，进行覆盖
+				 */
+				var canvans = document.querySelector("#test");
+				
+				if (canvans.getContext) {
+					var ctx = canvans.getContext("2d");
+					
+					// save 跟样式站有关系
+					// 最终去画图形的时候不是读的样式栈,而是样式容器,只不过是弹栈的时候会把栈内的颜色弹到样式容器中
+					ctx.save();
+					// 关于样式的设置
+					// save restore 成对出现
+					ctx.beginPath();
+					// 关于路径
+					ctx.restore();
+					
+					ctx.save();
+					// 关于样式的设置
+					ctx.beginPath();
+					// 关于路径
+					ctx.restore();
+				}
+			}
+		</script>
+	</body>
+</html>

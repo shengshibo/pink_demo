@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			html,
+			body{
+				height: 100%;
+				overflow: hidden;
+			}
+			body{
+				background-color: gray;
+			}
+			#test{
+				background-color: pink;
+				position: absolute;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="test" width="300px" height="300px"></canvas>
+		<script type="text/javascript">
+			window.onload = function () {
+				var canvas = document.querySelector("#test");
+				if (canvas.getContext) {
+					var ctx = canvas.getContext("2d");
+					
+					// 注意不能加单位
+					// 填充的矩形
+					ctx.fillRect(10, 10, 100, 100);
+					// 带边框的矩形,边框默认 1px 但是渲染之后就是 2px
+					// 因为这个是在中间取点,往上 0.5 像素 往下 0.5 像素,css 没有小数,所以会上下取整
+					ctx.strokeRect(100.5, 100.5, 100, 100);
+				}
+			}
+		</script>
+	</body>
+</html>
