@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			html,
+			body{
+				height: 100%;
+				overflow: hidden;
+			}
+			body{
+				background-color: pink;
+			}
+			#test{
+				background-color: gray;
+				position: absolute;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="test" width="300" height="300">
+			<span>您的浏览器不支持画布元素，请您换成萌萌的谷歌浏览器</span>
+		</canvas>
+		<script type="text/javascript">
+			window.onload = function () {
+				var canvas = document.querySelector("#test");
+				if (canvas.getContext) {
+					var ctx = canvas.getContext("2d");
+					// ctx.scale(2, 2);
+					ctx.scale(0.2, 0.2);
+					/**
+					 * css 像素是一个抽象单位
+					 * 放大：方法 css 像素的面积，区域内 css 像素的个数变少
+					 * 缩小：缩小 css 像素的面积，区域内 css 像素的个数变多
+					 */
+					ctx.beginPath();
+					ctx.fillRect(50, 50, 100, 100);
+				}
+			}
+		</script>
+	</body>
+</html>
