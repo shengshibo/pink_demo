@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,
+			body{
+				height: 100%;
+				overflow: hidden;
+			}
+			#s_canvas{
+				background-color: pink;
+				position: absolute;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="s_canvas" width="700" height="500"></canvas>
+		<script type="text/javascript">
+			window.onload = function () {
+				var oc = document.querySelector("#s_canvas");
+				if (oc.getContext) {
+					var ctx = oc.getContext("2d");
+					// ctx.fillStyle = "rgba(255, 192, 203, 1)";
+					ctx.fillRect(0, 0, 100, 100);
+					
+					/**
+					 * imageData
+					 * width：横向上像素点的个数
+					 * height：纵向上像素点的个数
+					 * data：数组，每一个像素点的 rgba 信息
+					 * canvas 中的透明度是 0 - 255 的
+					 */
+					var imageData = ctx.getImageData(0, 0, 100, 100);
+					console.log(imageData);
+					for (var i = 0; i < imageData.data.length; i++) {
+						imageData.data[4 * i + 3] = 100;
+					}
+					ctx.putImageData(imageData, 0, 0);
+				}
+			}
+		</script>
+	</body>
+</html>
