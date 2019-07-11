@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,
+			body{
+				height: 100%;
+				overflow: hidden;
+			}
+			#s_canvas{
+				background-color: pink;
+				position: absolute;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="s_canvas" width="700" height="500"></canvas>
+		<script type="text/javascript">
+			window.onload = function () {
+				var oc = document.querySelector("#s_canvas");
+				if (oc.getContext) {
+					var ctx = oc.getContext("2d");
+					ctx.save();
+					ctx.fillStyle = "gray";
+					ctx.beginPath();
+					ctx.fillRect(0, 50, 100, 100);
+					ctx.restore();
+					
+					var imageData = ctx.getImageData(0, 0, oc.width, oc.height);
+					var color = getPxInfo(imageData, 0, 50);
+					console.log(color);
+					setPxInfo(imageData, 3, 3, [0, 0, 0, 255]);
+					ctx.putImageData(imageData, 0, 0);
+				}
+				
+				function getPxInfo (imageData, x, y) {
+					var color = [];
+					var data = imageData.data;
+					var w = imageData.width;
+					var h = imageData.height;
+					// r
+					color[0] = data[(x + y * w) * 4];
+					// g
+					color[1] = data[(x + y * w) * 4 + 1];
+					// b
+					color[2] = data[(x + y * w) * 4 + 2];
+					// a
+					color[3] = data[(x + y * w) * 4 + 3];
+					return color;
+				}
+				
+				function setPxInfo (imageData, x, y, color) {
+					var data = imageData.data;
+					var w = imageData.width;
+					var h = imageData.height;
+					// r
+					data[(x + y * w) * 4] = color[0];
+					// g
+					data[(x + y * w) * 4 + 1] = color[1];
+					// b
+					data[(x + y * w) * 4 + 2] = color[2];
+					// a
+					data[(x + y * w) * 4 + 3] = color[3];
+				}
+			}
+		</script>
+	</body>
+</html>

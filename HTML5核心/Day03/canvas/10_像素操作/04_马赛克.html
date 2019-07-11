@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,
+			body{
+				height: 100%;
+				overflow: hidden;
+			}
+			#s_canvas{
+				background-color: pink;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate3d(-50%, -50%, 0);
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="s_canvas"></canvas>
+		<script type="text/javascript">
+			window.onload = function () {
+				var oc = document.querySelector("#s_canvas");
+				if (oc.getContext) {
+					var ctx = oc.getContext("2d");
+					var image = new Image();
+					image.src = "../../images/logo.jpg";
+					image.onload = function () {
+						oc.width = image.width * 2;
+						oc.height = image.height;
+						draw(this);
+					}
+					
+					function draw (image) {
+						ctx.drawImage(image, 0, 0);
+						
+						var oldImageData = ctx.getImageData(0, 0, image.width, image.height);
+						var newImageData = ctx.createImageData(image.width, image.height);
+						
+						// 马赛克
+						
+						ctx.putImageData(newImageData, image.width, 0);
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
