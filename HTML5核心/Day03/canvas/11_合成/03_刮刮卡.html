@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,
+			body{
+				height: 100%;
+				overflow: hidden;
+			}
+			#wrap,
+			ul,
+			ul > li{
+				height: 100%;
+			}
+			ul > li{
+				background-image: url(../../images/bg.jpg);
+				background-size: 100% 100%;
+			}
+			canvas{
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<canvas id="s_canvas"></canvas>
+			<ul>
+				<li></li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			window.onload = function () {
+				var oc = document.querySelector("#s_canvas");
+				oc.width = document.documentElement.clientWidth;
+				oc.height = document.documentElement.clientHeight;
+				if (oc.getContext) {
+					var ctx = oc.getContext("2d");
+					var image = new Image();
+					image.src = "../../images/bg2.jpg";
+					image.onload = function () {
+						draw();
+					}
+					
+					function draw () {
+						ctx.drawImage(image, 0, 0, oc.width, oc.height);
+						
+						oc.addEventListener("touchstart", function (event) {
+							event = event || window.event;
+							var touchC = event.changedTouches[0];
+							var x = touchC.clientX - oc.offsetLeft;
+							var y = touchC.clientY - oc.offsetTop;
+							ctx.globalCompositeOperation = "destination-out";
+							ctx.lineWidth = 40;
+							ctx.lineCap = "round";
+							ctx.lineJoin = "round";
+							ctx.save();
+							ctx.beginPath();
+							ctx.moveTo(x, y);
+							ctx.lineTo(x + 1, y + 1);
+							ctx.stroke();
+							ctx.restore();
+						});
+						oc.addEventListener("touchmove", function (event) {
+							event = event || window.event;
+							var touchC = event.changedTouches[0];
+							var x = touchC.clientX - oc.offsetLeft;
+							var y = touchC.clientY - oc.offsetTop;
+							
+							ctx.save();
+							ctx.lineTo(x, y);
+							ctx.stroke();
+							ctx.restore();
+						});
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

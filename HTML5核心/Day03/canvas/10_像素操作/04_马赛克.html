@@ -44,8 +44,48 @@
 						var newImageData = ctx.createImageData(image.width, image.height);
 						
 						// 马赛克
+						/**
+						 * 1. 选取一个马赛克矩形
+						 * 2. 从马赛克矩形中随机抽出一个像素点的信息（rgba）
+						 * 3. 将整个马赛克矩形中的像素点信息统一随机抽出的那个
+						 */
+						var size = 5;
+						for (var i = 0; i < oldImageData.width / size; i++) {
+							for (var j = 0; j < oldImageData.height / size; j++) {
+								// (i, j) 每一个马赛克矩形的坐标
+								var color = getPxInfo(oldImageData, Math.floor(Math.random() * size + size * i), Math.floor(Math.random() * size + size * j));
+								
+								for (var a = 0; a < size; a++) {
+									for (var b = 0; b < size; b++) {
+										setPxInfo(newImageData, i * size + a, j * size + b, color);
+									}
+								}
+							}
+						}
 						
 						ctx.putImageData(newImageData, image.width, 0);
+					}
+					
+					function getPxInfo (imageData, x, y) {
+						var color = [];
+						var data = imageData.data;
+						var w = imageData.width;
+						var h = imageData.height;
+						color[0] = data[(x + y * w) * 4];
+						color[1] = data[(x + y * w) * 4 + 1];
+						color[2] = data[(x + y * w) * 4 + 2];
+						color[3] = data[(x + y * w) * 4 + 3];
+						return color;
+					}
+					
+					function setPxInfo (imageData, x, y, color) {
+						var data = imageData.data;
+						var w = imageData.width;
+						var h = imageData.height;
+						data[(x + y * w) * 4] = color[0];
+						data[(x + y * w) * 4 + 1] = color[1];
+						data[(x + y * w) * 4 + 2] = color[2];
+						data[(x + y * w) * 4 + 3] = color[3];
 					}
 				}
 			}
