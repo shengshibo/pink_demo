@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,
+			body{
+				height: 100%;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			video
+			preload：该属性旨在告诉浏览器作者认为达到最佳用户体验的方式是什么
+			none：提示作者认为用户不需要查看该视频，服务器也想要最小化访问流量
+				换句话说就是提示浏览器该视频不需要缓存
+			metadata：提示尽管作者认为用户不需要查看该视频
+				不过抓取元数据（比如：长度）还是很合理的
+			auto：用户需要这个视频优先加载；换句话说就是提示：如果需要的话，
+				可以下载整个视频，即使用户并不一定会用它
+			空字符串：也就代指 auto 值
+			audio
+			音频和视频的属性基本一样，只是没有 width height poster 属性
+			音频一般会选择 没有控件、autoplay、loop 来当作背景音乐
+		-->
+		<video controls="controls" width="300" height="300" poster="../Day03/images/bg.jpg" muted="muted" preload="metadata">
+			<source src="movie.mp4" type="video/mp4"></source>
+			<source src="movie.ogv" type="video/ogg"></source>
+			<source src="movie.webm" type="video/webm"></source>
+			当前浏览器不支持 video 直接播放，点击这里下载视频：<a href="movie.mp4">下载视频</a>
+		</video>
+		<audio src="horse.ogv" type="audio/ogg" autoplay="autoplay" loop="loop" controls="controls"></audio>
+		<!-- <audio controls="controls">
+			<source src="horse.mp3" type="audio/mpeg"></source>
+			<source src="horse.aac" type="audio/aac; codecs='aac'"></source>
+			<source src="horse.ogv" type="audio/ogg"></source>
+			当前浏览器不支持 audio 直接播放，点击这里下载视频：<a href="horse.mp3">下载视频</a>
+		</audio> -->
+	</body>
+</html>

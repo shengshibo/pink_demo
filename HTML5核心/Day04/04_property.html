@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,
+			body{
+				height: 100%;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<video src="movie.ogv" controls="controls" muted="muted"></video>
+		<audio src="horse.ogv" controls="controls" muted="muted"></audio>
+		<script type="text/javascript">
+			window.onload = function () {
+				var s_video = document.querySelector("video");
+				var s_audio = document.querySelector("audio");
+				
+				// console.log(s_video.duration);
+				// console.log(s_audio.duration);
+				
+				// muted 和 volume 之间不会同步
+				// muted 优先级比较高
+				// s_video.muted = true;
+				// s_video.volume = 0;
+				// s_audio.muted = true;
+				// s_audio.volume = 0;
+				
+				s_video.muted = true;
+				s_video.volume = 0.5;
+				
+				/**
+				 * 音视频 js 相关属性
+				 * duration：媒体总时间（只读）
+				 * currentTime：开始播放到现在所用的时间（可读写）
+				 * muted：是否静音（可读写，相比于 volume 优先级要高）
+				 * volume：0.0 - 1.0 的音量相对值（可读写）
+				 * paused：媒体是否暂停（只读）
+				 * ended：媒体是否播放完毕（只读）
+				 * error：媒体发生错误的时候，返回错误代码（只读）
+				 * currentSrc：以字符串的形式返回媒体地址（只读）
+				 * 
+				 * 视频多的部分：
+				 * poster：视频播放前的预览图片（读写）
+				 * width、height：设置视频的尺寸（读写）
+				 * videoWidth、videoHeight：视频的实际尺寸（只读）
+				 */
+				
+			}
+		</script>
+	</body>
+</html>

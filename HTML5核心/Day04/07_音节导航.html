@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,
+			body{
+				height: 100%;
+				overflow: hidden;
+			}
+			#wrap{
+				width: 900px;
+				height: 38px;
+				border: 1px solid black;
+				
+				position: absolute;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				margin: auto;
+			}
+			ul{
+				width: 100%;
+				height: 100%;
+				list-style: none;
+				overflow: hidden;
+			}
+			li{
+				float: left;
+				width: 99px;
+				height: 100%;
+			}
+			li:not(:last-child){
+				border-right: 1px solid black;
+			}
+			a{
+				width: 99px;
+				height: 38px;
+				text-decoration: none;
+				display: block;
+				color: black;
+				line-height: 38px;
+				text-align: center;
+			}
+			.down{
+				width: 100%;
+				height: 100%;
+				background-color: yellow;
+				transition: 0.5s;
+			}
+			li:hover .down{
+				transform: translateY(-38px);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<ul class="nav">
+				<li data-flag="a">
+					<a href="javascript:;">我的主页</a>
+					<div class="down"></div>
+				</li>
+				<li>
+					<a href="javascript:;">新闻头条</a>
+					<div class="down"></div>
+				</li>
+				<li data-flag="b">
+					<a href="javascript:;">电视剧</a>
+					<div class="down"></div>
+				</li>
+				<li>
+					<a href="javascript:;">最新电影</a>
+					<div class="down"></div>
+				</li>
+				<li data-flag="c">
+					<a href="javascript:;">今日团购</a>
+					<div class="down"></div>
+				</li>
+				<li>
+					<a href="javascript:;">小说大全</a>
+					<div class="down"></div>
+				</li>
+				<li data-flag="d">
+					<a href="javascript:;">旅游度假</a>
+					<div class="down"></div>
+				</li>
+				<li>
+					<a href="javascript:;">正品团购</a>
+					<div class="down"></div>
+				</li>
+				<li data-flag="f">
+					<a href="javascript:;">物流信息</a>
+					<div class="down"></div>
+				</li>
+			</ul>
+		</div>
+		<audio></audio>
+		<script type="text/javascript">
+			window.onload = function () {
+				// http://s8.qhimg.com/share/audio/piano1/g4.mp3
+				var liNodes = document.querySelectorAll(".nav > li");
+				var s_audio = document.querySelector("audio");
+				for (var i = 0; i < liNodes.length; i++) {
+					liNodes[i].addEventListener("mouseenter", function () {
+						// var flag = this.getAttribute("data-flag");
+						var flag = this.dataset.flag;
+						if (flag) {
+							s_audio.src = "http://s8.qhimg.com/share/audio/piano1/" + flag + "4.mp3";
+							console.log(s_audio.src);
+							s_audio.play();
+						}
+					});
+				}
+			}
+		</script>
+	</body>
+</html>
