@@ -24,11 +24,18 @@
 			.s_img{
 				width: 200px;
 				height: 200px;
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				margin: auto;
 			}
 		</style>
 	</head>
 	<body>
 		<div id="wrap"></div>
+		<img src="img/aa.jpg" class="s_img" />
 		<script type="text/javascript">
 			/**
 			 * 拖拽的思路
@@ -41,6 +48,7 @@
 			 */
 			window.onload = function () {
 				var wrapNode = document.querySelector("#wrap");
+				var s_img = document.querySelector(".s_img");
 				// 鼠标点击元素时,元素一开始的位置
 				var startPoint = {x: 0, y: 0};
 				var mouseDownPoint = {x: 0, y: 0};
@@ -69,6 +77,21 @@
 						L = L > document.documentElement.clientWidth - wrapNode.offsetWidth - 10 ? document.documentElement.clientWidth - wrapNode.offsetWidth : L;
 						wrapNode.style.left = L + "px";
 						wrapNode.style.top = T + "px";
+						// 碰撞检测
+						var T1 = wrapNode.offsetTop;
+						var B1 = wrapNode.offsetTop + wrapNode.offsetHeight;
+						var L1 = wrapNode.offsetLeft;
+						var R1 = wrapNode.offsetLeft + wrapNode.offsetWidth;
+						var T2 = s_img.offsetTop;
+						var B2 = s_img.offsetTop + s_img.offsetHeight;
+						var L2 = s_img.offsetLeft;
+						var R2 = s_img.offsetLeft + s_img.offsetWidth;
+						if (R1 < L2 || B1 < T2 || R2 < L1 || B2 < T1) {
+							// 没有撞到
+							s_img.src = "img/aa.jpg";
+						} else {
+							s_img.src = "img/bb.jpg";
+						}
 					}
 					document.onmouseup = function () {
 						document.onmousemove = document.onmouseup = null;

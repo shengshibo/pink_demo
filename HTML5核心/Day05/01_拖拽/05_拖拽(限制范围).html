@@ -21,14 +21,12 @@
 				height: 100px;
 				background-color: pink;
 			}
-			.s_img{
-				width: 200px;
-				height: 200px;
-			}
 		</style>
 	</head>
 	<body>
-		<div id="wrap"></div>
+		<div id="wrap">
+			
+		</div>
 		<script type="text/javascript">
 			/**
 			 * 拖拽的思路
@@ -63,10 +61,10 @@
 						var dis = {x: 0, y: 0};
 						dis.x = mouseMovePoint.x - mouseDownPoint.x;
 						dis.y = mouseMovePoint.y - mouseDownPoint.y;
-						var L = (startPoint.x + dis.x) < 10 ? 0 : (startPoint.x + dis.x);
-						var T = (startPoint.y + dis.y) < 10 ? 0 : (startPoint.y + dis.y);
-						T = T > document.documentElement.clientHeight - wrapNode.offsetHeight - 10 ? document.documentElement.clientHeight - wrapNode.offsetHeight : T;
-						L = L > document.documentElement.clientWidth - wrapNode.offsetWidth - 10 ? document.documentElement.clientWidth - wrapNode.offsetWidth : L;
+						var L = (startPoint.x + dis.x) < 0 ? 0 : (startPoint.x + dis.x);
+						var T = (startPoint.y + dis.y) < 0 ? 0 : (startPoint.y + dis.y);
+						T = T > document.documentElement.clientHeight - wrapNode.offsetHeight ? document.documentElement.clientHeight - wrapNode.offsetHeight : T;
+						L = L > document.documentElement.clientWidth - wrapNode.offsetWidth ? document.documentElement.clientWidth - wrapNode.offsetWidth : L;
 						wrapNode.style.left = L + "px";
 						wrapNode.style.top = T + "px";
 					}

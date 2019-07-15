@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<style type="text/css">
+			html,
+			body{
+				height: 100%;
+				overflow: hidden;
+			}
+			#wrap{
+				height: 100%;
+				overflow: hidden;
+				background-color: #383838;
+				font-size: 0;
+			}
+			.control{
+				position: relative;
+				width: 100%;
+				height: 25px;
+				min-width: 600px;
+				background-color: #2A2A2A;
+			}
+			.control > .btns{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 55px;
+				height: 100%;
+				text-align: center;
+				padding-top: 7px;
+			}
+			.control > .progress{
+				margin: 0 230px 0 55px;
+			}
+			.progress{
+				height: 100%;
+				position: relative;
+			}
+			.control > .others{
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				width: 230px;
+				height: 100%;
+			}
+			.wrap{
+				position: absolute;
+				background-color: #737373;
+				width: 100%;
+				height: 3px;
+				margin-top: 11px;
+			}
+			.progress > .wrap > .inner{
+				position: absolute;
+				width: 9px;
+				height: 7px;
+				background-color: white;
+				border-radius: 5px;
+				margin-top: -2px;
+			}
+			.pink{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 0;
+				height: 3px;
+				margin-top: 11px;
+				background-color: pink;
+			}
+			.btns > span{
+				display: inline-block;
+				width: 9px;
+				height: 11px;
+				background-image: url(img/icon.png);
+				background-repeat: no-repeat;
+			}
+			.btns > span:nth-child(1){
+				background-position: 0 -23px;
+				margin-right: 10px;
+			}
+			.btns > span:nth-child(1).active{
+				background-position: 0 -11px;
+				margin-right: 10px;
+			}
+			.btns > span:nth-child(2){
+				background-position: 0 0;
+			}
+			.time{
+				width: 120px;
+				height: 100%;
+				font-size: 12px;
+				line-height: 25px;
+				color: white;
+				float: left;
+				text-align: center;
+			}
+			.sound{
+				width: 80px;
+				height: 100%;
+				float: left;
+			}
+			.sound > .switch{
+				display: inline-block;
+				width: 20px;
+				height: 100%;
+				text-align: center;
+			}
+			.sound > .switch > span{
+				display: inline-block;
+				width: 12px;
+				height: 12px;
+				margin: 7px auto;
+				background-image: url(img/icon.png);
+				background-repeat: no-repeat;
+				background-position: 0 -34px;
+			}
+			.sound > .switch > span.active{
+				background-position: 0 -46px;
+			}
+			.sound > .progress{
+				display: inline-block;
+				width: 60px;
+			}
+			.allScreen{
+				display: inline-block;
+				width: 30px;
+				height: 100%;
+				float: left;
+				text-align: center;
+			}
+			.allScreen > span{
+				display: inline-block;
+				margin: 7px auto;
+				width: 11px;
+				height: 11px;
+				background-image: url(img/icon.png);
+				background-repeat: no-repeat;
+				background-position: 0 -58px;
+			}
+			.allScreen > span.active{
+				background-position: 0 -70px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<video src="http://www.17sucai.com/preview/1528155/2019-02-18/video/source/0.mp4"></video>
+			<div class="control">
+				<div class="btns">
+					<span class="start"></span>
+					<span class="stop"></span>
+				</div>
+				<div class="progress">
+					<div class="wrap">
+						<div class="inner"></div>
+					</div>
+					<div class="pink"></div>
+				</div>
+				<div class="others">
+					<div class="time">
+						<span class="now">00:00:00</span>/<span class="all">00:00:00</span>
+					</div>
+					<div class="sound">
+						<div class="switch">
+							<span></span>
+						</div>
+						<div class="progress">
+							<div class="wrap">
+								<div class="inner"></div>
+							</div>
+							<div class="pink"></div>
+						</div>
+					</div>
+					<div class="allScreen">
+						<span></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/drag.js"></script>
+		<script type="text/javascript">
+			window.onload = function () {
+				var control = document.querySelector("#wrap > .control");
+				var video = document.querySelector("#wrap > video");
+				var inner = document.querySelector("#wrap > .control > .progress > .wrap > .inner");
+				var pink = document.querySelector("#wrap > .control > .progress > .pink");
+				var inner2 = document.querySelector(".sound > .progress > .wrap > .inner");
+				var pink2 = document.querySelector(".sound > .progress > .pink");
+				var progress2 = document.querySelector(".sound > .progress");
+				var start = document.querySelector(".start");
+				var stop = document.querySelector(".stop");
+				var progress = document.querySelector(".control > .progress");
+				var allTime = document.querySelector(".all");
+				var nowTime = document.querySelector(".now");
+				var switchV = document.querySelector(".switch");
+				var switchSpanV = document.querySelector(".switch > span");
+				var allScreen = document.querySelector(".allScreen");
+				var allScreenSpan = document.querySelector(".allScreen > span");
+				video.width = document.documentElement.clientWidth;
+				video.height = document.documentElement.clientHeight - control.offsetHeight;
+				window.onresize = function () {
+					video.width = document.documentElement.clientWidth;
+					video.height = document.documentElement.clientHeight - control.offsetHeight;
+				}
+				// 功能
+				var timer = 0;
+				var s_flag = 1;
+				var isFullScreen = false;
+				player();
+				function player () {
+					allScreen.onclick = function () {
+						if(isFullScreen) {
+							removeClass(allScreenSpan, "active");
+							isFullScreen = false
+							if (document.exitFullscreen) {  
+							    document.exitFullscreen();  
+							}  
+							else if (document.mozCancelFullScreen) {  
+							    document.mozCancelFullScreen();  
+							}  
+							else if (document.webkitCancelFullScreen) {  
+							    document.webkitCancelFullScreen();  
+							}
+							else if (document.msExitFullscreen) {
+							      document.msExitFullscreen();
+							}
+						} else {
+							addClass(allScreenSpan, "active");
+							isFullScreen = true
+							var docElm = document.documentElement;
+							//W3C  
+							if (docElm.requestFullscreen) {  
+							    docElm.requestFullscreen();  
+							}
+							//FireFox  
+							else if (docElm.mozRequestFullScreen) {  
+							    docElm.mozRequestFullScreen();  
+							}
+							//Chrome等  
+							else if (docElm.webkitRequestFullScreen) {  
+							    docElm.webkitRequestFullScreen();  
+							}
+							//IE11
+							else if (docElm.msRequestFullscreen) {
+							  docElm.msRequestFullscreen();
+							}
+						}
+					}
+					inner2.style.left = pink2.style.width = progress2.clientWidth - inner2.offsetWidth + "px";
+					switchV.onclick = function () {
+						if (video.muted) {
+							// 静音
+							removeClass(switchSpanV, "active");
+							video.muted = false;
+							video.volume = 1;
+							s_flag = s_flag == 0 ? 1 : s_flag;
+							inner2.style.left = pink2.style.width = s_flag * (progress2.clientWidth - inner2.offsetWidth) + "px";
+						} else {
+							addClass(switchSpanV, "active");
+							video.muted = true;
+							video.volume = 0;
+							inner2.style.left = pink2.style.width = "0px";
+						}
+					}
+					
+					video.addEventListener("loadeddata", function () {
+						allTime.innerHTML = timeTransform(video.duration);
+					});
+					
+					start.onclick = function () {
+						if (video.paused) {
+							// 暂停 --> 播放 --> 显示暂停按钮
+							addClass(this, "active");
+							video.play();
+							timer = setInterval(move, 100);
+						} else {
+							removeClass(this, "active");
+							video.pause();
+							clearInterval(timer);
+						}
+					}
+					function move () {
+						inner.style.left = pink.style.width = (video.currentTime / video.duration) * (progress.clientWidth - inner.offsetWidth) + "px";
+						nowTime.innerHTML = timeTransform(video.currentTime);
+					}
+					stop.onclick = function () {
+						removeClass(start, "active");
+						clearInterval(timer);
+						video.pause();
+						inner.style.left = pink.style.width = "0px";
+						video.currentTime = 0;
+					}
+					progress.onclick = function (ev) {
+						ev = ev || window.event;
+						if (start.className.indexOf("active") != -1) {
+							addClass(start, "active");
+							video.play();
+						} else {
+							video.pause();
+						}
+						timer = setInterval(move, 100);
+						video.currentTime = video.duration * (ev.clientX - this.offsetLeft) / (progress.clientWidth - inner.offsetWidth);
+					}
+				}
+				var callback = {
+					// 回调
+					move: function () {
+						pink.style.width = this.offsetLeft + "px";
+						var scale = this.offsetLeft / (progress.clientWidth - inner.offsetWidth);
+						video.currentTime = video.duration * scale;
+						nowTime.innerHTML = timeTransform(video.currentTime);
+					}
+				};
+				var callback2 = {
+					// 回调
+					move: function () {
+						pink2.style.width = this.offsetLeft + "px";
+						var scale = this.offsetLeft / (progress2.clientWidth - inner2.offsetWidth);
+						s_flag = scale;
+						video.volume = scale;
+						if (video.volume == 0) {
+							video.muted = true;
+							addClass(switchSpanV, "active");
+						} else {
+							removeClass(switchSpanV, "active");
+							video.muted = false;
+						}
+					}
+				};
+				$.drag(inner, callback);
+				$.drag(inner2, callback2);
+				
+				// 工具类
+				function addClass (node, className) {
+					var reg = new RegExp("\\b" + className + "\\b");
+					if (!reg.test(node.className)) {
+						node.className += (" " + className);
+					}
+				}
+				function removeClass (node, className) {
+					if (node.className) {
+						var reg = new RegExp("\\b" + className + "\\b");
+						var classes = node.className;
+						node.className = classes.replace(reg, "");
+						if (/^\s*$/g.test(node.className)) {
+							node.removeAttribute("class");
+						}
+					} else {
+						node.removeAttribute("class");
+					}
+				}
+				function timeTransform (time) {
+					var hour = Math.floor(time / 3600);
+					var minute = Math.floor(time % 3600 / 60);
+					var second = Math.round(time % 60);
+					var transformedTime = toZero(hour) + ":" + toZero(minute) + ":" + toZero(second);
+					return transformedTime;
+				}
+				function toZero (num) {
+					if (num < 10) {
+						num = "0" + num;
+					}
+					return num;
+				}
+			}
+		</script>
+	</body>
+</html>
