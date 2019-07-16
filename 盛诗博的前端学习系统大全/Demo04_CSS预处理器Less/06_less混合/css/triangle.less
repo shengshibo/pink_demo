@@ -1,0 +1,26 @@
+.triangle(@_, @w: 10px, @c: pink){
+	width: 0px;
+	height: 0px;
+	/* 解决 IE6 问题 */
+	overflow: hidden;
+}
+.triangle(T, @w: 10px, @c: pink){
+	border-width: @w;
+	border-style: dashed dashed solid dashed;
+	border-color: transparent transparent @c transparent;
+}
+.triangle(R, @w: 10px, @c: pink){
+	border-width: @w;
+	border-style: dashed dashed dashed solid;
+	border-color: transparent transparent transparent @c;
+}
+.triangle(B, @w: 10px, @c: pink){
+	border-width: @w;
+	border-style: solid dashed dashed dashed;
+	border-color: @c transparent transparent transparent;
+}
+.triangle(L, @w: 10px, @c: pink){
+	border-width: @w;
+	border-style: dashed solid dashed dashed;
+	border-color: transparent @c transparent transparent;
+}

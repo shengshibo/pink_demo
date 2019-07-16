@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<form>
+			<input type="text" required="required"/>
+			<input type="submit" value="提交"/>
+		</form>
+		<script type="text/javascript">
+			window.onload = function () {
+				var input1 = document.querySelectorAll("input")[0];
+				var submit = document.querySelectorAll("input")[1];
+				submit.onclick = function () {
+					if (input1.value == "s") {
+						input1.setCustomValidity("请不要输入敏感词");
+					} else {
+						// 传一个空串 默认通过验证
+						// 不写这个貌似也可以
+						input1.setCustomValidity("");
+					}
+				}
+				input1.addEventListener("invalid", function () {
+					console.log(this.validity);
+				});
+			}
+		</script>
+		<!--
+			validity 对象，通过下面的 valid 可以查看验证是否通过，如果八种验证都通过返回 false，验证失败返回 true
+			node.addEventListener("invalid", fn1, false);
+			
+			valueMissing：输入值为空时返回 true
+			typeMismatch：控件值与预期类型不匹配返回 true
+			patternMismatch：输入值不满足 pattern 正则返回 true
+			
+			tooLong：超过 maxLength 最大限制返回 true
+			rangeUnderflow：验证的 range 最小值返回 true
+			rangeOverflow：验证的 range 最大值返回 true
+			stepMismatch：验证 range 的当前值是否符合 min、max 及 step 的规则返回 true
+			
+			customError 不符合自定义验证返回 true
+				setCustomValidity
+			
+		-->
+	</body>
+</html>

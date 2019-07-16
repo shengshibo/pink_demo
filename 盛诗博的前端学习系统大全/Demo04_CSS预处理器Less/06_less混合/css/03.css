@@ -1,0 +1,9 @@
+#wrap > .sjx {
+  width: 0px;
+  height: 0px;
+  /* 解决 IE6 问题 */
+  overflow: hidden;
+  border-width: 80px;
+  border-style: dashed solid dashed dashed;
+  border-color: transparent #000000 transparent transparent;
+}

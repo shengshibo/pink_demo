@@ -1,0 +1,31 @@
+// 普通混合
+// .juzhong{
+// 不带参数的混合
+// .juzhong(){
+// 带参数的混合/带多个参数的混合
+// .juzhong(@w, @h, @c){
+// 带参数并且有默认值的混合
+.juzhong(@w: 10px, @h: 10px, @c: pink){
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	background: @c;
+	width: @w;
+	height: @h;
+}
+#wrap{
+	position: relative;
+	width: 300px;
+	height: 400px;
+	border: 1px solid;
+	margin: 0 auto;
+	.inner{
+		.juzhong(100px, 100px, pink);
+	}
+	.inner2{
+		.juzhong();
+	}
+}
