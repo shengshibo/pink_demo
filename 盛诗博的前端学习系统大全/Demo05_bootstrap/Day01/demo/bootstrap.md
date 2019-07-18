@@ -56,3 +56,16 @@
 				所有左浮动
 			.llp-grid-columns(@grid-colmuns, @class, width)
 				宽度
+### 响应式工具
+
+### 栅格盒模型设计的精妙之处
+	容器两边具有 15px 的 padding
+	行 两边具有 -15px 的 margin
+	列 两边具有 15px 的 padding
+	
+	为了维护槽宽的规则，
+		列两边要有 15px 的 padding
+	为了能使列嵌套行
+		行两边必须要有 -15px 的 margin
+	为了让容器能够包裹住行
+		容器两边必须要有 15px 的 padding
