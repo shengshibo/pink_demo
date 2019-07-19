@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html id="html">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#inner{
+				position: absolute;
+			}
+			#wrap{
+				position: relative;
+			}
+		</style>
+	</head>
+	<body id="body">
+		<ul id="list">
+			<li>mozhi1 <a href="javascript:;">删除</a></li>
+			<li>mozhi2 <a href="javascript:;">删除</a></li>
+			<li>mozhi3 <a href="javascript:;">删除</a></li>
+			<li>mozhi4 <a href="javascript:;">删除</a></li>
+			<li>mozhi5 <a href="javascript:;">删除</a></li>
+			<li>mozhi6 <a href="javascript:;">删除</a></li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		window.onload = function () {
+			// 假删除
+			var buttons_Del = document.querySelectorAll("#list > li > a");
+			for (var i = 0; i < buttons_Del.length; i++) {
+				buttons_Del[i].onclick = function () {
+					this.parentNode.style.display = "none";
+				}
+			}
+		}
+	</script>
+</html>

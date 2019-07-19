@@ -17,7 +17,8 @@
       <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
     <![endif]-->
 	<style type="text/css">
-		.item > img{
+		.item > img,
+		.col-md-5 > img{
 			width: 100%;
 		}
 		.mozhi-carousel{
@@ -57,15 +58,15 @@
 			<li><a href="#">简述</a></li>
 			<li class="dropdown">
 			  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">特点<span class="caret"></span></a>
-			  <ul class="dropdown-menu">
-				<li><a href="#">Chrome</a></li>
-				<li><a href="#">Firefox</a></li>
-				<li><a href="#">Safari</a></li>
-				<li><a href="#">Opera</a></li>
-				<li><a href="#">IE</a></li>
+			  <ul class="dropdown-menu" id="mozhi-ul">
+				<li><a href="#chrome">Chrome</a></li>
+				<li><a href="#firefox">Firefox</a></li>
+				<li><a href="#safari">Safari</a></li>
+				<li><a href="#opera">Opera</a></li>
+				<li><a href="#ie">IE</a></li>
 			  </ul>
 			</li>
-			<li><a href="#">关于</a></li>
+			<li><a href="javascript:;" data-toggle="modal" data-target="#myModal">关于</a></li>
 		  </ul>
 		</div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
@@ -158,6 +159,106 @@
 	<div class="container mozhi-hr">
 		<hr />
 	</div>
+	<!-- 标签页 -->
+	<div class="container" id="mozhi-tab">
+	  <!-- Nav tabs -->
+	  <ul class="nav nav-tabs" role="tablist">
+		<li role="presentation" class="active"><a href="#chrome" aria-controls="chrome" role="tab" data-toggle="tab">chrome</a></li>
+		<li role="presentation"><a href="#firefox" aria-controls="firefox" role="tab" data-toggle="tab">firefox</a></li>
+		<li role="presentation"><a href="#safari" aria-controls="safari" role="tab" data-toggle="tab">safari</a></li>
+		<li role="presentation"><a href="#opera" aria-controls="opera" role="tab" data-toggle="tab">opera</a></li>
+		<li role="presentation"><a href="#ie" aria-controls="ie" role="tab" data-toggle="tab">ie</a></li>
+	  </ul>
+	  <!-- Tab panes -->
+	  <div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="chrome">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-7">
+						<h3>chrome 你懂的</h3>
+						这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。
+					</div>
+					<div class="col-md-5">
+						<img src="images/chrome-logo.jpg" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="firefox">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-5">
+						<img src="images/firefox-logo.jpg" />
+					</div>
+					<div class="col-md-7">
+						<h3>firefox 你懂的</h3>
+						这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。
+					</div>
+				</div>
+			</div>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="safari">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-7">
+						<h3>safari 你懂的</h3>
+						这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。
+					</div>
+					<div class="col-md-5">
+						<img src="images/safari-logo.jpg" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="opera">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-5">
+						<img src="images/opera-logo.jpg" />
+					</div>
+					<div class="col-md-7">
+						<h3>opera 你懂的</h3>
+						这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。
+					</div>
+				</div>
+			</div>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="ie">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-7">
+						<h3>IE 你懂的</h3>
+						这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。这是一段测试文本。
+					</div>
+					<div class="col-md-5">
+						<img src="images/ie-logo.jpg" />
+					</div>
+				</div>
+			</div>
+		</div>
+	  </div>
+	</div>
+	<!-- 版权 -->
+	<div class="container">
+		&copy;测试用版权
+	</div>
+	<!-- 模态窗 -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title">Modal title</h4>
+		  </div>
+		  <div class="modal-body">
+			<p>One fine body&hellip;</p>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		  </div>
+		</div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
     <script src="js/jquery-1.12.4.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
@@ -169,6 +270,12 @@
 			// $(".carousel").carousel({
 			// 	interval: 500
 			// });
+			$("#mozhi-ul > li > a").click(function (e) {
+				e.preventDefault();
+				var href = $(this).attr("href");
+				$("a[href='" + href + "']").tab("show");
+				$(document).scrollTop($("#mozhi-tab").offset().top);
+			});
 		})
 	</script>
   </body>

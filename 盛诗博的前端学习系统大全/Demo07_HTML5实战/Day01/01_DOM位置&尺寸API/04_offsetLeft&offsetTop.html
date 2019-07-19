@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 200px;
+				height: 200px;
+			}
+			#inner1{
+				position: absolute;
+				left: 100px;
+				top: 20px;
+				background-color: pink;
+			}
+			#inner2{
+				position: absolute;
+				left: 30px;
+				top: 100px;
+				background-color: gold;
+			}
+			#inner3{
+				position: absolute;
+				left: 600px;
+				top: 200px;
+				background-color: skyblue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="inner1">
+			inner1
+			<div id="inner2">
+				inner2
+				<div id="inner3">
+					inner3
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		/**
+		 * ev || event
+		 * 鼠标滚轮
+		 * 事件绑定
+		 * offsetParent（有点类似与 CSS 包含块）
+		 * 1. 父级是否有定位（4种）
+		 * 2. 本身是否有定位（4种）
+		 * 3. 浏览器不一样（5 大 pc 浏览器 + 老祖宗（ie 6 7 8））
+		 * 一共 4 * 4 * 8 = 128 种
+		 * 	### offsetParent（如果 body 和 html 直接的 margin 被清掉）
+				本身定位为 fixed
+					==> offsetParent: null（不是火狐）
+					==> offsetParent: body（火狐）
+				本身定位不为 fixed
+					父级没有定位
+						==> offsetParent: body
+					父级有定位
+						==> offsetParent: 定位父级
+			### haslayout
+				ie7以下，如果当前元素的某个父级触发了 haslayout，
+				那么 offsetParent 就会被指向到这个触发了 layout 特性的父节点上
+		 */
+		console.log(inner3.offsetLeft, inner3.offsetTop);
+	</script>
+</html>
