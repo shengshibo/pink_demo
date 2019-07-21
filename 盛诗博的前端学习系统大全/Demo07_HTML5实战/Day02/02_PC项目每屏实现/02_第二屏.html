@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 考虑的分辨率范围：1200 - 2000 -->
+		<!-- 选择器建议写在一行上，而不是之前那种写法，写在一行便于阅读 -->
+		<style type="text/css">
+			/* CSS reset start */
+			html,body{height: 100%;overflow: hidden;}
+			html,body,h1,h2,h3,h4,h5,h6,p,ul,li{margin: 0px;padding: 0px;font: 14px "微软雅黑";}
+			a{text-decoration: none;display: block;}
+			li{list-style: none;}
+			img{display: block;}
+			/* CSS reset end */
+			
+			/* CSS common start */
+			.clearfix{*zoom: 1;}
+			.clearfix:after{content: "";display: block;clear: both;}
+			.commonTitle{ color:#009ee0; font-size:80px; line-height:0.8;font-weight:bold; letter-spacing:-5px;}
+			.commonText{ color:white; line-height:1.5; font-size:15px;}
+			/* CSS common end */
+			
+			/* CSS head start */
+			#head{background-color: white !important;width: 100%;}
+			#head > .headMain{width: 1100px;height: 80px;margin: 0 auto;position: relative;}
+			#head > .headMain > .logo{float: left;margin-top: 30px;}
+			#head > .headMain > .nav{float: right;margin-top: 50px;}
+			#head > .headMain > .nav > .list > li{float: left;margin-left: 40px;position: relative;}
+			#head > .headMain > .nav > .list > li > a > .up{color: black;position: absolute;width: 0;overflow: hidden;transition: 0.5s width;}
+			#head > .headMain > .nav > .list > li > a:hover > .up{width: 100%;}
+			#head > .headMain > .arrow{width: 21px;height: 11px;background-image: url(img/menuIndicator.png);position: absolute;left: 50%;bottom: -11px;transition: 0.5s left;z-index: 1;}
+			/* CSS head end */
+			
+			/* CSS content start */
+			#content{background-color: gray;position: relative;overflow: hidden;width: 100%;}
+			#content > .list{position: absolute;left: 0;top: 0;width: 100%;transition: 0.5s top;}
+			#content > .list > li{position: relative;background-position: 50% 50%;}
+			#content > .list > li > section{width: 1100px;height: 520px;position: absolute;top: 0;right: 0;bottom: 0;left: 0;margin: auto;}
+			#content > .list > .home{background-image: url(img/bg1.jpg);background-repeat: no-repeat;}
+			/* 第二屏 */
+			#content > .list > .course{background-image: url(img/bg2.jpg);background-repeat: no-repeat;}
+			#content > .list > .course > section > .course1{margin: 50px;}
+			#content > .list > .course > section > .course2{width: 400px;margin-left: 50px;}
+			#content > .list > .course > section > .course3{width: 480px;position: absolute;right: 50px;top: 70px;}
+			#content > .list > .course > section > .course3 > .item{width: 120px;height: 132px;float: left;position: relative;perspective: 500px;transform-style: preserve-3d;}
+			#content > .list > .course > section > .course3 > .item > .face,
+			#content > .list > .course > section > .course3 > .item > .backFace{position: absolute;left: 0;top: 0;width: 100%;height: 100%;box-sizing: border-box;padding: 15px;transition: 0.5s transform;}
+			#content > .list > .course > section > .course3 > .item > .face{color: white;background-color: #009ee0;transform: rotateY(180deg);backface-visibility: hidden;}
+			#content > .list > .course > section > .course3 > .item:hover > .face{transform: rotateY(360deg);}
+			#content > .list > .course > section > .course3 > .item > .backFace{background-repeat: no-repeat;background-position: 50% 50%;}
+			#content > .list > .course > section > .course3 > .item:nth-of-type(1) > .backFace{background-image: url(img/apcoa.png);}
+			#content > .list > .course > section > .course3 > .item:nth-of-type(2) > .backFace{background-image: url(img/binoli.png);}
+			#content > .list > .course > section > .course3 > .item:nth-of-type(3) > .backFace{background-image: url(img/bks.png);}
+			#content > .list > .course > section > .course3 > .item:nth-of-type(4) > .backFace{background-image: url(img/gu.png);}
+			#content > .list > .course > section > .course3 > .item:nth-of-type(5) > .backFace{background-image: url(img/hlx.png);}
+			#content > .list > .course > section > .course3 > .item:nth-of-type(6) > .backFace{background-image: url(img/lbs.png);}
+			#content > .list > .course > section > .course3 > .item:nth-of-type(7) > .backFace{background-image: url(img/leonberg.png);}
+			#content > .list > .course > section > .course3 > .item:nth-of-type(8) > .backFace{background-image: url(img/pcwelt.png);}
+			#content > .list > .course > section > .course3 > .item:nth-of-type(9) > .backFace{background-image: url(img/tata.png);}
+			#content > .list > .course > section > .course3 > .item:nth-of-type(10) > .backFace{background-image: url(img/bks.png);}
+			#content > .list > .course > section > .course3 > .item:nth-of-type(11) > .backFace{background-image: url(img/bks.png);}
+			#content > .list > .course > section > .course3 > .item:nth-of-type(12) > .backFace{background-image: url(img/bks.png);}
+			#content > .list > .course > section > .course3 > .item:hover > .backFace{transform: rotateY(180deg);}
+			#content > .list > .course > section > .course3 > .line{width: 9px;height: 410px;position: absolute;top: -7px;background-image: url(img/plus_row.png);background-repeat: no-repeat;}
+			#content > .list > .course > section > .course3 > .line:nth-child(1){left: -5px;}
+			#content > .list > .course > section > .course3 > .line:nth-child(2){left: 115px;}
+			#content > .list > .course > section > .course3 > .line:nth-child(3){left: 235px;}
+			#content > .list > .course > section > .course3 > .line:nth-child(4){left: 355px;}
+			#content > .list > .course > section > .course3 > .line:nth-child(5){left: 475px;}
+			/* 第三屏 */
+			#content > .list > .works{background-image: url(img/bg4.jpg);background-repeat: no-repeat;}
+			#content > .list > .works > section > .works1{margin: 50px 0 100px 50px;}
+			#content > .list > .works > section > .works2{margin-left: 50px;}
+			#content > .list > .works > section > .works2 > .item{float: left;width: 220px;height: 133px;margin: 0 1px;position: relative;overflow: hidden;}
+			#content > .list > .works > section > .works2 > .item:last-child{width: 332px;}
+			#content > .list > .works > section > .works2 > .item > img{transition: 0.5s transform;}
+			#content > .list > .works > section > .works2 > .item:hover > img{transform: rotate(30deg) scale(1.5);}
+			#content > .list > .works > section > .works2 > .item > .mask{position: absolute;top: 0;right: 0;bottom: 0;left: 0;box-sizing: border-box;padding: 15px;background-color: rgb(25, 25, 25);opacity: 0;color: white;transition: 0.5s opacity;}
+			#content > .list > .works > section > .works2 > .item:hover > .mask{opacity: 0.8;}
+			#content > .list > .works > section > .works2 > .item > .mask > .icon{width: 32px;height: 34px;margin: 10px auto 0;background-image: url(img/zoomico.png);background-repeat: no-repeat;transition: 0.5s background-position;}
+			#content > .list > .works > section > .works2 > .item > .mask > .icon:hover{background-position: 0 -36px;}
+			#content > .list > .works > section > .works3{width: 167px;height: 191px;background-image: url(img/robot.png);background-repeat: no-repeat;position: absolute;left: 900px;top: 170px;animation: work3Move 5s linear infinite;}
+			#content > .list > .about{background-image: url(img/bg3.jpg);background-repeat: no-repeat;}
+			#content > .list > .team{background-image: url(img/bg5.jpg);background-repeat: no-repeat;}
+			/* CSS content end */
+			
+			/* CSS animation start */
+			@keyframes work3Move{
+				0%{
+					transform: translateX(0px) rotateY(0deg);
+				}
+				49%{
+					transform: translateX(-490px) rotateY(0deg);
+				}
+				50%{
+					transform: translateX(-500px) rotateY(180deg);
+				}
+				100%{
+					transform: translateX(0px) rotateY(180deg);
+				}
+			}
+			/* CSS animation end */
+		</style>
+	</head>
+	<body>
+		<section id="wrap">
+			<!-- 流体布局 -->
+			<header id="head">
+				<!-- 固定布局 -->
+				<div class="headMain">
+					<h1 class="logo">
+						<a href="javascript:;">
+							<img src="img/logo.png" />
+						</a>
+					</h1>
+					<nav class="nav">
+						<ul class="list clearfix">
+							<li>
+								<a href="javascript:;">
+									<div class="up">
+										<img src="img/home_gruen.png" />
+									</div>
+									<div class="down">
+										<img src="img/home.png" />
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="javascript:;">
+									<div class="up">Course</div>
+									<div class="down">Course</div>
+								</a>
+							</li>
+							<li>
+								<a href="javascript:;">
+									<div class="up">Works</div>
+									<div class="down">Works</div>
+								</a>
+							</li>
+							<li>
+								<a href="javascript:;">
+									<div class="up">About</div>
+									<div class="down">About</div>
+								</a>
+							</li>
+							<li>
+								<a href="javascript:;">
+									<div class="up">Team</div>
+									<div class="down">Team</div>
+								</a>
+							</li>
+						</ul>
+					</nav>
+					<div class="arrow"></div>
+				</div>
+			</header>
+			<section id="content">
+				<ul class="list">
+					<!-- li 流体布局 -->
+					<li class="home">
+						<!-- div 固定布局 -->
+						<section>home</section>
+					</li>
+					<li class="course">
+						<section>
+							<header class="course1 commonTitle">
+								<span>EINIGE</span><br />
+								<span>UNSERER</span><br />
+								<span>KUNDEN</span><br />
+							</header>
+							<div class="course2 commonText">
+								<p>Das Kundenvertrauen in unsere Kompetenz ist die notwendige Basis einer erfolgreichen Zusammenarbeit, gleichzeitig aber auch das größte Lob, das man uns entgegenbringen kann.</p>
+								<p>Diese und viele weitere große und kleine Kunden vertrauen uns seit Jahren, was uns stolz macht, und dafür sagen wir an dieser Stelle einfach mal.</p>
+							</div>
+							<div class="course3">
+								<span class="line"></span>
+								<span class="line"></span>
+								<span class="line"></span>
+								<span class="line"></span>
+								<span class="line"></span>
+								<div class="item">
+									<div class="backFace"></div>
+									<div class="face">测试用文本</div>
+								</div>
+								<div class="item">
+									<div class="backFace"></div>
+									<div class="face">测试用文本</div>
+								</div>
+								<div class="item">
+									<div class="backFace"></div>
+									<div class="face">测试用文本</div>
+								</div>
+								<div class="item">
+									<div class="backFace"></div>
+									<div class="face">测试用文本</div>
+								</div>
+								<div class="item">
+									<div class="backFace"></div>
+									<div class="face">测试用文本</div>
+								</div>
+								<div class="item">
+									<div class="backFace"></div>
+									<div class="face">测试用文本</div>
+								</div>
+								<div class="item">
+									<div class="backFace"></div>
+									<div class="face">测试用文本</div>
+								</div>
+								<div class="item">
+									<div class="backFace"></div>
+									<div class="face">测试用文本</div>
+								</div>
+								<div class="item">
+									<div class="backFace"></div>
+									<div class="face">测试用文本</div>
+								</div>
+								<div class="item">
+									<div class="backFace"></div>
+									<div class="face">测试用文本</div>
+								</div>
+								<div class="item">
+									<div class="backFace"></div>
+									<div class="face">测试用文本</div>
+								</div>
+								<div class="item">
+									<div class="backFace"></div>
+									<div class="face">测试用文本</div>
+								</div>
+							</div>
+						</section>
+					</li>
+					<li class="works">
+						<section>
+							<header class="works1 commonTitle">
+								<span>EINBLICK</span><br />
+								<span>ERKENNTNIS</span><br />
+								<span>ERGEBNIS</span><br />
+							</header>
+							<div class="works2">
+								<div class="item">
+									<img src="img/worksimg1.jpg" />
+									<div class="mask">
+										<span>这是一段文本内容这是一段文本内容这是一段文本内容</span>
+										<div class="icon"></div>
+									</div>
+								</div>
+								<div class="item">
+									<img src="img/worksimg2.jpg" />
+									<div class="mask">
+										<span>这是一段文本内容</span>
+										<div class="icon"></div>
+									</div>
+								</div>
+								<div class="item">
+									<img src="img/worksimg3.jpg" />
+									<div class="mask">
+										<span>这是一段文本内容这是一段文本内容</span>
+										<div class="icon"></div>
+									</div>
+								</div>
+								<div class="item">
+									<img src="img/worksimg4.jpg" />
+									<div class="mask">
+										<span>这是一段文本内容这是一段文本内容这是一段文本内容这是一段文本内容这是一段文本内容</span>
+										<div class="icon"></div>
+									</div>
+								</div>
+							</div>
+							<div class="works3"></div>
+						</section>
+					</li>
+					<li class="about">
+						<section>about</section>
+					</li>
+					<li class="team">
+						<section>team</section>
+					</li>
+				</ul>
+			</section>
+		</section>
+	</body>
+	<script>
+		window.onload = function () {
+			// 获取 DOM 元素
+			var arrowElement = document.querySelector("#head > .headMain > .arrow");
+			var liNodes = document.querySelectorAll("#head > .headMain > .nav > .list > li");
+			var upNodes = document.querySelectorAll("#head > .headMain > .nav > .list > li > a > .up");
+			var firstLiNode = liNodes[0];
+			var firstUpNode = upNodes[0];
+			var head = document.querySelector("#head");
+			var content = document.querySelector("#content");
+			var contentLiNodes = document.querySelectorAll("#content > .list > li");
+			var contentList = document.querySelector("#content > .list");
+			// 同步当前屏的索引
+			var now = 0;
+			var timer = 0;
+			
+			window.onresize = function () {
+				/**
+				 * 调整分辨率
+				 * 1. 没有点击的时候视口只能出现一屏
+				 * 2. 点击后视口只能出现一屏，在 1 的基础上对每一屏的偏移量进行重新调整
+				 * 3. 小箭头的位置也需要调整
+				 */
+				contentBind();
+				contentList.style.top = (-now * (document.documentElement.clientHeight - head.offsetHeight)) + "px";
+				arrowElement.style.left = (liNodes[now].offsetLeft + liNodes[now].offsetWidth / 2 - arrowElement.offsetWidth / 2) + "px";
+			}
+			// 头部交互
+			headBind();
+			function headBind () {
+				firstUpNode.style.width = "100%";
+				arrowElement.style.left = (firstLiNode.offsetLeft + firstLiNode.offsetWidth / 2 - arrowElement.offsetWidth / 2) + "px";
+				for (var i = 0; i < liNodes.length; i++) {
+					// 转绑很重要
+					liNodes[i].index = i;
+					liNodes[i].onclick = function () {
+						move(this.index);
+					}
+				}
+			}
+			// 动画核心函数
+			function move (index) {
+				for (var i = 0; i < upNodes.length; i++) {
+					// 这里注意重置为空和 0 的区别
+					// upNodes[i].style.width = "0";
+					upNodes[i].style.width = "";
+				}
+				upNodes[index].style.width = "100%";
+				arrowElement.style.left = (liNodes[index].offsetLeft + liNodes[index].offsetWidth / 2 - arrowElement.offsetWidth / 2) + "px";
+				contentList.style.top = (-index * (document.documentElement.clientHeight - head.offsetHeight)) + "px";
+				now = index;
+			}
+			
+			// 内容区交互
+			contentBind();
+			function contentBind () {
+				content.style.height = (document.documentElement.clientHeight - head.offsetHeight) + "px";
+				for (var i = 0; i < contentLiNodes.length; i++) {
+					contentLiNodes[i].style.height = (document.documentElement.clientHeight - head.offsetHeight) + "px";
+				}
+			}
+			
+			if (content.addEventListener) {
+				content.addEventListener("DOMMouseScroll", function (ev) {
+					ev = ev || window.event;
+					// 让 fn 的逻辑在 DOMMouseScroll 事件被频繁触发的时候只执行一次
+					clearTimeout(timer);
+					timer = setTimeout(function () {
+						fn(ev);
+					}, 200);
+				});
+			}
+			content.onmousewheel = function (ev) {
+				ev = ev || window.event;
+				clearTimeout(timer);
+				timer = setTimeout(function () {
+					fn(ev);
+				}, 200);
+			};
+			function fn (ev) {
+				ev = ev || window.event;
+				var dir = "";
+				if (ev.wheelDelta) {
+					dir = ev.wheelDelta > 0 ? "up" : "down";
+				} else if (ev.detail) {
+					dir = ev.detail > 0 ? "down" : "up";
+				}
+				switch (dir) {
+					case "up":
+						if (now > 0) {
+							now--;
+							move(now);
+						}
+						break;
+					case "down":
+						if (now < liNodes.length - 1) {
+							now++;
+							move(now);
+						}
+						break;
+				}
+			}
+		}
+	</script>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,
+			body{
+				overflow: hidden;
+			}
+			body{
+				background-color: pink;
+			}
+			#s_canvas{
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				margin: auto;
+				background-color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="s_canvas" width="400" height="400"></canvas>
+	</body>
+	<script type="text/javascript">
+		window.onload = function () {
+			var oc = document.querySelector("#s_canvas");
+			if (oc.getContext) {
+				var ctx = oc.getContext("2d");
+				var arr = [];
+				var maxR = 50;
+				// 将数组中的圆绘制到画布上
+				setInterval(function () {
+					ctx.clearRect(0, 0, oc.width, oc.height);
+					for (var i = 0; i < arr.length; i++) {
+						// 动画
+						if (arr[i].alp <= 0) {
+							arr.splice(i, 1);
+						}
+						arr[i].r++;
+						arr[i].alp = 1 - arr[i].r / maxR;
+						// 绘制
+						ctx.save();
+						ctx.fillStyle = "rgba(" + arr[i].red + ", " + arr[i].green + ", " + arr[i].blue + ", " + arr[i].alp + ")";
+						ctx.beginPath();
+						ctx.arc(arr[i].x, arr[i].y, arr[i].r, 0, 2 * Math.PI);
+						ctx.fill();
+						ctx.restore();
+					}
+					console.log(arr);
+				}, 1000 / 60);
+				// 往 arr 中注入随机圆的信息
+				setInterval(function () {
+					var x = Math.random() * oc.width;
+					var y = Math.random() * oc.height;
+					var r = 10;
+					var red = Math.round(Math.random() * 255);
+					var green = Math.round(Math.random() * 255);
+					var blue = Math.round(Math.random() * 255);
+					var alp = 1;
+					
+					arr.push({
+						x: x,
+						y: y,
+						r: r,
+						red: red,
+						green: green,
+						blue: blue,
+						alp: alp
+					});
+				}, 500);
+			}
+		}
+	</script>
+</html>

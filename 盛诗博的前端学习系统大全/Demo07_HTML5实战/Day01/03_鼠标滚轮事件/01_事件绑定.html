@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,
+			body{
+				height: 100%;
+				overflow: hidden;
+			}
+			#wrap{
+				width: 200px;
+				height: 200px;
+				background-color: pink;
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		window.onload = function () {
+			var wrapNode = document.querySelector("#wrap");
+			// 非火狐浏览器
+			wrapNode.onmousewheel = function () {
+				console.log("mozhi");
+			}
+			// 火狐浏览器
+			// 注意 DOM0 中没有这个事件
+			wrapNode.addEventListener("DOMMouseScroll", function () {
+				console.log("mozhi-火狐版");
+			});
+		}
+	</script>
+</html>
