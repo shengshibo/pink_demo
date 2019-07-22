@@ -377,6 +377,7 @@
 			var contentList = document.querySelector("#content > .list");
 			var home2LiNodes = document.querySelectorAll("#content > .list > .home > section > .home2 > li");
 			var home1Li = document.querySelectorAll("#content > .list > .home > section > .home1 > li");
+			var home1 = document.querySelector("#content > .list > .home > section > .home1");
 			// 同步当前屏的索引
 			var now = 0;
 			var timer = 0;
@@ -468,12 +469,18 @@
 				}
 			}
 			// 第一屏3D效果
-			home3D();
+			
 			var oldIndex = 0;
+			var timer3D = 0;
+			var autoIndex = 0;
+			// 注意变量提升!!!!!!!!!
+			// 这里踩了一个大坑
+			home3D();
 			function home3D () {
 				for (var i = 0; i < home2LiNodes.length; i++) {
 					home2LiNodes[i].index = i;
 					home2LiNodes[i].onclick = function () {
+						clearInterval(timer3D);
 						for (var i = 0; i < home2LiNodes.length; i++) {
 							home2LiNodes[i].classList.remove("active");
 						}
@@ -500,7 +507,49 @@
 							home1Li[oldIndex].classList.add("leftHide");
 						}
 						oldIndex = this.index;
+						// 手动轮播 --> 自动轮播的同步问题
+						// 手动点完是需要自动轮播的,自动轮播从哪个面开始播？ --> 手动点的那个面
+						// 手动轮播的逻辑必须要告诉自动轮播 刚刚点了哪一个面
+						autoIndex = this.index;
+						// 重新开启自动轮播
+						// move();
 					}
+				}
+				// 从左至右的自动轮播
+				move();
+				function move () {
+					clearInterval(timer3D);
+					timer3D = setInterval(function () {
+						autoIndex++;
+						// 无缝
+						if (autoIndex >= home2LiNodes.length) {
+							autoIndex = 0;
+						}
+						// 按钮切换
+						for (var i = 0; i < home2LiNodes.length; i++) {
+							home2LiNodes[i].classList.remove("active");
+						}
+						home2LiNodes[autoIndex].classList.add("active");
+						// 面板动画
+						home1Li[autoIndex].classList.remove("leftShow");
+						home1Li[autoIndex].classList.remove("leftHide");
+						home1Li[autoIndex].classList.remove("rightHide");
+						home1Li[autoIndex].classList.add("rightShow");
+						home1Li[oldIndex].classList.remove("leftShow");
+						home1Li[oldIndex].classList.remove("lefthide");
+						home1Li[oldIndex].classList.remove("rightShow");
+						home1Li[oldIndex].classList.add("leftHide");
+						// 自动轮播和手动轮播的同步问题!!
+						// 自动轮播一直运行...autoIndex 一直在++,自动轮播到一半时有可能触发手动轮播
+						// 这个时候自动轮播的逻辑必须要告诉手动轮播,播到哪一个面上了
+						oldIndex = autoIndex;
+					}, 3000);
+				}
+				home1.onmouseenter = function () {
+					clearInterval(timer3D);
+				}
+				home1.onmouseleave = function () {
+					move();
 				}
 			}
 		}
