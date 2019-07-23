@@ -479,6 +479,7 @@
 			function home3D () {
 				for (var i = 0; i < home2LiNodes.length; i++) {
 					home2LiNodes[i].index = i;
+					// 注册回调函数(同步) 执行回调函数(异步)
 					home2LiNodes[i].onclick = function () {
 						clearInterval(timer3D);
 						for (var i = 0; i < home2LiNodes.length; i++) {
