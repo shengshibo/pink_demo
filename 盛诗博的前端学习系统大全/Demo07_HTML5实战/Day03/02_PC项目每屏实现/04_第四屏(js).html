@@ -97,7 +97,22 @@
 			#content > .list > .works > section > .works2 > .item > .mask > .icon{width: 32px;height: 34px;margin: 10px auto 0;background-image: url(img/zoomico.png);background-repeat: no-repeat;transition: 0.5s background-position;}
 			#content > .list > .works > section > .works2 > .item > .mask > .icon:hover{background-position: 0 -36px;}
 			#content > .list > .works > section > .works3{width: 167px;height: 191px;background-image: url(img/robot.png);background-repeat: no-repeat;position: absolute;left: 900px;top: 170px;animation: work3Move 5s linear infinite;}
+			/* 第四屏 */
 			#content > .list > .about{background-image: url(img/bg3.jpg);background-repeat: no-repeat;}
+			#content > .list > .about > section > .about1{margin: 50px 0 100px 50px;}
+			#content > .list > .about > section > .about2{margin-left: 50px;width: 400px;}
+			#content > .list > .about > section > .about3 > .item{width: 260px;height: 200px;border: 5px solid rgba(255,255,255,0.5);border-radius: 8px;position: absolute;z-index: 2;overflow: hidden;}
+			#content > .list > .about > section > .about3 > .item:nth-child(1){left: 750px;top: 50px;}
+			#content > .list > .about > section > .about3 > .item:nth-child(2){left: 600px;top: 290px;}
+			#content > .list > .about > section > .about3 > .item > span,
+			#content > .list > .about > section > .about3 > .item > ul{position: absolute;top: 0;right: 0;bottom: 0;left: 0;}
+			#content > .list > .about > section > .about3 > .item > span{background-repeat: no-repeat;transform: scale(1.5);transition: 0.5s transform;}
+			#content > .list > .about > section > .about3 > .item:hover > span{transform: scale(1);}
+			#content > .list > .about > section > .about3 > .item:nth-child(1) > span{background-image: url(img/about2.jpg);}
+			#content > .list > .about > section > .about3 > .item:nth-child(2) > span{background-image: url(img/about4.jpg);}
+			#content > .list > .about > section > .about3 > .item > ul > li{float: left;position: relative;overflow: hidden;}
+			#content > .list > .about > section > .about3 > .item > ul > li > img{position: absolute;transition: 0.5s left, 0.5s top;}
+			#content > .list > .about > section > .about4{width: 357px;height: 998px;background-image: url(img/greenLine.png);position: absolute;top: 0;right: 0;}
 			#content > .list > .team{background-image: url(img/bg5.jpg);background-repeat: no-repeat;}
 			/* CSS content end */
 			
@@ -354,7 +369,27 @@
 						</section>
 					</li>
 					<li class="about">
-						<section>about</section>
+						<section>
+							<header class="about1 commonTitle">
+								<span>DIE</span><br />
+								<span>SPEZIELLE</span><br />
+								<span>VIELFALT</span><br />
+							</header>
+							<div class="about2">
+								<p class="commonText">Der bunte Medienmix ist die Faszination die uns antreibt und das, was man an uns schätzt. Von A bis Z und von vorne bis hinten nehmen wir Ihr Projekt unter unsere Fittiche und lassen es zu etwas Großartigem heranwachsen.</p>
+							</div>
+							<div class="about3">
+								<div class="item">
+									<span></span>
+									<ul data-src="img/about1.jpg"></ul>
+								</div>
+								<div class="item">
+									<span></span>
+									<ul data-src="img/about3.jpg"></ul>
+								</div>
+							</div>
+							<div class="about4"></div>
+						</section>
 					</li>
 					<li class="team">
 						<section>team</section>
@@ -378,6 +413,7 @@
 			var home2LiNodes = document.querySelectorAll("#content > .list > .home > section > .home2 > li");
 			var home1Li = document.querySelectorAll("#content > .list > .home > section > .home1 > li");
 			var home1 = document.querySelector("#content > .list > .home > section > .home1");
+			var aboutUls = document.querySelectorAll("#content > .list > .about > section > .about3 > .item > ul");
 			// 同步当前屏的索引
 			var now = 0;
 			var timer = 0;
@@ -469,7 +505,6 @@
 				}
 			}
 			// 第一屏3D效果
-			
 			var oldIndex = 0;
 			var timer3D = 0;
 			var autoIndex = 0;
@@ -552,6 +587,42 @@
 				}
 				home1.onmouseleave = function () {
 					move();
+				}
+			}
+			// 第四屏 图片炸裂效果
+			picBoom();
+			function picBoom () {
+				for (var i = 0; i < aboutUls.length; i++) {
+					change(aboutUls[i]);
+				}
+				function change (UL) {
+					var src = UL.dataset.src;
+					var w = UL.offsetWidth / 2;
+					var h = UL.offsetHeight / 2;
+					for (var i = 0; i < 4; i++) {
+						var liNode = document.createElement("li");
+						var imgNode = document.createElement("img");
+						liNode.style.width = w + "px";
+						liNode.style.height = h + "px";
+						imgNode.src = src;
+						imgNode.style.left = -(i % 2) * w + "px";
+						imgNode.style.top = -Math.floor(i / 2) * h + "px";
+						liNode.appendChild(imgNode);
+						UL.appendChild(liNode);
+					}
+					var imgNodes = UL.querySelectorAll("li > img");
+					UL.onmouseenter = function () {
+						imgNodes[0].style.top = h + "px";
+						imgNodes[1].style.left = -2 * w + "px";
+						imgNodes[2].style.left = w + "px";
+						imgNodes[3].style.top = -2 * h + "px";
+					}
+					UL.onmouseleave = function () {
+						imgNodes[0].style.top = 0 + "px";
+						imgNodes[1].style.left = -w + "px";
+						imgNodes[2].style.left = 0 + "px";
+						imgNodes[3].style.top = -h + "px";
+					}
 				}
 			}
 		}
