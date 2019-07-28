@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+				break 关键字可以用来退出 switch 或循环语句
+				不能在 if 语句中使用 break 和 continue
+				break 关键字，会立即终止离他最近的那个循环语句
+				
+			*/
+			/*
+				可以为一个循环语句创建一个 label，来标识当前的循环
+				label：循环语句
+				使用 break 语句时，可以在 break 后跟着一个 label，
+				这样 break 将会结束指定的循环，而不是最近的
+			*/
+			outer:
+			for (var i = 0; i < 5; i++) {
+				console.log("@外层循环" + i);
+				for (var j = 0; j < 5; j++) {
+					break outer;
+					console.log("内层循环:" + j);
+				}
+			}
+			/*
+				continue 关键字可以用来跳过当次循环
+				同样 continue 也是默认只会对离他最近的循环起作用
+			*/
+		</script>
+	</body>
+</html>
