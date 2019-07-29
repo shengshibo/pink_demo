@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var obj = {
+				name: "哪吒",
+				age: 7,
+				gender: "男",
+				address: "陈唐关"
+			};
+			// 枚举对象中的属性
+			// 使用 for ... in 语句
+			/*
+				语法：
+					for (var 变量 in 对象) {
+						
+					}
+					
+				for...in 语句，对象中有几个属性，循环体就会执行几次
+				每次执行时，会将对象中的一个属性的名字赋值给变量
+			*/
+			for (var n in console) {
+				console.log(n);
+			}
+		</script>
+	</body>
+</html>
