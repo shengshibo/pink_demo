@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 创建一个 name 变量
+			var name = "全局";
+			// 创建一个 fun() 函数
+			function fun () {
+				console.log(this.name);
+			}
+			// 创建两个对象
+			var obj = {
+				name: "哪吒",
+				sayName: fun
+			};
+			var obj2 = {
+				name: "纣王",
+				sayName: fun
+			};
+			obj.sayName();
+			// 这个方法展现了为什么要有 this
+		</script>
+	</body>
+</html>
