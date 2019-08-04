@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			html,
+			body,
+			#wrap{
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			#box{
+				width: 100px;
+				height: 100px;
+				background-color: orangered;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="box"></div>
+		</div>
+		<script type="text/javascript">
+			window.onload = function () {
+				document.getElementById("wrap").onmousemove = function (event) {
+					event = event || window.event;
+					// 获取滚动条滚动的距离
+					/*
+						chrome 认为浏览器的滚动条是 body 的，可以通过 body.scrollTop 来获取
+						火狐等浏览器认为浏览器的滚动条是 html 的
+					*/
+					var st = document.body.scrollTop || document.documentElement.scrollTop;
+					var sl = document.body.scrollLeft || document.documentElement.scrollLeft;
+					/*
+						获取到鼠标的坐标
+						clientX 和 clientY
+						用于获取鼠标在当前可见窗口的坐标
+						div 的偏移量是相对于整个页面的
+						
+						pageX 和 pageY 可以获取鼠标相对于当前页面的坐标
+						但是这两个属性在 IE8 及以下浏览器中不支持，所以如果需要兼容 IE8，则不要使用
+					*/
+					document.getElementById("box").style.left = event.clientX + sl + "px";
+					document.getElementById("box").style.top = event.clientY + st + "px";
+				};
+			}
+		</script>
+	</body>
+</html>

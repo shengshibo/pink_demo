@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+				浏览器在加载一个页面时，是按照自上向下的顺序加载的，
+					读取到一行就运行一行，如果将 script 标签写在页面的上边，
+					在代码执行时，页面还没有加载
+					
+				将 JS 代码编写到页面的下面就是为了可以在页面加载完成后再执行 JS 代码
+				
+				使用 onload 事件会在页面、图片、layer 等加载完成之后执行
+				这里我们用了它加载完成页面的特性
+				
+				为 window 绑定一个 onload 事件
+					该事件对应的响应函数将会在页面加载完成之后执行，
+					这样可以确保我们的代码执行时所有的 DOM 对象已经加载完毕了
+					
+				JS 代码最优的用户体验是写在 body 下面，虽然差距不是很大
+				JS 代码写上面的好处就是好管理
+				
+				window.onload = function () {
+					
+				}
+				
+				写了这个方法就可以把 script 标签放到 body 之前了
+				
+				整个学习 JS 的就两个过程 找对象、搞对象
+			*/
+			
+			// 获取元素节点
+			// 通过 document对象调用
+			// 通过 id 属性获取一个元素节点对象
+			// getElementById();
+			// 通过标签名获取一组元素节点对象
+			// getElementsByTagName();
+			// 通过 name 属性获取一组元素节点对象
+			// getElementsByName();
+			
+		</script>
+	</body>
+</html>

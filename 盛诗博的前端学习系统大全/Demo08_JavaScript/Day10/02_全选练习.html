@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<form method="post" action="">
+			您爱好的运动是？<input type="checkbox" id="checkedAllBox" />全选/全不选<br />
+			<input type="checkbox" name="items" value="足球" />足球
+			<input type="checkbox" name="items" value="篮球" />篮球
+			<input type="checkbox" name="items" value="羽毛球" />羽毛球
+			<input type="checkbox" name="items" value="排球" />排球<br />
+			<input type="button" id="checkedAllButton" value="全选" />
+			<input type="button" id="checkedNoButton" value="全不选" />
+			<input type="button" id="checkedRevButton" value="反选" />
+			<input type="button" id="sendButton" value="提交" />
+		</form>
+		<script type="text/javascript">
+			window.onload = function () {
+				var items = document.getElementsByName("items");
+				var checkedAllButton = document.getElementById("checkedAllButton");
+				checkedAllButton.onclick = function () {
+					for (var i = 0; i < items.length; i++) {
+						items[i].checked = "checked";
+					}
+				};
+				var checkedNoButton = document.getElementById("checkedNoButton");
+				checkedNoButton.onclick = function () {
+					for (var i = 0; i < items.length; i++) {
+						items[i].checked = "";
+					}
+				};
+				var checkedRevButton = document.getElementById("checkedRevButton");
+				checkedRevButton.onclick = function () {
+					for (var i = 0; i < items.length; i++) {
+						if (items[i].checked) {
+							items[i].checked = "";
+						} else {
+							items[i].checked = "checked";
+						}
+					}
+				};
+			}
+			/*
+				在事件的响应函数中，响应函数是给谁绑定的，this 就是谁
+			*/
+		</script>
+	</body>
+</html>

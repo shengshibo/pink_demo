@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+				获取元素节点的子节点
+			
+				childNodes 属性会获取包括文本节点在内的所有节点
+				根据 DOM 规范标签中的空白也会被当成文本节点
+				注意：在 IE8 及以下的浏览器中，不会将空白文本当成子节点
+				
+				children 属性可以获取当前元素的所有子元素，比较推荐使用这个属性来获取元素，比较方便
+				
+				firstChild 可以获取当前元素的第一个子节点（包括空白文本节点）
+				
+				firstElementChild 获取当前元素的第一个子节点
+					firstElementChild 不支持 IE8 及以下版本的浏览器，
+					如果需要兼容她们尽量不要使用
+				
+				lastChild 和 lastElementChild 解释同上，但都是查询最后一个节点或子元素
+				
+				innerHTML 获取元素内的所有 HTML 内容
+				innerText 获取元素内部的文本内容，
+					它和 innerHTML 类似，不同的是它会自动将标签去除
+				
+				获取父节点或兄弟节点
+				通过具体的节点调用
+				
+				(以下属性都可能获取到空白的文本节点)
+				表示当前节点的父节点
+					parentNode
+				表示当前节点的前一个兄弟节点
+					previousSibling
+				表示当前节点的后一个兄弟节点
+					nextSibling
+			*/
+			
+			// 查看 document 文档节点中究竟有什么
+			console.log(document);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			html,
+			body{
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+			}
+			#wrap{
+				width: 100px;
+				height: 100px;
+				background-color: springgreen;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap"></div>
+		<script type="text/javascript">
+			/*
+				使用 div 可以根据不同的方向键向不同的方向移动
+					按左键，div 向左移动
+					按右键，div 向右移动
+			*/
+			window.onload = function () {
+				var speed = 10;
+				var wrap = document.getElementById("wrap");
+				var timer = 0;
+				var newSpeed = 0;
+				// 为 document 绑定一个按键按下的事件
+				document.onkeydown = function (event) {
+					event = event || window.event;
+					newSpeed = speed;
+					if (event.ctrlKey) {
+						newSpeed = 100;
+					}
+					timer = event.keyCode;
+				}
+				document.onkeyup = function () {
+					timer = 0;
+				}
+				// 通过定时器来解决卡顿的问题
+				setInterval(function () {
+					if (timer === 37) {
+						wrap.style.left = (wrap.offsetLeft - newSpeed) + "px";
+					}
+					if (timer === 38) {
+						wrap.style.top = (wrap.offsetTop - newSpeed) + "px";
+					}
+					if (timer === 39) {
+						wrap.style.left = (wrap.offsetLeft + newSpeed) + "px";
+					}
+					if (timer === 40) {
+						wrap.style.top = (wrap.offsetTop + newSpeed) + "px";
+					}
+				}, 30);
+			}
+		</script>
+	</body>
+</html>

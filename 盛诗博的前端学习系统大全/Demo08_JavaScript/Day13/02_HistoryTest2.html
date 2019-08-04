@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>HistoryTest2</h1>
+		<a href="02_History.html">to home</a>
+		<input type="button" value="回退" id="btn" />
+		<script type="text/javascript">
+			console.log(window.history.length);
+			document.getElementById("btn").onclick = function () {
+				// 可以跳转到下一个页面,和前进按钮一样
+				history.forward();
+			};
+		</script>
+	</body>
+</html>
