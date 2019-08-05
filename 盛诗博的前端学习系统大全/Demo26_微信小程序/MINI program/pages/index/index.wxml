@@ -1,0 +1,14 @@
+<!--pages/index/index.wxml-->
+<view class="indexContainer">
+  <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+  <text class="userName">Hello {{userInfo.nickName}}!</text>
+  <view catchtap="handleClick" class="goStudy">
+    <text>进入我的小程序</text>
+  </view>
+  <button bindgetuserinfo="handleGetUserInfo" style="display: {{isShow? 'block': 'none'}}" open-type="getUserInfo">获取用户登录信息</button>
+  <!-- 
+    除了 bindtap 还有 catchtap
+    bindtap 不阻止冒泡时间
+    catchtap 阻止冒泡时间
+   -->
+</view>

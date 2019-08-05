@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/list/list",
+    "pages/movies/movies",
+    "pages/detail/detail",
+    "pages/movieDetail/movieDetail"
+  ],
+  "sitemapLocation": "sitemap.json",
+  "window": {
+    "navigationBarBackgroundColor": "#489B81",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "盛诗博的小程序"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/list/list",
+        "text": "新闻",
+        "iconPath": "/images/tab/yuedu.png",
+        "selectedIconPath": "/images/tab/yuedu_hl.png"
+      },
+      {
+        "pagePath": "pages/movies/movies",
+        "text": "电影频道",
+        "iconPath": "/images/tab/dianying.png",
+        "selectedIconPath": "/images/tab/dianying_hl.png"
+      }
+    ]
+  }
+}
