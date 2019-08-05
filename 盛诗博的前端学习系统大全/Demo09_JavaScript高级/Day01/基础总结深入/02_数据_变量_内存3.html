@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+		<!--
+			关于引用变量赋值问题
+				- 两个引用变量指向同一个对象，通过一个变量修改对象内部数据，另一个变量看到的是修改之后的数据
+				- 两个引用变量指向同一个对象，让其中一个引用变量指向另一个对象，另一个引用变量依然指向前一个对象
+		-->
+		<script type="text/javascript">
+			var obj1 = {name: "mozhi", age: 10};
+			var obj2 = obj1;
+			obj1.name = "哪吒";
+			console.log(obj2.name);
+		</script>
+	</body>
+</html>
