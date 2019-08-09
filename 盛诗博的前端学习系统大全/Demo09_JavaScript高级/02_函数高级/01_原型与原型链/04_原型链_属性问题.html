@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+		<!--
+			原型链是用来查找对象属性值的
+			1. 读取对象的属性时：如果对象中没有，会自动到原型链中查找
+			2. 设置对象的属性时：不会查找原型链，如果当前对象中没有此属性，直接添加此属性并设置其值
+			3. 方法一般定义在原型中，属性一般通过构造函数定义在对象本身上
+		-->
+		<script type="text/javascript">
+			function Fn() {
+				
+			}
+			Fn.prototype.a = "xxx"
+			
+			var fn1 = new Fn()
+			console.log(fn1.a)
+			
+			var fn2 = new Fn()
+			fn2.a = "yyy"
+			console.log(fn1.a, fn2.a, fn2) // "xxx"
+			
+			function Person(name, age) {
+				this.name = name
+				this.age = age
+			}
+			Person.prototype.setName = function (name) {
+				this.name = name
+			}
+			
+			var p1 = new Person("哪吒", 30)
+			p1.setName("豹豹")
+			console.log(p1)
+			
+			var p2 = new Person("李靖", 30)
+			p2.setName("还是李靖")
+			console.log(p2)
+			
+			console.log(p1.__proto__ === p2.__proto__)
+		</script>
+	</body>
+</html>
