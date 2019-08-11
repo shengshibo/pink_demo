@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			闭包的应用2：定义 JS 模块
+				- 具有特定功能的 JS 文件
+				- 将所有的数据和功能够封装在一个函数内部（私有的）
+				- 只向外暴露一个包含n个方法的对象或函数
+				- 模块的使用者，只需要通过模块暴露的对象调用方法来实现对应的功能
+		-->
+		<script src="myModule2.js"></script>
+		<script type="text/javascript">
+			module.doSomething()
+			module.doOtherthing()
+		</script>
+	</body>
+</html>

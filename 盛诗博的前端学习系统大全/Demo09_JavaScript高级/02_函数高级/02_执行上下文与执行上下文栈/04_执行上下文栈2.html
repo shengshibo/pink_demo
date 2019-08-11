@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+		<!--
+			1. 依次输出什么？
+				- undefined
+				- 1
+				- 2
+				- 3
+				- 3
+				- 2
+				- 1
+				- 1
+			2. 整个过程中产生了几个执行上下文？
+				- 5个
+				
+			- 提升的话，是先执行变量提升，后执行函数提升
+		-->
+		<script type="text/javascript">
+			console.log("global begin:" + i)
+			var i = 1
+			foo(1)
+			function foo(i) {
+				if (i == 4) {
+					return // 值得注意的是,这个 return 是终止当前函数,而不是终止整个循环的函数
+				}
+				console.log("foo() begin:" + i)
+				foo(i + 1) // 递归调用,在函数内部调用自己
+				console.log("foo() end:" + i)
+			}
+			console.log("global end:" + i)
+		</script>
+	</body>
+</html>

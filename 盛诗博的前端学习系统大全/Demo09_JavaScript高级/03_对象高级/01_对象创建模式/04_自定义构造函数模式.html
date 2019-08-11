@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			方式四：自定义构造函数模式
+				- 套路：自定义构造函数，通过 new 创建对象
+				- 适用场景：需要创建多个类型确定的对象
+				- 问题：每个对象都有相同的数据，浪费内存
+		-->
+		<script type="text/javascript">
+			// 定义类型
+			function Person(name, age) {
+				this.name = name
+				this.age = age
+				this.setName = function (name) {
+					this.name = name
+				}
+			}
+			// 创建实例
+			var p = new Person()
+		</script>
+	</body>
+</html>
