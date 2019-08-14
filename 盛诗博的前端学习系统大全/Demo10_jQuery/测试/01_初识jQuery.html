@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>01_初识jQuery</title>
+  
+  <script type="text/javascript">
+  	// 使用原生 DOM
+	window.onload = function () {
+		document.getElementById("btn1").onclick = function () {
+			alert(document.getElementById("username").value)
+		}
+	}
+  </script>
+  <!-- 使用 jQuery 实现 -->
+  <!-- 服务器本地引入 -->
+  <!-- 还有一种使远程引入 通过稳定的 CDN 来引入，可以减轻服务器的压力，并且比较稳定，效率高，比如 BootCDN -->
+  <!-- 项目上线时，一般会使用比较靠谱的 CDN 资源库，可以减轻服务器负担 -->
+  <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
+  <script type="text/javascript">
+    // 绑定文档加载完成的监听
+    $(function () {
+      var $btn2 = $('#btn2')
+      $btn2.click(function () { // 给 btn2 绑定点击监听
+        var username = $('#username').val()
+        alert(username)
+      })
+    })
+    /*
+      1. 使用 jQuery 核心函数：$/jQuery
+      2. 使用 jQuery 核心对象：执行 $() 返回的对象
+    */
+  </script>
+</head>
+<body>
+<!--
+需求: 点击"确定"按钮, 提示输入的值
+-->
+
+用户名: <input type="text" id="username">
+<button id="btn1">确定(原生版)</button>
+<button id="btn2">确定(jQuery版)</button>
+
+</body>
+
+</html>

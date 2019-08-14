@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			1. H5 规范提供了 JS 分线程的实现，取名为：Web Workers
+			2. 相关 API
+				- Worker：构造函数，加载分线程执行的 JS 文件
+				- Worker.prototype.onmessage：用于接收另一个线程的回调函数
+				- Worker.prototype.postMessage：向另一个线程发送消息
+			3. 不足
+				- worker 内代码不能操作 DOM（更新 UI）
+				- 不能跨域加载 JS
+				- 不是每个浏览器都支持这个新特性
+		-->
+		<input type="text" placeholder="数值" id="inpu" />
+		<button type="button" id="btn">计算</button>
+		<script type="text/javascript">
+			// function Fibonacci(num) {
+			// 	var qian = 1
+			// 	var hou = 1
+			// 	var flag
+			// 	if (num > 2) {
+			// 		for (var i = 0; i < num - 2; i++) {
+			// 			flag = hou
+			// 			hou = qian + hou
+			// 			qian = flag
+			// 		}
+			// 		return hou
+			// 	} else {
+			// 		return 1
+			// 	}
+			// }
+			
+			// 以下为老师的神仙方法
+			// 这种方式使用了递归程序运行挺慢的,但是思想很好
+			// function Fibonacci(num) {
+			// 	return n <= 2 ? 1 : Fibonacci(n - 1) + Fibonacci(n - 2) // 递归调用
+			// }
+			document.getElementById("btn").onclick = function () {
+				// 创建一个 worker 对象
+				var worker = new Worker("worker.js")
+				// 绑定接收消息的监听
+				worker.onmessage = function (event) {
+					console.log("主线程接收分线程返回的数据：" + event.data)
+				}
+				// 向分线程发送消息
+				worker.postMessage(document.getElementById("inpu").value)
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+		<!--
+			1. 如何证明 JS 执行时单线程的？
+				- setTimeout() 的回调函数是在主线程执行的
+				- 定时器回调函数只有在运行栈中的代码全部执行完后才有可能执行
+			2. 为什么 JS 要用单线程模式，而不用多线程模式？
+				- JavaScript 的单线程，与它的用途有关
+				- 作为浏览器脚本语言，javascript 的主要用途是与用户互动，以及操作 DOM
+				- 这决定了她只能是单线程，否则会带来很复杂的同步问题
+			3. 代码的分类
+				- 初始化代码
+				- 回调代码
+			4. JS 引擎执行代码的基本流程
+				- 先执行初始化代码：包含一些特别的代码（回调函数（异步代码））
+					- 设置定时器
+					- 绑定监听
+					- 发送 ajax 请求
+				- 后面在某个时刻才会执行回调代码
+		-->
+		<script type="text/javascript">
+			setTimeout(function () {
+				console.log("timeout 2222")
+				alert("2222")
+			}, 2000)
+			setTimeout(function () {
+				console.log("timeout 1111")
+				alert("1111")
+			}, 1000)
+			function fn() {
+				console.log("fn()")
+			}
+			fn()
+			
+			console.log("alert 之前")
+			alert("alert----------") // 暂停当前主线程的执行,同时暂停计时,点击确定后,恢复程序执行和计时
+			console.log("alert 之后")
+		</script>
+	</body>
+</html>
