@@ -45,7 +45,13 @@
    4. id为cc的li标签的前面的所有li标签
    5. id为cc的li标签的所有兄弟li标签
    */
-
+  var $ul = $('ul')
+  // $ul.children('span:eq(1)').css('background-color', 'pink')
+  // $ul.find('span:eq(1)').css('background-color', 'pink')
+  // $ul.parent().css('background-color', 'pink')
+  var $li = $('li#cc')
+  $li.prevAll('li').css('background-color', 'pink')
+  $li.siblings('li').css('background-color', 'pink')
 </script>
 </body>
 </html>

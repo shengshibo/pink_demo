@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,7 +20,35 @@
   <input type="button" id="checkedRevBtn" value="反　选"/>
   <input type="button" id="sendBtn" value="提　交"/>
 </form>
-
+<script src="../jquery-1.10.1.js"></script>
+<script type="text/javascript">
+  var $checkAllBox = $('#checkedAllBox')
+  var $items = $(':checkbox[name=items]')
+  $('#checkedAllBtn').click(function () {
+    $items.prop('checked', true)
+    $checkAllBox.prop('checked', true)
+  })
+  $('#checkedNoBtn').click(function () {
+    $items.prop('checked', false)
+    $checkAllBox.prop('checked', false)
+  })
+  $('#checkedRevBtn').click(function () {
+    $items.each(function () {
+      this.checked = !this.checked
+    })
+    // $items.not(':checked')
+    $checkAllBox.prop('checked', $items.filter(':not(:checked)').length === 0)
+  })
+  $('#sendBtn').click(function () {
+    console.log($items.filter(':checked').length + "个")
+  })
+  $checkAllBox.click(function () {
+    $items.prop('checked', this.checked)
+  })
+  $items.click(function () {
+    $checkAllBox.prop('checked', $items.filter(':not(:checked)').length === 0)
+  })
+</script>
 </body>
 
 </html>

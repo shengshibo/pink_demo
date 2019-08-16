@@ -82,6 +82,16 @@
    5. 将在id为ul2的ul下的li(title为hello)全部替换为p
    6. 移除id为ul2的ul下的所有li
    */
+  var $ul1 = $('#ul1')
+  $ul1.append('<span>使用append()添加的span</span><br />')
+  $('<span>使用appendTo()添加的span</span><br />').appendTo($ul1)
+  $ul1.prepend('<span>使用prepend()添加的span</span><br />')
+  $('<span>使用prependTo()添加的span</span><br />').prependTo($ul1)
+  $ul1.children('li[title=hello]').before('<span>before()</span>')
+  $ul1.children('li[title=hello]').after('<span>after()</span>')
+  $('#ul2>li[title=hello]').replaceWith('<p>replaceAll()</p>')
+  // $('#ul2').empty() // 直接清空
+  $('#ul2>li').remove() // 移除指定
 </script>
 </body>
 </html>

@@ -38,7 +38,17 @@
    5. ul下li标签中title属性不为hello的
    6. ul下li标签中有span子标签的
    */
-
+  var $lis = $('ul>li')
+  // $lis.first().css('background-color', 'pink') // 这个返回的是一个jQuery对象,可以使用jQuery中的属性方法
+  // $lis[0].style.backgroundColor = "pink" // 这个返回的是DOM对象,不能使用jQuery中的属性方法
+  // $lis.last().css('background-color', 'pink')
+  // $lis.eq(1).css('background-color', 'pink')
+  // $lis.filter('[title=hello]').css('background-color', 'pink')
+  // $lis.not('[title=hello]').css('background-color', 'pink')
+  // $lis.filter('[title!=hello]').css('background-color', 'pink')
+  // $lis.filter('[title][title!=hello]').css('background-color', 'pink') // 这个是:必须有title并且title不等于hello,这是用了并集选择器
+  // 也可以过滤两次
+  $lis.has('span')css('background-color', 'pink')
 </script>
 </body>
 </html>
