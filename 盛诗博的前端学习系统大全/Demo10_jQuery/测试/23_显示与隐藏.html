@@ -43,7 +43,19 @@
   3. 点击btn3, 慢慢隐藏
   4. 点击btn4, 切换显示/隐藏
    */
-
+  var $div1 = $('.div1')
+  $('#btn1').click(function () {
+    $div1.show()
+  })
+  $('#btn2').click(function () {
+    $div1.show(1000)
+  })
+  $('#btn3').click(function () {
+    $div1.hide(1000)
+  })
+  $('#btn4').click(function () {
+    $div1.toggle()
+  })
 </script>
 </body>
 </html>

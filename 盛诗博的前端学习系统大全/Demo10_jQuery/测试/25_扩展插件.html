@@ -49,7 +49,16 @@
      * unCheckAll() : 全不选
      * reverseCheck() : 全反选
    */
-
+  var $items = $(':checkbox[name=items]')
+  $('#checkedAllBtn').click(function () {
+    $items.checkAll()
+  })
+  $('#checkedNoBtn').click(function () {
+    $items.uncheckAll()
+  })
+  $('#reverseCheckedBtn').click(function () {
+    $items.reverseCheck()
+  })
 </script>
 </body>
 </html>

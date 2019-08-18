@@ -19,6 +19,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1OziV0kOA4fBdDgUSORwtf6Sh5r" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -43,6 +44,16 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="02_module.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="02_module.js" working-dir="$PROJECT_DIR$/盛诗博的前端学习系统大全/Demo11_NodeJS">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.02_module.js" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -54,6 +65,8 @@
       <option name="presentableId" value="Default" />
       <updated>1564986845800</updated>
       <workItem from="1564986849869" duration="3607000" />
+      <workItem from="1566140075456" duration="72000" />
+      <workItem from="1566140217579" duration="688000" />
     </task>
     <servers />
   </component>
@@ -65,7 +78,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

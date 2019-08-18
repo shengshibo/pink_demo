@@ -66,10 +66,22 @@
 	* mouseover: 在移入子元素时也会触发, 对应mouseout
 	* mouseenter: 只在移入当前元素时才触发, 对应mouseleave
 								hover()使用的就是mouseenter()和mouseleave()
+区别 on('eventName', fun) 与 eventName(fun)
+on('eventName', fun)：通用，但编码麻烦
+eventName(fun)：编码简单，但有的事件没有对应的方法
 -->
 <script src="js/jquery-1.10.1.js" type="text/javascript"></script>
 <script type="text/javascript">
-
+$('.div1').mouseover(function () {
+  console.log('mouseover')
+}).mouseout(function () {
+  console.log('mouseout')
+})
+$('.div3').mouseenter(function () {
+  console.log('mouseenter')
+}).mouseleave(function () {
+  console.log('mouseleave')
+})
 </script>
 </body>
 </html>

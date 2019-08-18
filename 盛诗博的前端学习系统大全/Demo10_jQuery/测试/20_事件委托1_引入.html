@@ -27,9 +27,14 @@
   /*
    需求：
    1. 点击 li 背景就会变为红色
-   2. 点击 btn1 就添加一个 li
+   2. 点击 btn 就添加一个 li
   */
-
+  $('li').click(function () {
+    this.style.backgroundColor = 'red'
+  })
+  $('#btn').click(function () {
+    $('<li>mozhi</li>').appendTo('ul')
+  })
 </script>
 </body>
 </html>

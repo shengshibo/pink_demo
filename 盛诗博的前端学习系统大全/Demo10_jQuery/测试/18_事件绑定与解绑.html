@@ -78,6 +78,53 @@
    6. 点击.inner区域, 外部点击监听不响应
    7. 点击链接, 如果当前时间是偶数不跳转
    */
+  // $('.out').click(function () {
+  //   console.log('click out')
+  // })
+  $('.out').on('click', function () {
+    console.log('on click out')
+  })
+  // $('.inner')
+  //   .mouseenter(function () { // 进入
+  //     console.log('进入')
+  //   })
+  //   .mouseleave(function () { // 离开
+  //     console.log('离开')
+  //   })
+  // $('.inner')
+  //   .on('mouseenter', function () {
+  //     console.log('进入2')
+  //   })
+  //   .on('mouseleave', function () {
+  //     console.log('离开2')
+  //   })
+  $('.inner').hover(function () {
+    console.log('进入3')
+  }, function () {
+    console.log('离开3')
+  })
+  // 3. 点击btn1解除.inner上的所有事件监听
+  $('#btn1').click(function () {
+    $('.inner').off()
+  })
+  // 4. 点击btn2解除.inner上的mouseleave事件
+  $('#btn2').click(function () {
+    $('.inner').off('mouseleave')
+  })
+  $('#btn3').click(function (event) {
+    console.log(event.offsetX, event.offsetY) // 原点为事件元素的左上角
+    console.log(event.clientX, event.clientY) // 原点为窗口的左上角
+    console.log(event.pageX, event.pageY) // 原点为页面的左上角
+  })
+  $('.inner').click(function (event) {
+    console.log('click inner')
+    event.stopPropagation()
+  })
+  $('#test4').click(function (event) {
+    if (Date.now() % 2 === 0) {
+      event.preventDefault()
+    }
+  })
 </script>
 </body>
 </html>

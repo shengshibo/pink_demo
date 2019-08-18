@@ -2,5 +2,6 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/盛诗博的前端学习系统大全/Demo26_微信小程序/MINI program" vcs="Git" />
   </component>
 </project>

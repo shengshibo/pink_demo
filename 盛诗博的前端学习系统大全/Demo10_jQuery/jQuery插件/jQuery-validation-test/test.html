@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+    <style type="text/css">
+      .error{color: red;}
+    </style>
+	</head>
+	<body>
+    <form action="xxx" id="mozhi_form">
+      <p>用户名(必须，最小6位)：<input name="username" type="text" required minlength="6" /></p>
+      <p>密码(必须，6-8位)：<input id="password" name="password1" type="password" required minlength="6" maxlength="8" /></p>
+      <p>确认密码(与密码相同)：<input name="password2" type="password" required equalTo="#password" /></p>
+      <p><input type="submit" value="注册" /></p>
+    </form>
+    <script src="../jQuery-validation/lib/jquery.js"></script>
+    <script src="../jQuery-validation/dist/jquery.validate.js"></script>
+    <script type="text/javascript">
+      /*
+        声明式验证：程序员只需要声明各种验证规则，可以自定义验证错误信息
+      */
+      $('#mozhi_form').validate({
+        messages: {
+          username: {
+            required: '用户名是必须的',
+            minlength: '用户名至少为6位'
+          },
+          password1: {
+            required: '密码是必须的',
+            minlength: '密码至少为6位',
+            maxlength: '密码最多8位'
+          },
+          password2: '必须与密码相同'
+        }
+      })
+    </script>
+	</body>
+</html>

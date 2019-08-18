@@ -45,7 +45,18 @@
    2. 点击btn3, 慢慢淡入
    3. 点击btn3, 淡出/淡入切换，动画结束时提示“动画结束了”
    */
-
+  var $div1 = $('.div1')
+  $('#btn1').click(function () {
+    $div1.fadeOut(1000, function () {
+      console.log('完成了')
+    })
+  })
+  $('#btn2').click(function () {
+    $div1.fadeIn()
+  })
+  $('#btn3').click(function () {
+    $div1.fadeToggle()
+  })
 </script>
 </body>
 </html>

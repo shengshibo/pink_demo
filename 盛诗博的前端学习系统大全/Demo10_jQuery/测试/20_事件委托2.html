@@ -36,7 +36,15 @@
 -->
 <script src="js/jquery-1.10.1.js"></script>
 <script>
-
+  $('#btn1').click(function () {
+    $('<li>mozhi</li>').appendTo('ul')
+  })
+  $('#btn2').click(function () {
+    $('ul').undelegate('click')
+  })
+  $('ul').delegate('li', 'click', function () {
+    this.style.backgroundColor = 'red'
+  })
 </script>
 </body>
 </html>

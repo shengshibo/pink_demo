@@ -113,5 +113,14 @@
   </ul>
 </div>
 
+<script src="../jquery-1.10.1.js"></script>
+<script type="text/javascript">
+  // 注意下面的stop方法,可以阻止未完成的动画效果
+  $('#navigation>ul>li:has(ul)').hover(function () {
+    $(this).children('ul').stop()slideDown()
+  }, function () {
+    $(this).children('ul').stop().slideUp()
+  })
+</script>
 </body>
 </html>
