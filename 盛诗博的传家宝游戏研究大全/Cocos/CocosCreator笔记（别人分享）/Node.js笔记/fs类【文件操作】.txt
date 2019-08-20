@@ -1,0 +1,39 @@
+var fs = require('fs')   //加载操作文件模块fs
+
+*****读取同目录下文件内容*****
+fs.readFile('./aaa.txt','utf8',function(err,a){
+	if(err) console.log('读文件操作失败');
+	else console.log(a);
+}) ;
+
+*****写入同目录下文件内容*****
+fs.writeFile('./aaa.txt','gg\r\nhh',function(err){
+	if(err) console.log('写文件操作失败');
+	else console.log('写文件操作成功');
+});
+
+*****追加写入同目录下文件内容*****
+fs.appendFile('./aaa.txt','abc',function(err){
+	if(err) console.log('追加写文件操作失败');
+	else console.log('追加写文件操作成功');
+});
+
+******创建目录*****
+fs.mkdir('./text',function(err){
+	if(err) console.log('创建目录操作失败');
+	else console.log('创建目录操作成功');
+});
+
+******读取目录*****
+fs.readdir('./text',function(err){
+	if(err) console.log('读取目录操作失败');
+	else console.log('读取目录操作成功');
+});
+
+******检查文件或目录是否存在*****
+fs.exists('./text',function(exists){
+	if(exists) console.log('a');
+	else console.log('b');
+});
+
+

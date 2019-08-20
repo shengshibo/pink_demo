@@ -1,0 +1,10 @@
+Creator 为组件脚本提供了生命周期的回调函数.
+Creator 就会在特定的时期自动执行相关脚本,用户不需要手工调用它们.
+
+
+onLoad:组件首次激活时触发
+start:第一次执行 update 之前触发
+update:每一帧渲染前触发
+onEnable:组件的 enabled 属性从 false 变为 true 时,或所在节点的 active 属性从 false 变为 true 时触发
+onDisable:组件的 enabled 属性从 true 变为 false 时,或所在节点的 active 属性从 true 变为 false 时触发
+onDestroy:当组件或所在节点调用了 destroy() 时触发

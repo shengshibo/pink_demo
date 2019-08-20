@@ -1,0 +1,23 @@
+一、新建如下脚本
+
+cc.Class({
+    extends: cc.Component,
+
+    properties:{
+        ClickAudio:{
+            default:null,
+            url:cc.AudioClip
+        },
+    },
+
+    onLoad: function () {
+        this.node.on(cc.Node.EventType.TOUCH_START,function(event){
+            cc.audioEngine.playEffect(this.ClickAudio,false);
+        },this);
+    },
+});
+
+
+二、挂载脚本到对象组件上
+
+三、在组件上修改“ClickAudio:”的值（音频资源）

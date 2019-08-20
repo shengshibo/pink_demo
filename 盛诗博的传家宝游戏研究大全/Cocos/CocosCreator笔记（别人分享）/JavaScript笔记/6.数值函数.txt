@@ -1,0 +1,33 @@
+Math.abs(-1)：绝对值
+Math.ceil(3.2)：向上取整
+Math.floor(3.2)：向下取整
+Math.max(2,5,-1)：最大值
+Math.min(2,5,-1)：最小值
+Math.pow(3,2)：指数运算
+Math.sqrt(9)：平方根
+Math.log(10)：自然对数
+Math.exp(3)：e的指数
+Math.round()：四舍五入
+Math.random()：生成一个0-1的浮点数
+
+Math.sin()：返回参数的正弦
+Math.cos()：返回参数的余弦
+Math.tan()：返回参数的正切
+Math.asin()：返回参数的反正弦（弧度值）
+Math.acos()：返回参数的反余弦（弧度值）
+Math.atan()：返回参数的反正切（弧度值）
+
+~~number//取整
+-~number//取整(小数部分加1)
+
+Math.floor(Math.random()*100 +1)//生成一个1-100的整数
+
+isNaN(a)//判断是否为数字
+
+(10.00001).toFixed(3)//保留小数点3位
+
+(10).toString()//转为字符串形式
+(10).toString(2)//转为2进制字符串形式
+
+Number.prototype.add = function (x) {return this + x};//自定义方法,被Number的实例继承
+(8).add(2)//调用自定义的方法

@@ -1,0 +1,8 @@
+在onLoad或update函数里添加：
+this.node.getComponents(cc.Sprite)[0].spriteFrame.getTexture().setAliasTexParameters()
+
+把JS文件挂到需要不抗锯齿的带图片的控件下面
+
+
+setAliasTexParameters()//不抗锯齿
+setAntiAliasTexParameters()//抗锯齿

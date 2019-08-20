@@ -1,0 +1,55 @@
+var sprite = node.addComponent(cc.Sprite);//向节点添加一个图片组件
+var test = node.addComponent("Test");//向节点添加一个脚本
+var a = this.node.getComponent(cc.Sprite);
+a.enabled = false;//关闭组件
+a.destroy ( );//销毁组件
+
+
+Canvas(画布组件)
+var a = this.node.getComponent(cc.Canvas);//获取画布组件
+
+
+Label(文字标签组件)
+var a = this.node.getComponent(cc.Label);//获取文字标签组件
+a.string = '你好';//设置文字内容
+a.fontSize = 30;//设置字体大小
+
+
+Sprite(渲染精灵组件)
+var a = this.node.getComponent(cc.Sprite);//获取渲染精灵组件
+a.spriteFrame = b.spriteFrame;//设置图片纹理
+a.spriteFrame.setTexture = textureURL;//设置图片纹理
+a.srcBlendFactor = cc.BlendFunc.BlendFactor.SRC_COLOR;//指定原图的混合模式
+a.dstBlendFactor = cc.BlendFunc.BlendFactor.ONE;//指定目标的混合模式
+
+
+Button(按钮组件)
+var a = this.node.getComponent(cc.Button);//获取按钮组件
+a.interactable = false'//禁止按钮被响应(脚本注册的不受此影响)
+a.enableAutoGrayEffect = true;//禁止按钮后,按钮变灰(false则不变灰)
+
+
+EditBox(输入框组件)
+var a = this.node.getComponent(cc.EditBox);//获取输入框组件
+a.string = '你好';//设置输入文字内容
+a.fontSize = 30;//设置输入文字字体大小
+
+
+Layout(布局组件)
+var a = this.node.getComponent(cc.Layout);//获取布局组件
+a.type = 1;//水平布局(0:无布局  1:水平布局  2:垂直布局  3:网格布局)
+a.resizeMode  = 2;//对容器大小进行自动缩放(0:不缩放  1:对子节点大小进行缩放  2:对容器大小进行自动缩放)
+
+
+ScrollView(滚动视图组件)
+var a = this.node.getComponent(cc.ScrollView);//获取滚动视图组件
+a.content = contentNode;//绑定滚动层
+a.scrollToBottom(0.5);//在0.5秒内滚动到视图底部
+a.scrollToTop(0.5);//在0.5秒内滚动到视图顶部
+a.scrollToLeft(0.5);//在0.5秒内滚动到视图左边
+a.scrollToRight(0.5);//在0.5秒内滚动到视图右边
+a.getScrollOffset();//获取滚动视图相对于左上角原点的当前滚动偏移
+var maxScrollOffset = a.getMaxScrollOffset();//获取滚动视图最大可以滚动的偏移量
+a.scrollToOffset(cc.p(maxScrollOffset.x/2,maxScrollOffset.y/2),1);//在1秒内,滚动到视图中心
+a.scrollTo(cc.p(0,1),0.8);////在0.8秒内,滚动到视图左上角
+a.stopAutoScroll();//立即停止滚动

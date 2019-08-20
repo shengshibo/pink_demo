@@ -1,0 +1,80 @@
+事件处理是在节点（cc.Node）中完成的.
+对于组件,可以通过访问节点 this.node 来注册和监听事件.
+监听事件可以通过 this.node.on() 或 this.node.once() 函数来注册
+
+
+this.node.on('touchend',function(event){
+/*****执行代码*****/
+},this);
+
+this.node.once('touchstart',function(event){
+/*****执行代码*****/
+},this);
+
+
+系统内置事件:
+按钮监听【点击'click'】
+
+触摸监听【开始'touchstart',移动'touchmove',结束'touchend',取消'touchcancel'】
+var x = event.getLocationX();//获取触摸点的坐标X
+var y = event.getLocationY();//获取触摸点的坐标Y
+var a = event.getID();//获取触点的ID
+
+鼠标监听【按下'mousedown',移入'mouseenter',移动'mousemove',移出'mouseleave,'松开'mouseup'】
+var a = event.getScrollY();//获取滚轮滚动的 Y 轴距离，只有滚动时才有效
+var a = event.getLocation();//获取鼠标位置对象，对象包含 x 和 y 属性
+
+输入框监听【获得焦点'editing-did-began',文字变化'text-changed',失去焦点'editing-did-ended',按下回车'editing-return'】
+
+属性变化监听【位置'position-changed',宽高 'size-changed',旋转'rotation-changed',缩放'scale-changed'】
+
+用户自定义事件:
+this.node.on('事件名',function,this);//注册监听
+this.node.emit('事件名');//发送监听广播
+this.node.off('事件名',function,this);//关闭监听
+
+//注册带参数监听
+this.node.on('player_join_team',function(event){
+    cc.log(JSON.stringify(event.detail.id));
+},this);
+//发送带参数的监听
+this.node.emit('player_join_team',{id:1001});
+
+
+this.node.pauseSystemEvents(true);//暂停本节点和所有子节点的节点系统事件
+this.node.resumeSystemEvents(true);//恢复本节点和所有子节点的节点系统事件
+this.node.targetOff(this);//移除当前节点所在的脚本注册的所有注册事件
+
+
+监听器:(可以设置是否吞没事件)
+//测试
+
+var listener = {
+
+    event: cc.EventListener.TOUCH_ONE_BY_ONE,
+
+    onTouchBegan: function (touches) {
+
+        cc.log("111");
+
+        return true;
+//是否吞没事件(true:不吞没  false:吞没)
+    }
+
+    onTouchMoved: function (touches) {
+
+        cc.log("222");
+
+    }
+
+    onTouchEnded: function () {
+
+        cc.log("333");
+
+    },
+
+};
+
+
+cc.eventManager.addListener(listener, node);//添加事件
+cc.eventManager.removeListener((listener);//移除事件

@@ -1,0 +1,58 @@
+cc.log('你好'); //输出日志:字符串
+cc.log(变量);//输出日志:变量
+cc.log('第' + number + '表白');//输出日志:字符串,变量混合
+
+let self = this;//绑定当前作用域的this
+函数.bind(this);//绑定函数所在的作用域的this
+
+
+cc.game.pause();//暂停游戏(包含一切逻辑)
+cc.game.resume();//恢复游戏(包含一切逻辑)
+cc.game.restart();//重新开始游戏
+cc.game.end();//退出游戏
+
+cc.game.setFrameRate(30);//限制最大帧数
+cc.game.addPersistRootNode(myNode);//常驻节点,必须位于层级的根节点
+cc.game.removePersistRootNode(myNode);//取消常驻节点
+cc.game.on(cc.game.EVENT_HIDE,function(){/*执行操作部分*/});//游戏暂停监听
+cc.game.on(cc.game.EVENT_SHOW,function(){/*执行操作部分*/});////游戏继续监听
+
+
+cc.director.getScene();//获取当前逻辑场景
+cc.director.setDisplayStats(true);
+//显示帧数信息
+cc.director.loadScene('场景名称', function () {});//场景跳转
+cc.director.preloadScene('场景名称', function () {});//预加载场景
+cc.director.getWinSizeInPixels().width;//获得设备分辨率的宽度
+cc.director.getWinSizeInPixels().height;//获得设备分辨率的高度
+
+
+cc.sys.isNative//是否是本地
+cc.sys.isBrowser//是否是网页
+cc.sys.isMobile//是否是移动系统
+cc.sys.platform//正在运行的平台
+cc.sys.language//当前运行系统的语言
+cc.sys.os//当前正在运行的系统
+cc.sys.OS_IOS//判定值:是否是IOS系统
+cc.sys.OS_ANDROID//判定值:是否是android系统
+cc.sys.OS_WINDOWS//判定值:是否是windows系统
+cc.sys.openURL('Http://www.baidu.com');//打开网页
+
+
+cc.view.enableAntiAlias(true);//是否开启抗锯齿(未验证)
+this.node.getComponents(cc.Sprite)[0].spriteFrame.getTexture().setAliasTexParameters();//图片不抗锯齿
+
+window.a = "hello world";//定义全局变量
+window.G = {//定义全局变量集合
+    a: null,
+    b: null,
+};
+
+//复制文本到剪切板(只支持网页)
+var save = function (e) {
+    e.clipboardData.setData('text/plain', 待复制本文);
+    e.preventDefault();
+}.bind(this);
+document.addEventListener('copy', save);
+document.execCommand('copy');
+document.removeEventListener('copy', save);

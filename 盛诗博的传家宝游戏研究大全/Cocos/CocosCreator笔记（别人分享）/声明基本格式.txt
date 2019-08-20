@@ -1,0 +1,30 @@
+
+音频：
+        名称:{
+            default:null,
+            url:cc.AudioClip
+        },
+
+图片：
+        名称:{
+            default:null,
+            type:cc.SpriteFrame
+        },
+
+文本：
+        名称: {
+
+            default: null,
+
+            type: cc.Label
+
+        },
+
+节点：
+        名称: {
+
+            default: null,
+
+            type: cc.Node
+
+        },

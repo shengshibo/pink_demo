@@ -1,0 +1,16 @@
+var anim = this.getComponent(cc.Animation);//获取动画组件
+anim.play();//播放动画
+anim.stop();//停止播放
+anim.pause();//暂停播放
+anim.resume();//恢复播放
+anim.setCurrentTime(0);//让动画回到第一帧
+
+anim.play('test1');//指定播放test动画,会停止该组件上的其它动画
+anim.playAdditive('test2');//指定播放test动画,不会停止该组件上的其它动画
+
+anim.play('test', 1);//指定从1s开始播放test动画
+
+
+var particle = this.getComponent(cc.ParticleSystem);//获取粒子组件
+particle.resetSystem();//发射粒子
+particle.stopSystem();//停止发射粒子

@@ -1,0 +1,8 @@
+onLoad
+场景载入时触发
+
+start
+第一次执行update前触发
+
+update
+每一帧触发

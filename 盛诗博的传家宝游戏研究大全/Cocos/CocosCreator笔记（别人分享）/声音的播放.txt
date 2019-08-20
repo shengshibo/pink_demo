@@ -1,0 +1,33 @@
+播放背景音乐
+cc.audioEngine.playMusic("assets/Sound/00/bg.mp3",true)
+
+停止背景音乐
+cc.audioEngine.stopMusic()
+
+播放音效
+var effect = cc.audioEngine.playEffect(声音对象,false);
+
+停止音效
+cc.audioEngine.stopEffect(音效变量名)
+
+停止所有音效
+cc.audioEngine.AllEffects()
+
+单独设置背景音乐的音量
+cc.audioEngine.setMusicVolume(参数);  //该参数范围是0到1
+
+单独设置音效的音量
+cc.audioEngine.setEffectsVolume(参数);  //该参数范围是0到1
+
+
+范例：
+properties:{
+    jumpAudio:{
+        default:null,
+        url:cc.AudioClip
+    },
+},
+
+然后在使用的节点上添加jumpAudio的声音资源
+
+cc.audioEngine.playEffect(this.jumpAudio,false);

@@ -1,0 +1,162 @@
+cc.log('描述');//输出日志,若是变量则不加引号,若是多个输出则互相用"+"连接
+
+this.node;//当前脚本指向的"节点对象"
+let self = this;//锁定当前作用域的this，可方便的在脚本任何位置调用
+function(){}.bind(this);//绑定当前函数指向的this,这样在函数内部也可以使用"this."格式
+
+var a = cc.find('Canvas/logo');//获取节点
+var a = this.node.parent;//获取父节点
+var a = this.node.getChildByName('name');//获取子节点
+var a = cc.find("bg/score",this.node);//获取多层级下的子节点
+var a= cc.find("Canvas/notice")||cc.find("Notice");//获取其中一个存在的节点
+
+var b = this.node.getComponent(cc.Label);//获取此节点上的组件
+var b = this.node.getComponent('web');//获取此节点上的脚本
+b.enabled = false;//关闭组件或脚本
+b.string = '你好';//改变组件或脚本的属性值
+
+this.scheduleOnce(function(){}.bind(this),2);//计算1次的计时器,2秒后执行
+this.schedule(function(){}.bind(this),5);//每隔5秒执行1次
+this.schedule(function(){}.bind(this),0.1,8,1);//计算多次的计时器（1秒后执行，并以0.1秒的间隔执行，总共执行9次）
+this.unscheduleAllCallbacks(this);//停止this指向的所有计时器
+
+触摸监听【开始'touchstart'，移动'touchmove'，结束'touchend'，取消'touchcancel'】
+this.node.on('touchend',function(event){/*执行操作部分*/}.bind(this),this);  
+
+var a = cc.instantiate(list);//克隆节点
+this.node.active = false;//隐藏节点
+this.node.destroy();//销毁节点
+this.node.addChild(nodename);//添加子节点
+this.node.parent = parentNode;//绑定父节点
+
+var a = this.node.children;//获取所有子节点
+var a = this.node.childrenCount;//获取子节点数量
+
+var a = cc.director.getScene();//场景主节点
+var sprite = this.node.getComponentInChildren(cc.Sprite);//递归查找所有子节点中匹配指定类型的组件
+
+this.node.x = 100;//设置此节点x轴坐标
+this.node.y = 100;//设置此节点y轴坐标
+this.node.scale = 2;//设置此节点缩放比例
+this.node.rotation = 90;//设置此节点的旋转角度
+this.node.width = 100;//设置此节点宽度
+this.node.height = 100;//设置此节点高度
+this.node.opacity = 128;//设置此节点透明度（0~255）
+this.node.color = new cc.color(100,100,100,255);//设置此节点颜色（R,G,B,透明度）
+
+this.node.runAction(cc.moveTo(1,50,50));//移动此节点
+this.node.runAction(cc.scaleTo(1,0.7,0.8));//缩放此节点
+this.node.runAction(cc.rotateTo(1,160));//旋转此节点
+this.node.runAction(cc.skewTo(1,5,-5));//变化此节点的倾斜度
+this.node.runAction(cc.fadeTo(2,0));//变化此节点的透明度
+this.node.runAction(cc.tintTo(2,255,255,0));//变化此节点的颜色
+this.node.stopAllActions();//停止此节点的所有动作
+
+this.node.runAction(cc.sequence(cc.moveBy(0.5,200,0),cc.moveBy(0.5,-200,0)));//先向右移动,再向左移动(执行一次)
+this.node.runAction(cc.spawn(cc.moveBy(0.5,0,50),cc.scaleTo(0.5,1.5,1.5)));//向上移动的同时缩放
+this.node.runAction(cc.repeatForever(cc.sequence(cc.scaleTo(0.5,2,2),cc.scaleTo(0.5,0.5,0.5))));//先放大,再缩小(无限循环)
+this.node.runAction(cc.repeat(cc.sequence(cc.scaleTo(0.5,2,2),cc.scaleTo(0.5,0.5,0.5)),3));//先放大,再缩小(循环3次)
+this.node.runAction(cc.follow(targetNode));//追踪目标节点的位置
+
+this.node.runAction(cc.delayTime(2.5),cc.spawn(cc.moveBy(0.5,0,50),cc.scaleTo(0.5,1.5,1.5)));//等待2.5秒,再执行动作
+this.node.runAction(cc.moveTo(1,50,50));//加速效果
+this.node.runAction(cc.moveTo(1,50,50).easing(cc.easeIn(1.0)));//加速效果
+this.node.runAction(cc.scaleTo(1,0.7,0.8)).easing(cc.easeOut(1.0));//减速效果
+
+this.node.runAction(cc.sequence(cc.moveBy(1,50,50),cc.callFunc(function () {//动作执行的回调
+    //回调内容
+},this, null)));  
+
+//动态运行脚本
+var MsgListen = require("MsgListen");//获取对象
+var msgListen = new MsgListen();//创建对象实例
+msgListen.init();//运行对象中定义的函数(此函数需跟onLoad函数同级)
+
+/*****动态加载本地资源,路径必须在"assets\resources"下*****/
+/*****本例中为预制体,路径为:"assets\resources\prefabs/name"*****/
+/*****"data"为加载到的资源,根据data的类型进行相关操作*****/
+cc.loader.loadRes("prefabs/name",function (err,data) {
+    var newNode = cc.instantiate(data);
+    newNode.parent = cc.find("Canvas");
+}.bind(this));
+
+cc.loader.releaseRes("资源路径不含后缀");//销毁动态加载的本地资源
+
+/*****动态更换精灵的纹理,路径必须在"assets\resources"下*****/
+/*****本例中路径为:"assets\resources\imgs\image.png"*****/
+var texture = cc.textureCache.addImage(cc.url.raw("resources/imgs/image.png"));
+this.node.getComponent(cc.Sprite).spriteFrame.setTexture(texture);
+
+/*****properties: {}里声明基本类型格式*****/
+名称: cc.Node,    //节点
+名称: cc.Label,    //文本
+名称: cc.EditBox,    //输入框
+名称: cc.SpriteFrame,    //图片
+名称: cc.AudioClip,    //音频
+名称: cc.Prefab,    //预制体
+名称: cc.Vec2,    //坐标
+名称: cc.Font,    //字体
+名称:{
+default:[],type:cc.Node}//节点组
+
+cc.director.loadScene('场景名称');//场景跳转
+cc.director.preloadScene('场景名称');//预加载场景
+
+var a = cc.director.getWinSizeInPixels().width//获得设备分辨率的宽度
+var b = cc.director.getWinSizeInPixels().height//获得设备分辨率的高度
+
+var x = event.getLocationX();//获取触摸点的坐标X
+var y = event.getLocationY();//获取触摸点的坐标Y
+var a = event.getID();//获取触点的ID
+
+cc.director.pause();//游戏暂停
+cc.director.resume();//游戏继续
+cc.director.end();//退出整个应用
+
+cc.sys.localStorage.setItem('存储标识名',变量名);//存储存档数据
+var a = cc.sys.localStorage.getItem('存储标识名');//读取存档数据
+cc.sys.localStorage.removeItem('存储标识名');//擦除存档数据
+cc.sys.localStorage.setItem('userData', JSON.stringify(userData));//存取复杂对象数据
+var userData = JSON.parse(cc.sys.localStorage.getItem('userData'));//读取复杂对象数据
+
+cc.audioEngine.playMusic(this.BGAudio,true);//播放背景音乐
+cc.audioEngine.pauseMusic();//暂停播放背景音乐
+cc.audioEngine.resumeMusic();//继续播放背景音乐
+cc.audioEngine.stopMusic();//停止播放背景音乐
+cc.audioEngine.playEffect(this.ClickAudio,false);//播放音效
+cc.audioEngine.setMusicVolume(参数);//设置背景音乐的音量（该参数范围是0到1）
+cc.audioEngine.setEffectsVolume(参数);//设置音效的音量（该参数范围是0到1）
+cc.audioEngine.play(cc.url.raw("resources/sounds/btnClick.mp3"), false);//播放资源路径下的音频
+
+输入框监听【输入框获得焦点时触发'editing-did-began'，每一次输入文字变化时触发'editing-did-began'，
+                    输入框失去焦点时触发'editing-did-ended'，按下回车时触发'editing-return'】
+this.node.on('editing-did-began',function(event){/*执行操作部分*/}.bind(this),this);  
+
+cc.callFunc(function () {//回调函数
+    /*执行操作部分*/
+},this, null))
+
+this.node.on('事件名',self.doing,this);//注册监听
+this.node.emit('事件名');//发送监听广播
+this.node.off('事件名',self.doing,this);//关闭监听
+
+window.a = "hello world";//定义全局变量
+window.G = {//定义全局变量集合
+    a: null,
+    b: null,
+};
+
+node.getLocalZOrder();//层级获取
+node.setLocalZOrder(1);//层级改变
+
+cc.sys.openURL('Http://www.baidu.com');//打开网页
+
+//定义类
+var a = cc.Class({
+    函数名: function () {
+        /*执行操作部分*/
+    },
+});
+
+cc.game.addPersistRootNode(myNode);//常驻节点,必须位于层级的根节点
+cc.game.removePersistRootNode(myNode);//取消常驻节点

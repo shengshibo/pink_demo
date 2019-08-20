@@ -1,0 +1,160 @@
+cc.log(变量);//输出日志（若输出固定文本，需要加上“”）
+
+let self = this;//锁定当前使用的this指向，避免出现意外
+
+cc.director.loadScene('场景名称');//场景跳转
+cc.director.preloadScene('table');//预加载场景
+
+【【【【【节点的一些常用功能】】】】】
+var logo = cc.find("Canvas/Layout/bg_2/logo");//获取节点
+node.getComponent(cc.Label).string = 'abc';//获取节点上的组件属性
+var a = cc.find("Canvas/1").getComponent(cc.Sprite);//获取组件
+
+var a = node.getPositionX();//获取节点的X轴位置
+var a = node.getScaleX();//获取节点的X轴缩放比例
+
+node.x = 100;//设置节点x轴坐标
+node.y = 100;//设置节点y轴坐标
+node.setPosition(x,y);//设置节点位置
+
+node.rotation = 90;//设置节点旋转角度
+
+node.scaleX = 2;//设置节点x轴缩放
+node.scaleY = 2;//设置节点y轴缩放
+node.setScale(2);//设置节点整体缩放
+
+node.width = 100;//设置节点宽度
+node.height = 100;//设置节点高度
+node.setContentSize(100, 100);//设置节点尺寸
+
+node.anchorX = 1;//设置节点x轴锚点
+node.anchorY = 0;//设置节点y轴锚点
+node.setAnchorPoint(1, 0);//设置节点锚点
+
+node.opacity = 128;//设置节点透明度
+node.setOpacity(20);//设置节点透明度（0~255）
+node.color = new cc.color(100,100,100,255);//设置节点颜色（R,G,B,透明度）
+
+if (cc.isValid(this.label.node) )//判定节点是否存在
+node.destroy();//销毁节点
+
+this.cannons = [];
+this.cannons = node.getChildren();//获取所有子节点
+this.cannons = node.getChildrenCount();//获取子节点数量
+
+node.active = false;//关闭节点
+
+cc.game.addPersistRootNode(myNode);//常驻节点
+cc.game.removePersistRootNode(myNode);//取消常驻节点
+【【【【【节点的一些常用功能】】】】】
+
+
+【【【【【动作系统】】】】】
+node.runAction(cc.moveTo(1,0,0));//移动当前节点（移动指定距离用moveBy，下同）
+node.runAction(cc.scaleTo(1,0.7,0.8));/缩放当前节点
+node.runAction(cc.rotateTo(1,160,160));//旋转当前节点
+node.runAction(cc.skewTo(1,5,-5));//变化节点倾斜度
+node.runAction(cc.fadeTo(2,0));//变化当前节点的透明度
+node.runAction(cc.tintTo(2,255,255,0));//变化当前节点颜色
+node.stopAllActions();//停止所有动作
+
+//自定义动作（相比常规使用的动作优势是：方便随时开启或关闭）
+var action = cc.moveTo(2, 100, 100);// 创建一个移动动作
+node.runAction(action);// 执行动作
+node.stopAction(action);// 停止一个动作
+【【【【【动作系统】】】】】
+
+
+【【【【【计时器的一些运用】】】】】
+//计算1次的计时器,2秒后执行
+        this.scheduleOnce(function(){
+            //一条或多条执行语句  
+        },2);
+//每隔5秒执行1次
+        this.schedule(function(){
+            //一条或多条执行语句  
+        },5);
+//计算多次的计时器（1秒后，以0.1秒的执行间隔，执行10次）
+        this.schedule(function(){
+            //一条或多条执行语句
+        },0.1,10,1);
+this.unscheduleAllCallbacks(this);//停止某组件的所有计时器
+
+//自定义定时器执行内容（相比常规使用的定时器优势是：方便随时开启或关闭）
+var cb= function(){
+    //do something
+};
+
+this.schedule(cb,1);//启动定时器
+this.unschedule(cb);//取消定时器
+【【【【【计时器的一些运用】】】】】
+
+
+【【【【【触摸监听】】】】】
+(开始：'touchstart'，移动：'touchmove'，结束：'touchend'，取消：'touchcancel')
+
+node.on('touchstart',function(event){
+    this.doSomething();
+},this);  
+
+var a = event.getID();//获取触点的ID
+var a = event.getLocationX();//获取触摸点的坐标X
+var b = event.getLocationY();//获取触摸点的坐标Y
+【【【【【触摸监听】】】】】
+
+
+【【【【【全局变量】】】】】
+window.DEFAULT_IP = "192.168.1.1";//任意脚本里可定义全局变量
+
+//任意脚本里可定义全局变量
+window.G = {
+    a: null,
+    b: null,
+};
+
+//任意脚本里可访问全局变量（切记定义全局变量的那个脚本已执行过）
+G.a = 0;
+G.b = 0;
+【【【【【全局变量】】】】】
+
+
+//获得设备分辨率
+var b = cc.director.getWinSizeInPixels()
+var bx = b.width
+var by = b.height
+
+
+【【【【【音频的一些控制】】】】】
+cc.audioEngine.playMusic(this.BGAudio,true);//播放音乐（true代表循环）
+cc.audioEngine.stopMusic()//停止播放背景音乐
+cc.audioEngine.playEffect(this.ClickAudio,false);//播放音效（false代表只播放一次）
+cc.audioEngine.stopEffect(音效变量名);//停止指定音效（需要先把音效赋值给变量）
+cc.audioEngine.AllEffects();//停止所有音效
+cc.audioEngine.setMusicVolume(参数);  //设置背景音乐的音量（该参数范围是0到1）
+cc.audioEngine.setEffectsVolume(参数);  //设置音效的音量（该参数范围是0到1）
+【【【【【音频的一些控制】】】】】
+
+
+cc.sys.localStorage.setItem('存储标识名',变量名);//存储存档数据
+var a = cc.sys.localStorage.getItem('存储标识名');//读取存档数据
+cc.sys.localStorage.removeItem('存储标识名');//擦除存档数据
+
+userData = {
+    name: 'Tracer',
+    level: 1,
+    gold: 100
+};
+cc.sys.localStorage.setItem('userData', JSON.stringify(userData));//存取复杂对象数据
+
+var userData = JSON.parse(cc.sys.localStorage.getItem('userData'));//读取复杂对象数据
+
+cc.director.pause();//游戏暂停
+cc.director.resume();//游戏继续
+cc.director.end();//退出整个应用
+
+node.getLocalZOrder();//层级获取
+node.setLocalZOrder(1);//层级改变
+
+cc.find('canvas/map' + num)//读取带变量的路径
+
+cc.sys.openURL('Http://www.baidu.com');//打开网页

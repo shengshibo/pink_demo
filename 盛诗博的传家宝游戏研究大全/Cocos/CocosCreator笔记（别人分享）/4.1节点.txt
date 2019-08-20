@@ -1,0 +1,27 @@
+var newNode = new cc.Node("newNode");//动态创建一个节点
+
+var a = this.node;//获取当前脚本所在的节点
+var a = this.node.parent;//获取父节点
+var a = this.node.getChildByName('name');//通过名字获取子节点
+var a = this.node.getChildByTag(1001);//通过标签获取子节点
+var a = cc.find('Canvas/logo');//通过全路径获取节点
+var a = cc.find("bg/score",this.node);//通过指定节点下的路径获取节点
+
+var a = this.node.children;//获取所有子节点
+var a = this.node.childrenCount;//获取子节点数量
+var a = cc.director.getScene();//获取场景主节点
+
+var a = cc.instantiate(node);//克隆节点
+this.node.parent = cc.find('Canvas');//绑定父节点
+this.node.addChild(nodeName,zIndex,tag);//添加子节点,可设置层级和标签
+this.node.removeChild(nodeName);//通过名字移除子节点
+this.node.removeChildByTag (nodeTag);//通过标签移除子节点
+this.node.destroy();//销毁节点
+this.node.isValid;//判定节点是否可用
+
+this.node.removeChild(newNode);//移除节点中指定的子节点
+this.node.removeChildByTag(1001);//通过标签移除节点中指定的子节点
+this.node.removeAllChildren();//移除所有子节点
+this.node.destroyAllChildren();//销毁所有子节点
+this.node.cleanup();//停止所有正在播放的动作和计时器
+var sprites = this.node.getComponentsInChildren(cc.Label);//递归查找自身及所有子节点中指定类型的组件

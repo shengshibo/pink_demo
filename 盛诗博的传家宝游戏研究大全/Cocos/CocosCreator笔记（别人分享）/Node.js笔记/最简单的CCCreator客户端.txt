@@ -1,0 +1,25 @@
+cc.Class({
+    extends: cc.Component,
+
+    properties: {
+        label:{
+            default:null,
+            type:cc.Label
+        },
+    },
+
+    onLoad: function () {
+        let self = this;
+        var socket = io.connect('127.0.0.1:3000');
+        
+        socket.on('hi',function(msg){
+            self.label.string = msg;
+            var user= {
+                username:'abc',
+                password:'12345'
+            };
+            socket.emit('login',JSON.stringify(user));
+        });
+        
+    },
+});

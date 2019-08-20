@@ -1,0 +1,22 @@
+在 Cocos Creator 中，我们为组件提供了方便的计时器.
+计时器基于节点下的组件(不绑定节点无效).
+
+
+this.scheduleOnce(function(){
+    /*****1秒后执行1次*****/
+}.bind(this),1);
+
+this.schedule(function(){
+    /*****每隔2秒执行1次*****/
+}.bind(this),2);
+
+this.schedule(function(){
+    /*****1秒后开始执行,间隔0.1秒,共执行9次*****/
+}.bind(this),0.1,8,1);
+
+//更灵活的计时器
+var schedule = function () {i++};//定义函数
+this.schedule(schedule,1);//开始计时器
+this.unschedule(schedule);//取消计时器
+
+this.unscheduleAllCallbacks(this);//停止this指向的组件的所有计时器

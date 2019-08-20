@@ -1,0 +1,9 @@
+var time=new Date()//生成当前时间的对象
+
+time.getSeconds()//获取当前时间：秒
+time.getMinutes()//获取当前时间：分
+time.getHours()//获取当前时间：小时
+time.getDate()//获取当前日期：日(从1开始)
+time.getMonth()//获取当前日期：月(0代表1月)
+time.getFullYear()//获取当前日期：年
+time.getDay()//获取当前日期：星期几(0代表星期天)

@@ -1,0 +1,73 @@
+一份简单的脚本如下：
+cc.Class({
+    extends: cc.Component,
+
+    //声明属性
+    properties: {
+        tab: null,
+        name: '花花',
+        ranking: 9,
+        array: [],
+        node: cc.Node,
+    },
+
+    onLoad: function () {
+
+    },
+
+    update: function (dt) {
+
+    },
+});
+
+
+在properties{}里可声明各种属性.
+名称:null,     //通用类型
+名称:9,     //数字
+名称:'test',    //字符串
+名称: [],    //数组
+名称: cc.Prefab,    //预制体
+名称: cc.Node,    //节点
+名称: cc.Label,    //文本
+名称: cc.Sprite,    //图片
+名称: cc.SpriteFrame,    //图片纹理
+名称: cc.EditBox,    //输入框
+名称: cc.AudioClip,    //音频
+
+名称:[cc.String],//数组
+名称:[cc.Node],//节点组
+名称: {//图片路径
+    default: "",
+    url: cc.Texture2D
+}
+名称: {
+    default: 0,//默认值
+    displayName: "Score (player)",//在属性检查器里显示的属性名
+    tooltip: "The score of player",//当鼠标移到参数上时,显示对应的提示
+}
+
+
+var a = this.node.getComponent('game');//获取节点下脚本
+a.goTo();//运行脚本里定义的函数(此函数需跟onLoad函数同级)
+a.enabled = false;//关闭脚本
+
+var MsgListen = require("MsgListen");//获取本地脚本
+var msgListen = new MsgListen();//创建脚本对象实例
+msgListen.init();//运行脚本对象中定义的函数(此函数需跟onLoad函数同级)
+
+
+定义类:
+var Sprite = cc.Class({
+    name: "sprite",//类名字
+
+    extends: cc.Component,
+    
+    print: function () { },// 声明一个名叫 "print" 的实例方法
+
+});
+
+实例化类:
+var obj = new Sprite();
+
+调用实例方法:
+obj.print();

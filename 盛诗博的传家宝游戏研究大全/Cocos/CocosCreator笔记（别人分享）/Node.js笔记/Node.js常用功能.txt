@@ -1,0 +1,9 @@
+var http = require('http');   //引用自带模块
+var a = require('./test.js');   //加载第三方模块（./表示同目录下）
+
+/*****最简单的http服务器*****/
+http.createServer(function (req,res){
+    res.end('222');   //向请求方发送字符串
+    console.log('111'); 
+}).listen(1337,"127.0.0.1");
+

@@ -1,0 +1,61 @@
+this.node.runAction(cc.moveTo(1,50,50));//移动此节点
+this.node.runAction(cc.scaleTo(1,0.7,0.8));//缩放此节点
+this.node.runAction(cc.rotateTo(1,160));//旋转此节点
+this.node.runAction(cc.skewTo(1,5,-5));//变化此节点的倾斜度
+this.node.runAction(cc.fadeTo(2,0));//变化此节点的透明度
+this.node.runAction(cc.tintTo(2,255,255,0));//变化此节点的颜色
+this.node.runAction(cc.follow(targetNode));//追踪目标节点的位置
+this.node.runAction(cc.moveTo(1,50,50).easing(cc.easeIn(1.0)));//加速效果
+this.node.runAction(cc.scaleTo(1,0.7,0.8)).easing(cc.easeOut(1.0)));//减速效果
+this.node.runAction(cc.fadeIn(1));//渐显效果
+this.node.runAction(cc.fadeOut(1));//渐隐效果
+
+var action = cc.moveBy(1,10,10);//定义动作对象
+this.node.stopAction(action);//停止执行节点动作
+
+//向右移动,再向左移动(执行一次)
+var action = cc.sequence(
+    cc.moveBy(0.5,200,0),
+    cc.moveBy(0.5,-200,0)
+);
+
+//向上移动的同时缩放
+var action = cc.spawn(
+    cc.moveBy(0.5,0,50),
+    cc.scaleTo(0.5,1.5,1.5)
+);
+
+//先放大,再缩小(无限循环)
+var action = cc.repeatForever(
+    cc.sequence(
+        cc.scaleTo(0.5,2,2),
+        cc.scaleTo(0.5,0.5,0.5)
+    )
+);
+
+//先放大,再缩小(循环3次)
+var action = cc.repeat(
+    cc.sequence(
+        cc.scaleTo(0.5,2,2),
+        cc.scaleTo(0.5,0.5,0.5)
+    )
+,3);
+
+//动作回调
+this.node.runAction(
+    cc.sequence(
+        cc.delayTime(2.5),//等待2.5秒
+        cc.moveBy(1,50,50),
+        cc.callFunc(function () {
+            //回调内容
+        },this, null)
+    )
+);
+
+this.node.pauseAllActions();//暂停本节点上所有正在运行的动作
+this.node.resumeAllActions();//恢复本节点上所有暂停的动作
+this.node.stopAllActions();//停止本节点的所有动作
+
+//修改动作速率
+var action = cc.scaleTo(0.2,2,2);
+var newAction = cc.speed(action,0.5);

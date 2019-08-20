@@ -1,0 +1,15 @@
+创建新节点
+var node = new cc.Node(sprite);
+var sp = node.addComponent(cc.Sprite);
+
+sp.spriteFrame = this.sprite;
+node.parent = this.node;
+node.setPosition(0,0);
+
+
+克隆节点
+var scene = cc.director.getScene();
+var node = cc.instantiate(this.target);
+
+node.parent = this.node;
+node.setPosition(0,0);

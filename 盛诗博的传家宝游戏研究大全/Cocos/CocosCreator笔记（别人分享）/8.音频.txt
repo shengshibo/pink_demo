@@ -1,0 +1,22 @@
+cc.audioEngine.play(cc.url.raw("resources/sounds/btnClick.mp3"), false, 1);//播放资源路径下的音频
+
+var audioID = cc.audioEngine.play(cc.AudioClip, false, 1);//播放声音,不循环,音量1
+
+cc.audioEngine.setVolume(audioID, 0.5);//设置音量(0~1)
+var volume = cc.audioEngine.getVolume(audioID);//获取音量(0~1)
+
+var time = cc.audioEngine.getDuration(audioID);//获取音频总时长
+cc.audioEngine.setFinishCallback(audioID, function () {});//设置一个音频结束后的回调
+
+cc.audioEngine.pause(audioID);//暂停正在播放的指定音频
+cc.audioEngine.resume(audioID);//恢复正在播放的指定音频
+cc.audioEngine.stop(audioID);//停止正在播放的指定音频
+
+cc.audioEngine.pauseAll();//暂停正在播放的所有音频
+cc.audioEngine.resumeAll ();//恢复之前暂停的所有音频
+cc.audioEngine.stopAll();//停止正在播放的所有音频
+
+
+
+
+

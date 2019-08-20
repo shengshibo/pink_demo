@@ -1,0 +1,20 @@
+一、新建如下脚本
+
+cc.Class({
+    extends: cc.Component,
+
+    properties: {
+        ToScene: '00'
+    },
+
+    onLoad: function () {
+        this.node.on(cc.Node.EventType.TOUCH_END,function(event){
+            cc.director.loadScene(this.ToScene);
+        },this);
+    },
+});
+
+
+二、挂载脚本到对象组件上
+
+三、在组件上修改“ToScene”的值（跳转的场景名）

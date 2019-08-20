@@ -1,0 +1,51 @@
+动态加载本地资源时,路径必须在"assets\resources"下.
+如果一份资源不需要由脚本直接动态加载,那么千万不要放在 resources 文件夹里.
+
+//动态加载精灵纹理,本例中路径为:"assets\resources\imgs\image.png"/
+var realUrl = cc.url.raw("resources/imgs/image.png");
+var texture = cc.textureCache.addImage(realUrl);
+this.node.getComponent(cc.Sprite).spriteFrame.setTexture(texture);
+
+//动态加载精灵纹理,本例中路径为:"assets\resources\imgs\image.png"/
+cc.loader.loadRes("imgs/image", cc.SpriteFrame, function (err, spriteFrame) {
+    if(err)return;
+    this.node.getComponent(cc.Sprite).spriteFrame = spriteFrame;
+}.bind(this));
+
+//动态加载预制体,本例中路径为:"assets\resources\prefabs\name.prefab"/
+cc.loader.loadRes("prefabs/name",function (err,prefab) {
+    if(err)return;
+    var node = cc.instantiate(prefab);
+    node.parent = cc.find("Canvas");
+}.bind(this));
+
+//动态加载图集
+cc.loader.loadRes("imgs/images", cc.SpriteAtlas, function (err, atlas) {
+    if(err)return;
+    var frame = atlas.getSpriteFrame('sheep_down_0');
+    sprite.spriteFrame = frame;
+}.bind(this));
+
+//销毁动态加载的资源
+cc.loader.releaseRes("资源路径不含后缀");
+
+//销毁实例资源
+cc.loader.releaseAsset(spriteFrame);
+
+//加载远程 url 带图片后缀名
+var remoteUrl = "http://unknown.org/someres.png";
+cc.loader.load(remoteUrl, function (err, texture) {
+
+});
+
+//加载远程 url 不带图片后缀名
+remoteUrl = "http://unknown.org/emoji?id=124982374";
+cc.loader.load({url: remoteUrl, type: 'png'}, function () {
+
+}.bind(this));
+
+// 用绝对路径加载设备存储内的资源,比如相册
+var absolutePath = "/dara/data/some/path/to/image.png"
+cc.loader.load(absolutePath, function (err, data) {
+
+}.bind(this));

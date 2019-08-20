@@ -1,0 +1,25 @@
+cc.Node.EventType.TOUCH_START     //当手指触点落在目标节点区域内时
+cc.Node.EventType.TOUCH_MOVE      //当手指在屏幕上目标节点区域内移动时
+cc.Node.EventType.TOUCH_END       //当手指在目标节点区域内离开屏幕时
+cc.Node.EventType.TOUCH_CANCEL    //当手指在目标节点区域外离开屏幕时
+
+
+API名                  类型        意义
+touch                  cc.Touch    与当前事件关联的触点对象
+getID                  Number      获取触点的ID，用于多点触摸的逻辑判断
+getLocation            Object      获取触点位置对象，对象包含x和y属性
+getLocationX           Number      获取触点的X轴位置
+getLocationY           Number      获取触点的Y轴位置
+getPreviousLocation    Object      获取触点上一次触发事件时的位置对象，对象包含x和y属性
+getStarLocation        Object      获取触点初始时的位置对象，对象包含x和y属性
+getDelta               Object      获取触点距离上一次事件移动的距离对象，对象包含x和y属性
+
+
+范例：
+        this.node.on(cc.Node.EventType.TOUCH_MOVE,function(event){
+            var a = event.getLocationX();
+            var b = event.getLocationY();
+            var hero1 = cc.find("Canvas/Game/hero1").getComponent(cc.Sprite);
+
+            hero1.node.setPosition(a-180,b-320);
+        },this);  

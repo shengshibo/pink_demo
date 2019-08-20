@@ -1,0 +1,20 @@
+this.node.active = false;//隐藏节点
+this.node.name = "NewNode";//设置节点的名字
+this.node.tag = 1001;//设置节点的标签
+this.node.x = 100;//设置节点x轴坐标
+this.node.y = 100;//设置节点y轴坐标
+this.node.position = cc.p(0, 0);//设置节点坐标
+this.node.scaleX = 2;//设置节点x轴缩放比例
+this.node.scaleY = 2;//设置节点y轴缩放比例
+this.node.scale = 2;//设置节点缩放比例
+this.node.rotation = 45;//设置节点的旋转角度
+this.node.width = 200;//设置节点宽度
+this.node.height = 50;//设置节点高度
+this.node.setContentSize(100, 100);//设置节点宽和高
+this.node.color = new cc.color(100,100,100,255);//设置节点颜色（R,G,B,透明度）
+this.node.opacity = 128;//设置节点透明度（0~255）
+this.node.cascadeOpacity = false;//设置节点透明度是否影响子节点
+this.node.anchorX = 1;//设置节点x轴锚点位置
+this.node.anchorY = 0;//设置节点y轴锚点位置
+this.node.setAnchorPoint(1, 0);//设置节点锚点位置
+this.node.zIndex = 10;//设置此节点的Z轴深度

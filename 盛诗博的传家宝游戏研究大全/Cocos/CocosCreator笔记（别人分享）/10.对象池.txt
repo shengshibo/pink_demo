@@ -1,0 +1,9 @@
+在运行时进行节点的创建(cc.instantiate)和销毁(node.destroy)操作是非常耗费性能的.
+对象池就是一组可回收的节点对象.
+
+
+var pool = new cc.NodePool();//创建对象池
+pool.size();//获取对象池的节点数量
+pool.put(node);//向对象池中存入一个节点
+pool.get();//获取对象池中的节点
+pool.clear();//销毁对象池中缓存的所有节点

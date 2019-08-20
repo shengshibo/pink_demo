@@ -1,0 +1,7 @@
+cc.sys.localStorage.setItem('存储标识名',变量名);//存储存档数据
+var a = cc.sys.localStorage.getItem('存储标识名');//读取存档数据
+
+cc.sys.localStorage.setItem('userData', JSON.stringify(userData));//存取复杂对象数据
+var userData = JSON.parse(cc.sys.localStorage.getItem('userData'));//读取复杂对象数据
+
+cc.sys.localStorage.removeItem('存储标识名');//擦除存档数据

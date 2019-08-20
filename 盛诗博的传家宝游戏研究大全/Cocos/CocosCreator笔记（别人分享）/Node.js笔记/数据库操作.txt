@@ -1,0 +1,36 @@
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '123456',
+    database:'db_user'
+});
+connection.connect();
+
+//查询
+var selectSQL = 'SELECT * FROM `t_user` WHERE `userName` = "linhaiwei123"';
+//添加
+var insertSQL = 'INSERT INTO `t_user` (`userName`)VALUES("mary")';
+//修改
+var updateSQL = 'UPDATE `t_user` SET `userName`="caton" WHERE userName="mary"'
+//删除
+var deleteSQL = 'DELETE FROM `t_user` WHERE `userName` LIKE "caton"';
+
+//执行SQL：查询
+connection.query(selectSQL, function(err,rows,fields) {
+    if (err) throw err;
+	for(var row of rows){
+		for(var field of fields){
+			var result = row[field.name];
+			console.log(result);
+		}	
+	}
+});
+
+//执行SQL：添加
+connection.query(insertSQL, function(err) {
+    if (err) throw err;
+});
+
+//关闭连接
+connection.end();

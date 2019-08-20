@@ -1,0 +1,94 @@
+数值（number）：整数和小数(比如1和3.14)
+字符串（string）：字符组成的文本(比如"Hello World")
+布尔值（boolean）：true(真)和false(假)两个特定值
+undefined：表示"未定义"或不存在,即由于目前没有定义,所以此处暂时没有任何值
+null：表示无值,即此处的值就是"无"的状态
+对象（object）：各种值组成的集合
+
+
+判定数据类型:
+typeof  对象//输出数据类型
+obj instanceof Array//判定数据类型
+
+例子:
+typeof 37 //'number'
+typeof v  //'undefined'
+typeof null  //'object'
+typeof true  //'boolean'
+typeof ""  //'string'
+typeof {a:1}  //'object'
+
+[1,2] instanceof Array  //true
+
+
+数值(Number):
+var a = 12;//声明一个变量并赋值:12(十进制)
+var b = 0xff;//声明一个变量并赋值:255(十六进制)
+var c = 0b11;//声明一个变量并赋值:3(二进制)
+
+
+字符串(String):
+var b = "hello";//声明一个变量并赋值
+b[1];//访问字符串中的成员(从0开始索引)
+b[3] = 'm';//错误:无法改变字符串之中的单个字符
+
+
+布尔值(Boolean):
+var a = true;
+var b = false;
+注意:空数组（[]）和空对象（{}）对应的布尔值
+
+
+数组(Array):
+var b = [];//声明一个数值类型
+var d = [1,2,3,4,5];//声明一个数值并赋值
+d[2];//访问数组中的成员(从0开始索引)
+d[4] = '7';//修改成员的值
+var a = [[1, 2], [3, 4]];
+a[0][1];//访问多维数组中的成员
+
+
+对象(Object):
+var c = {};//声明一个对象类型
+var info = {
+    name: "小丸子",
+    sex: "女,
+    age: 12,
+    friends:["小白","大墩","梅利"],
+}
+info.name;//访问对象的某个属性
+info['sex'] = "男";//访问对象的某个属性,并赋值
+info['a' + 'ge'];//方括号运算符内部可以使用表达式
+info.friends[0];//访问对象的某个属性
+
+
+函数(Function):
+function f() {};////声明一个函数
+var power = function (n) {return n* n;};//赋值一个函数
+power(5);//调用函数
+
+
+箭头函数
+var funcName = (params) => params + 2
+funcName(2);
+
+
+强制类型转换:
+Number() : 将任意类型的值转化成数值
+如:
+Number('324') // 324
+Number('324abc') // NaN
+Number(false) // 0
+Number(null) // 0
+Number({a: 1}) // NaN
+
+更加高效的转数值方式:
+var one = '1';
+var b = +one;
+
+String() : 将任意类型的值转化成字符串
+如:
+String(123) // "123"
+String(true) // "true"
+String(null) // "null"
+String([1, 2, 3]) // "1,2,3"

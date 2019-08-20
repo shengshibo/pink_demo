@@ -1,0 +1,16 @@
+var app = require('express')()
+var http = require('http').Server(app)
+var io = require('socket.io')(http)
+
+http.listen(3000,function(){console.log('服务器开启')})
+
+io.on('connection',function(socket){
+	console.log('一个用户已连接')
+	socket.emit('hi','你好')
+	
+	socket.on('login',function(user){
+		var json = JSON.parse( user );
+		console.log('账号：' + json.username)
+		console.log('密码：' + json.password)
+	})
+})

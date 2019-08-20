@@ -1,0 +1,66 @@
+in运算符
+'p' in {p:1,q:2}; //true
+
+'a' in ['a','b','c']; //true
+
+if…else结构:
+var a = 2;
+var b = 3;
+if (a == b) {
+    console.log("a等于b");
+}
+else if(a > b){
+    console.log("a大于b");
+}
+else{
+    console.log("a小于b");
+}
+
+
+for循环:
+for(var a = 0; a < 10; a ++){
+    console.log('a当前为:' + a);
+}
+
+
+switch结构:
+var d = "two";
+switch(d){
+    case "one":
+        console.log("恭喜你获得第1名");
+        break;
+    case "two":
+        console.log("恭喜你获得第2名");
+        break;
+    case "three":
+        console.log("恭喜你获得第3名");
+        break;
+    default:
+        console.log("很遗憾你没有进入排名");
+}
+
+
+while循环:
+var i = 0;
+while (i < 6){
+    i++;
+}
+
+
+do…while循环:(先执行,再判定条件)
+var i = 0;
+do {
+    i++;
+} while (i < 6);
+
+
+break语句:(跳出代码块或循环)
+if (i === 10) break;
+
+
+continue语句:(终止本轮循环,开始下一轮循环)
+if (i%2 === 0) continue;
+
+
+retuen语句:(跳出整个函数体)
+if (i%2 === 0) return;

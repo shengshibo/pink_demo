@@ -1,0 +1,113 @@
+cc.log(变量);//输出日志（若输出固定文本，需要加上“”）
+cc.director.loadScene('场景名称');//场景跳转
+this.node.setPosition(x,y);//设置节点位置
+this.node.runAction(cc.moveTo(1,cc.p(0,0)));//移动当前节点（移动指定距离用moveBy）
+this.node.runAction(cc.scaleTo(1,0.7,0.8));/缩放当前节点
+this.node.runAction(cc.rotateTo(1,160,160));//旋转当前节点（旋转指定角度用rotateBy）
+this.node.setOpacity(20);//设置节点透明度
+hero1_X = hero1.node.getPositionX();//获取节点的X轴位置
+this.node.color = new cc.color(100,100,100,255);//设置节点颜色
+var a = cc.find("Canvas/1").getComponent(cc.Sprite);//获取组件
+
+node.on(cc.Node.EventType.TOUCH_START, callback, this.node);//添加该节点的事件监听
+node.off(cc.Node.EventType.TOUCH_START, callback, this.node);//删除该节点的事件监听
+
+if (cc.isValid(this.label.node) )//判定节点是否存在
+this.node.destroy();//销毁节点
+
+//计算1次的计时器,2秒后执行
+        this.scheduleOnce(function(){
+            this.doSomething();  
+        },2);
+//每隔5秒执行1次
+        this.schedule(function(){
+            this.doSomething();  
+        },5);
+//计算多次的计时器（1秒后，以0.1秒的执行间隔，执行10次）
+        this.schedule(function(){
+            this.doSomething();
+        },0.1,10,1);
+
+this.unscheduleAllCallbacks(this);//停止某组件的所有计时器
+
+cc.sys.localStorage.setItem('G01.level',G01.level);//存储存档数据
+cc.sys.localStorage.getItem('G01.level');//读取存档数据
+cc.sys.localStorage.removeItem('G01.level');//擦除存档数据
+
+cc.find('canvas/map' + num)//读取带变量的路径
+
+
+//定义数组
+var a= ['java','c++','c#'];
+var a={}
+var a=new Array(40);
+
+hero1.node.getLocalZOrder();//层级获取
+hero1.node.setLocalZOrder(1);//层级改变
+
+//获得设备分辨率
+var b = cc.director.getWinSizeInPixels()
+var bx = b.width
+var by = b.height
+
+node.active = false;//激活节点
+
+包含其他脚本
+const Polyglot = require('polyglot');
+Polyglot.a = 1;
+
+//定义全局变量
+window.G = {
+    a: null,
+    b: null,
+};
+
+//访问全局变量
+G.a = 0;
+G.b = 0;
+
+Math.round(num)//四舍五入
+Math.floor(num)//小于等级num的整数
+Math.ceil(num)//大于等级num的整数
+
+//获得节点
+var node = this.node;
+node.x = 100;
+
+//获得所有节点
+this.cannons = [];
+this.cannons = this.node.getChildren();
+
+获取组件的3种形式：
+    1、通过属性检查器被赋值的label组件所在的node节点，然后通过getComponent获取
+        this.label.string = this.text;    
+    2、获取当前this(node)节点上的label组件
+        var label = this.getComponent(cc.Label);
+    3、先获取目标组件所在的节点，然后通过getComponent获取目标组件
+        var a = cc.find("Canvas/1").getComponent(cc.Sprite);
+
+在当前节点下添加一个组件
+    var mySprite = new cc.Node().addComponent(cc.Sprite); 
+    mySprite.spriteFrame = this.t_sprite;
+    mySprite.node.parent = this.node;
+    mySprite.node.setPosition(300,200);
+
+复制节点
+    var lLabel = cc.instantiate(this.label);
+    lLabel.node.parent = this.node;
+    lLabel.node.setPosition(-200,0);
+
+复制prefab
+    var tPrefab = cc.instantiate(this.t_prefab);
+    tPrefab.parent = this.node;
+    tPrefab.setPosition(-210,100);
+
+实例预制体
+    t_prefab:{
+        default:null,
+        type:cc.Prefab
+    },
+ 
+    var tPrefab = cc.instantiate(this.t_prefab);
+    tPrefab.parent = this.node;
+    tPrefab.setPosition(-210,100);
