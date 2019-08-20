@@ -79,5 +79,86 @@
     show collections
         - 显示数据库中所有的集合
 ### MongoDB数据库CRUD（增删改查）的操作
-    - 像数据库中插入文档
-        
+    - 向数据库中插入文档
+        db.<collection>.insert(doc)
+            - 向集合中插入一个文档
+            - 例子：向test数据库中的stus集合中插入一个新的学生对象
+                {name:"孙悟空",age:6,gender:"男"}
+                db.stus.insert({name:"孙悟空",age:6,gender:"男"})
+    db.<collection>.find()
+        - 查询当前集合中所有的文档
+#### 插入文档
+    - db.<collection>.insert()
+        - 向集合中插入一个或多个文档
+        - 可以传一个对象或者传一个数组
+        - 当我们向集合中插入文档时，如果没有给文档指定id属性，则数据库会自动为文档添加_id
+            该属性用来作为文档的唯一标识
+        - _id我们可以自己指定，如果我们指定了_id数据库就不会自动添加了，如果自己指定了_id也必须确保它的唯一性
+    - db.<collection>.insertOne()
+        - 插入一个文档对象
+    - db.<collection>.insertMany()
+        - 插入多个文档对象
+#### 查询文档
+    - db.<collection>.find()
+        - find()用来查询集合中所有符合条件的文档
+        - find()可以接收一个对象作为条件参数
+            {}表示查询集合中所有的文档
+            {属性:值}查询属性是指定值的文档
+        - fond()返回的是一个数组，后面甚至可以加索引去查找对应的对象
+    - db.<collection>.findOne()
+        - 用来查询集合中符合条件的第一个文档
+        - findOne()返回的是一个文档对象
+    - db.<collection>.find({}).count()
+        - 查询所有结果的数量，.length()貌似也可以查询数量，但他们的实现方式不同，这个可以去去百度具体的查一查
+#### 修改文档
+    - db.<collection>.update(查询条件, 新对象)(默认情况下只修改查询到的第一个)
+        - update()默认情况下会使用新对象来替换旧的对象
+        - 如果需要修改指定的属性，而不是替换，需要使用"修改操作符"来完成修改
+            $set可以用来修改文档中的指定属性
+            $unset可以用来删除文档中的指定属性（和$set使用方法一样，只不过$unset后的对象只看属性名，属性值是什么无所谓）
+        - update()默认只会修改一个
+        - 实例：
+            - db.stus.update({name:"沙和尚"},{age:28})
+            - db.stus.update({name:"沙和尚"},{$set:{age:16}})
+    - db.<collection>.updateMany()
+        - 同时修改多个符合条件的文档
+    - db.<collection>.updateOne()
+        - 修改一个符合条件的文档
+    - db.<collection>.replaceOne()
+        - 替换一个文档
+#### 删除文档
+    - db.<collection>.remove()
+        - remove()可以根据条件来删除文档，传递条件的方式和find()一样
+        - 删除符合条件的所有文档(默认情况下删除多个)
+            如果remove()第二个参数传递一个true，则只会删除一个
+        - 如果值传递一个空对象作为参数，则会删除集合中的所有文档（相当于清空集合，这种方式删除性能略差）
+            如真的想要清空集合，建议直接db.<collection>.drop()删除集合，如需要空集合，再重新添加
+    - db.<collection>.deleteOne()
+
+    - db.<collection>.deleteMany()
+
+    - db.<collection>.drop()
+        - 删除集合
+    - db.dropDatabase()
+        - 删除当前数据库
+###### 一般数据库中的数据都不会删除，所以删除的方法很少调用（数据才是最值钱的！）
+###### 一般会在数据中添加一个字段，来表示数据是否被删除，也就是假删除
+#### 练习中出现的问题
+    - MongoDB的属性值也可以是一个文档，当一个文档的属性值是一个文档时，我们称这个文档叫做内嵌文档
+    - MongoDB支持直接通过内嵌文档的属性进行查询，如果要查询内嵌文档则可以通过.的形式来匹配
+        如果要通过内嵌文档来对文档进行查询，此时属性名必须使用引号
+    - 可以对数组中的单个元素进行匹配
+    - $push用于向数组中添加一个新的元素，这个有重复也可以添加
+    - $addToSet向数组中添加一个新的元素，如果数组中已经存在了该元素，则添加失败
+    - 案例：向numbers中插入20000条数据
+        // 7.4s
+        for (var i = 1; i <= 20000; i++) {
+            db.numbers.insert({num: i})
+        }
+        // 0.4s
+        var arr = []
+        for (var i = 1; i <= 20000; i++) {
+            arr.push({num: i})
+        }
+        db.numbers.insert(arr)
+        - 使用数据库能少调用就少调用，读取数据比较慢，所以第一个效率没有第二个高
