@@ -162,3 +162,45 @@
         }
         db.numbers.insert(arr)
         - 使用数据库能少调用就少调用，读取数据比较慢，所以第一个效率没有第二个高
+    - $gt 大于
+        db.<collection>.find({num: {$gt: 500}}) // 查询num大于500的
+    - $eq 等于
+    - $lt 小于
+    - db.<collection>.find({num: {$gt: 500, $lt: 600}}) // 查询大于500，小于600的
+    - limit()设置显示数据的上限
+        db.<collection>.find().limit(10) // 查询数据上限为10条
+    - 在开发中，我们绝对不会执行不带条件的查询
+    - skip()用于跳过指定数量的数据
+        db.<collection>.find().skip(10).limit(10)
+    - 分页查询就是利用了skip()和limit()
+        .skip((页码 - 1) * 每页查询的条数).limit(每页查询的条数)
+    - MongoDB会自动调整skip()和limit()的位置，前后都一样
+    - $or // 或
+        {$or: [{a: 1}, {b: 2}]} // 表示查询a为1或者b为2的数据
+    - $inc // 自增
+        db.emp.updateMany({sal: {$lte: 1000}}, {$inc: {sal: 400}})
+    - 查询文档时，默认情况下是按照_id的值进行排列（升序）
+        sort()可以用来指定文档排序的规则，sort()需要传递一个对象来指定排序规则
+        db.emp.find({}).sort({sal: -1}) // 1表示升序，-1表示降序
+        可以同时指定多个排序规则，如有两个排序规则，则先按照第一个进行排序，如第一个规则相同，则按照后一个规则排序，以此类推
+    - limit() skip() sort() 可以以任意顺序调用
+        系统中是先调用 sort之后是skip再之后limit
+    - 在查询时，可以在第二个参数的位置来设置查询结果的投影
+        db.emp.find({}, {ename: 1, _id: 0, sal: 1})
+#### 文档之间的关系
+    - 一对一(one to one)
+        - 夫妻（一个丈夫对应一个妻子）
+        - 在MongoDB，可以通过内嵌文档的形式来体现出一对一的关系
+    - 一对多(one to many)/多对一(many to one)
+        - 父母 <--> 孩子
+          用户 <--> 订单
+          文章 <--> 评论
+            - 也可以通过内嵌文档来映射一对多的关系
+            - .insert({_id: "xxxa", name: "xsd"})
+            - .insert({userid: "xxxa", list: ["xx", "xx", "xx"]})
+    - 多对多(many to many)
+        - 分类 - 商品
+          老师 - 学生
+            - .insert({_id: "xxxa", name: "xsd"})
+            - .insert({userid: "xxxa", list: ["xx", "xx", "xx"]})
+            - .insert({userid: "xxxb", list: ["xx"]})
