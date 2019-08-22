@@ -29,7 +29,31 @@
 <script src="../js/zepto.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/touch.js" type="text/javascript" charset="utf-8"></script>
 <script type='text/javascript'>
-
+  $(function () {
+    var xmlHttp = null;
+    $("#btn").click(function () {
+      console.log(xmlHttp);
+      if (!xmlHttp) {
+        sendXml();
+      } else {
+        xmlHttp.abort();
+        sendXml();
+      }
+    });
+    function sendXml () {
+      xmlHttp = $.ajax({
+        method: "GET",
+        url: "http://localhost:3000",
+        dataType: "json",
+        success: function (data) {
+          console.log(data);
+        },
+        error: function (err) {
+          console.log(err);
+        }
+      });
+    }
+  });
 </script>
 </body>
 </html>

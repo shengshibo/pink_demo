@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
   <title>zepto_touch</title>
   <style type="text/css">
-
+    #btn {
+      /* 触发默认行为 */
+      /* touch-action: auto; */
+      touch-action: none;
+    }
     .box{
        width: 100px;
        height: 100px;
@@ -40,7 +44,34 @@
   * swipe, swipeLeft, swipeRight, swipeUp, swipeDown — 当元素被划过（同一个方向大于30px）时触发。(可选择给定的方向)
   在一个方向滑动大于30px即为滑动。否则算点击。
   */
-
+  $(function () {
+    // $("#box1").on("tap", function () {
+    //   alert("tap事件触发了");
+    // });
+    // chrome在测试的时候点击的是一次，但是触发两次，是浏览器模拟出现的问题，真机没问题
+    $("#box1").tap(function () {
+      alert("tap事件触发了");
+    });
+    // singleTap()  单击事件
+    $("#box2").singleTap(function () {
+      alert("单击事件");
+    });
+    // doubleTap()  双击事件
+    $("#box2").doubleTap(function () {
+      alert("双击事件");
+    });
+    // longTap()    当一个元素被按住超过750ms触发。
+    $("#box3").longTap(function () {
+      alert("长按事件");
+    });
+    // 滑动事件swipe
+    // $("#btn").swipe(function () {
+    //   alert("我滑动了以下");
+    // });
+    $("#btn").swipeLeft(function () {
+      alert("我左划了一个");
+    });
+  });
 
 
 </script>

@@ -16,6 +16,8 @@
     3、submit()
         * 为 "submit" 事件绑定一个处理函数，或者触发元素上的 "submit" 事件。
         * 当参数function没有给出时，触发当前表单“submit”事件，并且执行默认的提交表单行为，除非阻止默认行为。
+
+    这里注意我自身需要了解一下默认行为了
 -->
 <form method="post">
     <input type="text" name="val" value="kobe"/>
@@ -26,7 +28,16 @@
 <script src="../js/zepto.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/touch.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
-
+    $(function () {
+        var result = $("form").serialize();
+        console.log(result);
+        result = $("form").serializeArray();
+        console.log(result);
+        $("form").submit(function (event) {
+            event.preventDefault();
+            alert("成功阻止了默认行为");
+        });
+    });
 </script>
 </body>
 </html>
