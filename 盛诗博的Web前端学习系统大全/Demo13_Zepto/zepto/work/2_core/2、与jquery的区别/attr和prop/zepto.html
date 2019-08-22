@@ -20,7 +20,12 @@
   //在zepto中用attr也可以获取布尔值属性;
   //prop在读取属性的时候 优先级 高于attr，布尔值属性的读取还是建议用prop;
   //坑！------zepto中 removeProp()的方法。在1.2+版本才支持。
-
+  $(function () {
+    $("option").each(function (index, items) {
+      // console.log($(this).attr("selected"));
+      console.log($(this).prop("selected"));
+    });
+  });
 </script>
 </body>
 </html>

@@ -21,7 +21,12 @@
    * 2、attr多用在自定义属性上。
    * 3、jquery中用attr获取布尔值属性且布尔值属性在标签体内没有定义的时候会得到 undefined；
    */
-
+  $(function () {
+    $("option").each(function (index, items) {
+      // console.log($(this).attr("selected"));
+      console.log($(this).prop("selected"));
+    });
+  });
 
 
 </script>

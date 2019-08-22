@@ -30,7 +30,20 @@
 <script src="../js/zepto.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/touch.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
-
+	$(function () {
+		$(".btn1").on("touchstart", function () {
+			alert("on触发的事件");
+		});
+		$(".btn1").off();
+		$(".btn2").bind("myTouch", function () {
+			alert("bind触发的事件");
+		});
+		$(".btn2").unbind();
+		$(".btn2").trigger("myTouch");
+		$(".btn3").one("click", function () {
+			alert("one触发的事件");
+		});
+	});
 </script>
 </body>
 </html>

@@ -25,7 +25,12 @@
     //zepto中没有innerHeight(),innerWidth()---outerHeight(),outerWidth()
     //.css获取的width，height是内容区的宽高，包含单位。
     //通过.css()获取padding，border的值
-
+    $(function () {
+    var $box = $("#box");
+    console.log($box.width());
+    console.log($box.height());
+    console.log($box.css("width"));
+  });
 </script>
 </body>
 </html>

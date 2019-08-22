@@ -44,7 +44,10 @@
 //  $('#box').delegate('.a','click',function () {
 //      alert('delegate');
 //  });
-
+	$("#box").on("click", ".a", function () {
+		console.log("a触发了");
+	});
+	
 
 </script>
 </body>

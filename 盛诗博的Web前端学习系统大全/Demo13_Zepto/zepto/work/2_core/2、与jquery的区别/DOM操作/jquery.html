@@ -17,7 +17,12 @@
   <div id="box"></div>
 <script src="../../../js/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
-
+  $(function () {
+    var $p = $("<p>这是新插入的</p>", {
+      id: "insert"
+    });
+    $("#box").append($p);
+  });
 </script>
 </body>
 </html>

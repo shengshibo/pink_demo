@@ -25,7 +25,16 @@
     2、.css('width')----可以获取content内容区的宽高、padding、border的值，有单位px;
     3、innerHeight(),innerWidth()---outerHeight(),outerWidth()来获取
   */
-
+  $(function () {
+    var $box = $("#box");
+    console.log($box.width());
+    console.log($box.height());
+    console.log($box.css("width"));
+    console.log($box.innerHeight());
+    console.log($box.innerWidth());
+    console.log($box.outerHeight());
+    console.log($box.outerWidth());
+  });
 </script>
 </body>
 </html>

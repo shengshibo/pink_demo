@@ -11,6 +11,20 @@
   //可以遍历数组,以index，item的形式，
   //可以遍历对象，以key-value的形式
   //不可以遍历字符串。
+  $(function () {
+    var arr = [12, 3, 4, 6];
+    $.each(arr, function (index, items) {
+      console.log(index, items);
+    });
+    var obj = {name: "哪吒", age: 6};
+    $.each(obj, function (key, value) {
+      console.log(key, value);
+    });
+    var str = "mozhi";
+    $.each(str, function (a, b) {
+      console.log(a, b);
+    });
+  });
 </script>
 </body>
 </html>
