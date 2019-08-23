@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title></title>
 </head>
-<body>
+<body ng-app>
 <!--
 1. 作用域对象     :
   * 一个js实例对象, ng-app指令默认会创建一个根作用域对象($rootScope)
@@ -15,11 +15,23 @@
   * 同时Angular还有创建一个新的域对象$scope, 它是$rootScope的子对象
   * 在控制器函数中声明$scope形参, Angular会自动将$scope传入
 -->
+<div ng-controller="MyController">
+  <input type="text" ng-model="firstName" />
+  <input type="text" ng-model="lastName" />
+  <p>姓名1：{{firstName + "-" + lastName}}</p>
+  <p>姓名2：{{getName()}}</p>
+</div>
 
 
 <script type="text/javascript" src="../../js/angular-1.2.29/angular.js"></script>
 <script type="text/javascript">
-
+  function MyController ($scope) { // 形参必须是$scope
+    $scope.firstName = "mo";
+    $scope.lastName = "zhi";
+    $scope.getName = function () {
+      return this.firstName + " " + this.lastName;
+    };
+  }
 </script>
 </body>
 </html>

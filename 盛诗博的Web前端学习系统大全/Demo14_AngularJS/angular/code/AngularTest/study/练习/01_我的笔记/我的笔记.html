@@ -10,9 +10,42 @@
     </style>
 </head>
 <body ng-app="noteApp" ng-controller="NoteController">
-
+    <h2>我的笔记</h2>
+    <textarea cols="30" rows="10" ng-model="countText"></textarea>
+    <div>
+        <button ng-click="m_click()">保存</button>
+        <button ng-click="m_click2()">读取</button>
+        <button ng-click="m_click3()">删除</button>
+    </div>
+    <p>剩余的字数：{{getCount()}}</p>
 <script type="text/javascript" src="../../js/angular-1.5.5/angular.js"></script>
 <script type="text/javascript" src="app.js"></script>
 </body>
-
+<!--
+    H5本地存储技术
+        1.sessionStorage(会话存储)
+            - 生命周期：浏览器打开到关闭的过程
+            - 大小：5M
+            - 保存的位置：浏览器端
+            - setItem("key", value)
+            - getItem("key")
+            - removeItem("key")
+        2.localStorage(永久存储)
+            - 声明周期：永久，除非人为删除
+            - 大小：5M甚至更大
+            - 保存的位置：浏览器端
+            - setItem("key", value)
+            - getItem("key")
+            - removeItem("key")
+        3.cookie
+            - 作用：用于浏览器和服务器端进行通信
+            - 特点：
+                - 大小：4kb
+                - 每次发送请求都携带。导致占用带宽
+                - 保存在浏览器端
+                - cookie容易被截获，不安全
+                - 声明周期：
+                    - 会话cookie：浏览器打开到关闭的过程
+                    - 认为设置cookie：认为设置的时间
+-->
 </html>

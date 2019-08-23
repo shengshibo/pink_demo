@@ -4,12 +4,50 @@
   <meta charset="UTF-8">
   <title></title>
 </head>
-<body>
+<body ng-app="myApp">
 
+  <div ng-controller="MyController">
+    <input type="text" ng-model="username" />
+    <p>员工名字1：{{username}}</p>
+  </div>
+  <div ng-controller="MyController2">
+    <input type="text" ng-model="username" />
+    <p>员工名字2：{{username}}</p>
+  </div>
+  
 
 <script type="text/javascript" src="../../js/angular-1.5.5/angular.js"></script>
 <script type="text/javascript">
-
+  console.log(angular);
+  // 创建模块对象
+  // var myModule = angular.module("myApp", []);
+  // 生成作用域对象
+  // myModule.controller("MyController", function ($scope) {
+  //   $scope.username = "mozhi";
+  // });
+  // myModule.controller("MyController2", function ($scope) {
+  //   $scope.username = "yangyang";
+  // });
+  
+  // 优化
+  angular.module("myApp", [])
+    .controller("MyController", function ($scope) { // 可以链式调用，返回值是模块对象
+      $scope.username = "mozhi";
+    })
+    .controller("MyController2", function ($scope) { // 隐式声明依赖注入
+      $scope.username = "yangyang";
+    });
+  // 以上代码有问题
+  // JS代码压缩后形参会用abcd字母代替
+  // 代码压缩的$scope会被abcd代替，angular解析不了
+  // 解决方案
+  angular.module("myApp", [])
+    .controller("MyController", ["$scope", function ($scope) { // 显式声明依赖注入
+      $scope.username = "mozhi";
+    }])
+    .controller("MyController2", ["$scope", function ($scope) {
+      $scope.username = "yangyang";
+    }]);
 </script>
 </body>
 </html>

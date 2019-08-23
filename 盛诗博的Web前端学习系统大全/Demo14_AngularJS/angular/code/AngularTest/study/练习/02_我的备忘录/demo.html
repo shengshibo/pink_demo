@@ -6,7 +6,18 @@
 </head>
 <body ng-app="todoApp" >
 
-
+<div ng-controller="mozhi_controller">
+  <h2>我的备忘录</h2>
+  <div>
+    <input type="text" ng-model="name" />
+    <button ng-click="add()">新增</button>
+  </div>
+  <div ng-repeat="todo in todos">
+    <input type="checkbox" ng-model="todo.isChecked"/>
+    <span>{{todo.name}}</span>
+  </div>
+  <button ng-click="remove()">删除选中的纪录</button>
+</div>
 
 <script type="text/javascript" src="../../js/angular-1.5.5/angular.js"></script>
 <script type="text/javascript" src="app.js"></script>

@@ -21,12 +21,47 @@
   * ng-hide: 布尔类型， 如果为true就隐藏
 -->
 
-<body ng-app="myApp" >
+<body ng-app="mozhiModule" >
 
+<div ng-controller="SUM">
+  <div>
+      数量：<input type="text" ng-model="count" />
+      单价：<input type="text" ng-model="price" />
+      <p>总计：{{count * price}}</p>
+  </div>
+  <div>
+      数量：<input type="text" ng-model="count2" />
+      单价：<input type="text" ng-model="price2" />
+      <button ng-click="clickSUM()">计算</button>
+      <p>总计：{{countPrice}}</p>
+  </div>
+  <div>
+    <ul>
+      <li ng-repeat="person in persons">名字：{{person.username}}，年龄：{{person.age}}</li>
+    </ul>
+  </div>
+</div>
 
 <script type='text/javascript' src='../../js/angular-1.5.5/angular.js'></script>
 <script type='text/javascript'>
-
+  // 创建模块对象
+  angular.module("mozhiModule", [])
+    .controller("SUM", ["$scope", function ($scope) {
+      $scope.count = 0;
+      $scope.price = 0;
+      $scope.count2 = 0;
+      $scope.price2 = 0;
+      $scope.clickSUM = function () {
+        $scope.countPrice = this.count2 * this.price2;
+      };
+      $scope.persons = [
+        {username: "mozhi1", age: "25"},
+        {username: "mozhi2", age: "25"},
+        {username: "mozhi3", age: "25"},
+        {username: "mozhi4", age: "25"},
+        {username: "mozhi5", age: "25"}
+      ];
+    }]);
 </script>
 
 </body>

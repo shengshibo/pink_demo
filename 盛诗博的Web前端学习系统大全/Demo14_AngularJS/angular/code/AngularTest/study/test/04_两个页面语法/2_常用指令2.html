@@ -21,13 +21,25 @@
     background-color: green;
   }
 </style>
-<body>
+<body ng-app="mozhiModule">
 
-
+<div ng-controller="mozhiController">
+  <div style="width: 300px;height: 300px;" ng-style="mozhiStyle" ng-mouseenter="mozhi_mouseenter()" ng-mouseleave="mouseleave()"></div>
+</div>
 
 <script type='text/javascript' src="../../js/angular-1.5.5/angular.js"></script>
 <script type="text/javascript">
-
+  angular.module("mozhiModule", []).controller("mozhiController", function ($scope) {
+    $scope.mozhiStyle = {
+      backgroundColor: "pink"
+    };
+    $scope.mozhi_mouseenter = function () {
+      $scope.mozhiStyle.backgroundColor = "deeppink";
+    }
+    $scope.mouseleave = function () {
+      $scope.mozhiStyle.backgroundColor = "green";
+    }
+  });
 </script>
 </body>
 

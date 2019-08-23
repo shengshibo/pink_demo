@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title></title>
 </head>
-<body>
+<body ng-app>
 
 <!--
   ng-app(指令) : 告诉angular核心它管理当前标签所包含的整个区域,并且会自动创建$rootScope根作用域对象
@@ -21,9 +21,12 @@
   4、特例：if语句，就不用加封号  可也是完整的语句。
 -->
 
-
+<input type="text" ng-model="username" />
+<p>您输入的内容是：<span>{{username}}</span></p>
 <script src="../../js/angular-1.2.29/angular.js"></script>
+<script>
 
+</script>
 </body>
 </html>
 
