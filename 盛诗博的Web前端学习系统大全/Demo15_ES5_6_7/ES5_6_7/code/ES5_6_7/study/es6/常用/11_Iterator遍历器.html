@@ -28,7 +28,47 @@
   -->
 
   <script type="text/javascript">
+    // 模拟指针对象（遍历器对象）
+    function myIterator (arr) { // Iterator接口
+      let nextIndex = 0; // 纪录指针的位置
+      return { // 遍历器对象
+        next() {
+          return nextIndex < arr.length?{value: arr[nextIndex++], done: false}:{value:undefined, done: true};
+        }
+      };
+    }
+    // 准备一个数据
+    let arr = [1, 3, "ss", true, "ddkc", 124];
+    let iteratorObj = myIterator(arr);
+    console.log(iteratorObj.next());
+    console.log(iteratorObj.next());
+    console.log(iteratorObj.next());
+    console.log(iteratorObj.next());
+    console.log(iteratorObj.next());
+    console.log(iteratorObj.next());
+    console.log(iteratorObj.next());
+    console.log(iteratorObj.next());
+    console.log(iteratorObj.next());
 
+    console.log("我是萌萌的分隔符");
+    
+    // 将iterator接口部署到指定的数据类型上，可以使用for of去循环遍历
+    // 数组，字符串，arguments，set容器，map容器
+    for (let i of arr) {
+      console.log(i);
+    }
+    let str = "hello mozhi player";
+    for (let i of str) {
+      console.log(i);
+    }
+    function fun () {
+      for (let i of arguments) {
+        console.log(i);
+      }
+    }
+    fun("s", 1, 3, 5, 12, "ssdff");
+
+    // 注意：普通对象没有部署iterator接口，所以无法使用for of循环遍历
   </script>
 </body>
 </html>

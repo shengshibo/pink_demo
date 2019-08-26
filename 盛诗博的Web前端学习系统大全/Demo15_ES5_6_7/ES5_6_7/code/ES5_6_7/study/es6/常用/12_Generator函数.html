@@ -29,24 +29,63 @@
 <script type="text/javascript" src="./js/jquery-1.10.1.min.js"></script>
 <script type="text/javascript">
 
+  // 小试牛刀
+  // function* myGenerator () {
+  //   console.log("1");
+  //   console.log("2");
+  //   yield "hello mozhi";
+  //   console.log("3");
+  //   console.log("4");
+  //   yield "hello yield";
+  //   yield console.log("this is console.log");
+  //   // 结束后 return
+  //   return "返回的结果";
+  // }
+
+  // console.log("--------------");
+  // let MG = myGenerator(); // 返回的是只针对象
+  // console.log(MG.next());
+  // console.log(MG.next("ssssssssssssssssss")); // 作为当前启动的yield的返回值
+  // console.log(MG.next());
+  // console.log(MG.next());
+  // console.log(MG.next());
     
-    // 对象的symbol.iterator属性  指向遍历器对象
+  // 对象的symbol.iterator属性  指向遍历器对象
+  // let obj = {username: "mozhi", age: 25};
+  // obj[Symbol.iterator] = function* myTest() {
+  //   yield 1;
+  //   yield 2;
+  //   yield 3;
+  // }
+  // for (let i of obj) {
+  //   console.log(i);
+  // }
 
-  
-    // 案例练习
-    /*
-    * 需求：
-    * 1、发送ajax请求获取新闻内容
-    * 2、新闻内容获取成功后再次发送请求，获取对应的新闻评论内容
-    * 3、新闻内容获取失败则不需要再次发送请求。
-    * 
-    * */ 
+  // 案例练习
+  /*
+  * 需求：
+  * 1、发送ajax请求获取新闻内容
+  * 2、新闻内容获取成功后再次发送请求，获取对应的新闻评论内容
+  * 3、新闻内容获取失败则不需要再次发送请求。
+  * 
+  * */
 
+  function getNews (url) {
+    $.get(url, function (data) {
+      console.log(data);
+      let url = "http://localhost:3000" + data.commentsUrl;
+      SX.next(url);
+    });
+  }
 
+  function* sendXml () {
+    let url = yield getNews("http://localhost:3000/news?id=2");
+    yield getNews(url);
+  }
 
+  let SX = sendXml();
+  SX.next();
 
-
-    
 
 </script>
 

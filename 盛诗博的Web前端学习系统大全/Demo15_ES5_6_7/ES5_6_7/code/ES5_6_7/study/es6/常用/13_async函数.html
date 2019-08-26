@@ -25,7 +25,59 @@
 <script type="text/javascript" src="./js/jquery-1.10.1.min.js"></script>
 <script type="text/javascript">
 
-    
+    // async基本使用
+    async function foo () {
+      return new Promise(resolve => {
+        setTimeout(resolve, 2000);
+      });
+    }
+
+    async function test () {
+      console.log("开始执行", new Date().toTimeString());
+      await foo();
+      console.log("结束执行", new Date().toTimeString());
+    }
+
+    // test();
+
+    // async里await返回值
+    function test2 () {
+      return "xxx";
+    }
+    async function foo2 () {
+      let result = await test2();
+      console.log(result);
+      result = await Promise.resolve("promise");
+      console.log(result);
+      result = await Promise.reject("失败了..."); // reject之后执行中断，冒红
+      console.log("测试失败了之后能否继续执行...");
+      console.log(result);
+    }
+    // foo2();
+
+    console.log("-------------------------------");
+
+    async function getNews (url) {
+      return new Promise((resolve, reject) => {
+        $.ajax({
+          method: "GET",
+          url,
+          success: data => resolve(data),
+          error: error => reject() // 这里可以调用resolve("传入一些东西")来代替reject，因为reject会阻断程序运行（冒红）
+        });
+      });
+    }
+
+    async function sendXml() {
+      let result = await getNews("http://localhost:3000/news?id=2");
+      console.log(result);
+      let news = await getNews("http://localhost:3000" + result.commentsUrl);
+      console.log(news);
+    }
+
+    sendXml();
+
+    // getNews("http://localhost:3000/news?id=2");
 
 </script>
 
