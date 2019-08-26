@@ -33,6 +33,27 @@
 
 <script type="text/javascript">
     
+  // 创建symbol属性值
+  let symbol = Symbol();
+  console.log(symbol);
+  let obj = {username: "mozhi", age: 25};
+  obj[symbol] = "hello";
+  console.log(obj);
+  // for in, for of 不能遍历Symbol属性
+  console.log("遍历开始");
+  for (item in obj) {
+    console.log(item);
+  }
+  console.log("遍历结束");
+
+  let symbol2 = Symbol("one");
+  let symbol3 = Symbol("two");
+  console.log(symbol2 == symbol3);
+  console.log(symbol2, symbol3);
+
+  // 可以去用来定义常量
+  const Person_key = Symbol("person_key");
+  console.log(Person_key);
 
 </script>
 

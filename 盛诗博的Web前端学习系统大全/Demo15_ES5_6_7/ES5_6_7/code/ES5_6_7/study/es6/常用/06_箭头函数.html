@@ -28,7 +28,43 @@
         如果没有，则this是window。
 -->
 <script type="text/javascript">
+  // let fun = function () {
+    // console.log("我不是箭头函数");
+  // }
+  let fun = () => console.log("我是箭头函数");
+  fun();
 
+  // 形参的情况
+  // 1.没有形参的时候()不能省略
+  let fun1 = () => console.log("我是箭头函数");
+  fun1();
+  // 2.只有一个形参的时候(只有一个形参的时候可以把传参的小括号省略掉)
+  // let fun2 = (username) => console.log(username);
+  let fun2 = username => console.log(username);
+  fun2("mozhi");
+  // 3.两个及两个以上形参的时候形参的小括号()不能省略
+  let fun3 = (username, age) => console.log(`我叫${username}，今年${age}岁了`);
+  fun3("mozhi", 25);
+  // 函数体的情况
+  // 1.函数体只有一条语句或者表达式的时候控制函数执行内容的大括号可以省略--->会自动返回语句执行的结果或者是表达式的结果(必须在没有大括号的情况下才会返回)
+  // let fun4 = () => {console.log("我是箭头函数");}
+  // let fun4 = () => console.log("我是箭头函数");
+  let fun4 = (x, y) => x + y;
+  console.log(fun4(14, 20));
+  // 2.函数体不止一条语句或者是表达式的情况，此时大括号不可以省略
+  let fun5 = (x, y) => {
+    console.log(x, y);
+    return x + y;
+  };
+  console.log(fun5(20, 10));
+
+  // 测试箭头函数的this
+  let btn1 = document.getElementById("btn1");
+  let btn2 = document.getElementById("btn2");
+  btn1.onclick = function () {console.log(this);} // button
+  btn2.onclick = () => console.log(this); // window
+
+  
 </script>
 
 </body>

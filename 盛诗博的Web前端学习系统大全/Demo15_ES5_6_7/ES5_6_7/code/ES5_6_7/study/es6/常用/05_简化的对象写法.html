@@ -19,7 +19,23 @@
   };
 -->
 <script type="text/javascript">
-
+  let username = "mozhi";
+  let age = 25;
+  let obj = {
+    username: username,
+    age: age,
+    getName: function () {
+      return this.username;
+    }
+  };
+  obj = {
+    username, // 同名的属性可以省略不写
+    age,
+    getName () { // 可以省略函数的function
+      return this.username;
+    }
+  };
+  console.log(obj);
 </script>
 </body>
 </html>

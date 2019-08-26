@@ -44,6 +44,71 @@
 
 <script type="text/javascript">
 
+  // 创建promise对象
+  // let promise = new Promise((resolve, reject) => {
+  //   // 初始化promise状态：pending：初始化
+  //   console.log("1");
+  //   // 执行异步操作，通常是发送ajax请求，开启定时器
+  //   setTimeout(() => {
+  //     console.log("4");
+  //     // 根据异步任务的返回结果来修改promise的状态
+  //     // 异步任务执行成功
+  //     // resolve("data"); // 修改promise的状态为fullfilled：成功的状态
+  //     // 异步任务执行失败
+  //     reject("error"); // 修改promise的状态为rejected：失败的状态
+  //   });
+  // });
+  // console.log("2");
+
+  // promise.then((data) => { // 成功的回调
+  //   console.log("成功的回调函数");
+  // }, (error) => { // 失败的回调
+  //   console.log("失败的回调函数");
+  // });
+
+  // console.log("3");
+
+  console.log("----------------------------");
+
+  // 定义获取新闻的功能函数
+  function getNews (url) {
+    let promise2 = new Promise((resolve, reject) => {
+      // 状态：初始化
+      // 执行异步任务
+      // 创建xmlHttp实例对象
+      let xmlHttp = new XMLHttpRequest();
+      // 绑定监听readyState
+      xmlHttp.onreadystatechange = function () { // onreadystatechange 会调用四次
+        if (xmlHttp.readyState === 4) { // 请求成功
+          if (xmlHttp.status === 200) {
+            // console.log(xmlHttp.responseText);
+            // 修改状态
+            resolve(xmlHttp.responseText);
+          } else { // 请求失败
+            reject("暂时没有新闻内容");
+          }
+        }
+      };
+
+      // open 设置请求的方式以及url
+      xmlHttp.open("GET", url);
+      // 发送
+      xmlHttp.send();
+    });
+    return promise2;
+  }
+
+  getNews("http://localhost:3000/news?id=2").then((data) => {
+    console.log(data);
+    let url = "http://localhost:3000" + JSON.parse(data).commentsUrl;
+    return getNews(url);
+  }, (error) => {
+    console.log(error);
+  }).then((data) => {
+    console.log(data);
+  }, (error) => {
+    console.log(error);
+  });
 
 </script>
 

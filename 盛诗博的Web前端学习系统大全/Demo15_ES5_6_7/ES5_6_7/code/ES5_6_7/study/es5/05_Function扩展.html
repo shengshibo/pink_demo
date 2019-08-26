@@ -15,6 +15,17 @@
 -->
 <script type="text/javascript">
 
+  var obj = {username: "mozhi"};
+  function foo () {
+    console.log(this);
+  }
+  foo();
+  foo.call(obj);
+  foo.apply(obj);
+  
+  // bind的特点：绑定完this不会立即调用当前的函数，而是将函数返回
+  // bind传参的方式同call一样
+  foo.bind(obj)();
 
 </script>
 </body>

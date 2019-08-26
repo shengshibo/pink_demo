@@ -17,6 +17,22 @@
 -->
 <script type="text/javascript">
 
+  let obj = {username: "mozhi", age: 25};
+  // let username = obj.username;
+  // let age = obj.age;
+
+  let {username, age} = obj;
+  console.log(username, age);
+
+  let arr = [1, 4, 5, 10, 200];
+  let [,,a, b] = arr;
+  console.log(a, b);
+
+  function foo ({username, age}) { // {username, age} = obj
+    console.log("foo函数中的：", username, age);
+  }
+
+  foo(obj);
 
 </script>
 </body>

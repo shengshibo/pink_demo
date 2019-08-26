@@ -11,7 +11,11 @@
   * 变化的部分使用${xxx}定义
 -->
 <script type="text/javascript">
-
+  let obj = {username: "mozhi", age: 25};
+  let str = "我叫做：" + obj.username + "，今年：" + obj.age;
+  console.log(str);
+  str = `我的名字叫：${obj.username}，今年已经：${obj.age}岁了`;
+  console.log(str);
 </script>
 </body>
 </html>

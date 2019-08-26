@@ -21,7 +21,21 @@
    4. 根据arr产生一个新数组,要求每个元素都比原来大10
    5. 根据arr产生一个新数组, 返回的每个元素要大于4
    */
+  var arr = [2, 7, 11, 32, 3, 6, 10, 102, 1, 5, 6, 4, 3, 2, 1];
+  console.log(arr.indexOf(6));
+  console.log(arr.lastIndexOf(6));
+  arr.forEach(function (item, index) {
+    console.log(index, item);
+  });
+  var arr2 = arr.map(function (item, index) {
+    return item + 10;
+  });
+  console.log(arr2);
 
+  var arr3 = arr.filter(function (item, index) {
+    return item > 3;
+  });
+  console.log(arr3);
 
 </script>
 </body>

@@ -26,7 +26,25 @@
   arr2.push(...arr1);
 -->
 <script type="text/javascript">
+  // function foo (a, b) {
+  //   console.log(arguments);
+  //   // arguments.callee // 函数本身
+  //   // arguments.callee() // 调用函数本身
+  // }
+  // foo(12, 111);
+  function foo2 (...value) {
+    console.log(value);
+    value.forEach(function (item, index) {
+      console.log(item, index);
+    });
+  }
+  foo2(123, 33);
 
+  let arr = [1, 6];
+  let arr2 = [2, 3, 4, 5];
+  let arr3 = [1, ...arr2, 6];
+  console.log(arr3);
+  console.log(...arr3);
 
 </script>
 

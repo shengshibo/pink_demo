@@ -12,6 +12,21 @@
 -->
 <script type='text/javascript'>
 
+  var obj = {
+    firstName: "mo",
+    lastName: "zhi",
+    get fullName () {
+      return this.firstName + "-" + this.lastName;
+    },
+    set fullName (data) {
+      this.firstName = data.split("-")[0];
+      this.lastName = data.split("-")[1];
+    }
+  };
+
+  console.log(obj);
+  obj.fullName = "momo-zhang";
+  console.log(obj);
 
 </script>
 </body>

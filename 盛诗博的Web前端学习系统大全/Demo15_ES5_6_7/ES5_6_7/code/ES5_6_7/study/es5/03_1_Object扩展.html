@@ -22,6 +22,37 @@ ES5给Object扩展了一些静态方法, 常用的2个:
 -->
 <script type="text/javascript">
   
+  // 创建一个原型对象
+  var obj = {username: "mozhi", age: "25"};
+  var subObj = Object.create(obj, {
+    sex: {
+      value: "男",
+      writable: true,
+      configurable: true,
+      enumerable: true
+    }
+  });
+  console.log(subObj);
+
+  // 定义属性
+  // Object.defineProperties(object, descriptors);
+  var obj2 = {firstName: "mo", lastName: "zhi"};
+  Object.defineProperties(obj2, {
+    fullName: {
+      get: function () { // 获取扩展属性的值，获取扩展属性值的时候，get()方法自动调用，每获取一次就会调用一次
+        return this.firstName + "-" + this.lastName;
+      },
+      set: function (data) { // 监听扩展属性，当扩展属性发生变化的时候会自动调用，自动调用后会将变化的值作为实参注入到set函数中
+        console.log("set()", data);
+        var names = data.split("-");
+        obj2.firstName = names[0];
+        obj2.lastName = names[1];
+      }
+    }
+  });
+  console.log(obj2);
+  obj2.fullName = "momo-zhi";
+  console.log(obj2);
 
 </script>
 </body>
