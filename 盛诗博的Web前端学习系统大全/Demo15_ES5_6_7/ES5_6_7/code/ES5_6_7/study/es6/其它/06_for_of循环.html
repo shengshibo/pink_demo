@@ -21,7 +21,12 @@ for(let value of target){}循环遍历
 
 <script type="text/javascript">
 
+  let set = new Set([1, "sss", true, 12, 10086, "好难啊"]);
+  let map = new Map([[1, "sss"], [true, 12], [10086, "好难啊"]]);
 
+  for (let i of map) {
+    console.log(i);
+  }
 
 </script>
 </body>

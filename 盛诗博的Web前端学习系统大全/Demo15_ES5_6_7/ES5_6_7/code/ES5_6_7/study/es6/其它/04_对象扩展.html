@@ -17,6 +17,24 @@
 
 <script type="text/javascript">
 
+  console.log(0 == -0);
+  console.log(NaN == NaN);
+
+  console.log(Object.is(0, -0));
+  console.log(Object.is(NaN, NaN));
+  // Object.is(v1, v2) 通过字符串来判断是否相等
+
+  let obj = {};
+  let obj2 = {username: "mozhi", age: 25};
+  let obj3 = {sex: "男"};
+  Object.assign(obj, obj2, obj3);
+  console.log(obj);
+
+  let obj4 = {};
+  let obj5 = {money: 5000000};
+  obj4.__proto__ = obj5;
+  console.log(obj4);
+  console.log(obj4.money);
 
 </script>
 </body>

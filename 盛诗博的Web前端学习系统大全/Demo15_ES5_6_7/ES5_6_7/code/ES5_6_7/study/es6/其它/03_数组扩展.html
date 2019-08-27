@@ -20,6 +20,25 @@
 -->
 <script type="text/javascript">
 
+  let btns = document.getElementsByTagName("button");
+  Array.from(btns).forEach(function (item, index) {
+    console.log(item);
+  });
+
+  let arr = Array.of(1, 5, "sss", true);
+  console.log(arr);
+
+  let arr2 = [1, 5, 3, 76, 5, 4, 2, 6, 1, 9, 5, 90, 2];
+  console.log(arr2);
+  let result = arr2.find(function (item, index) {
+    return item > 4;
+  });
+  console.log(result);
+  result = arr2.findIndex(function (item, index) {
+    return item > 4;
+  });
+  console.log(result);
+
 
 </script>
 </body>

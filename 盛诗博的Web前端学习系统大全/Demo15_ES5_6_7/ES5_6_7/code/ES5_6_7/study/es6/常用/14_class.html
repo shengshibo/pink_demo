@@ -15,6 +15,36 @@
 6. 重写从父类中继承的一般方法
 -->
 <script type="text/javascript">
+  // function Person (name, age) {
+  //   this.name = name;
+  //   this.age = age;
+  // }
+  // let person = new Person("mozhi", 25);
+  // console.log(person);
+  class Person {
+    // 类的构造方法
+    constructor (name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    // 类的一般方法
+    showName () {
+      console.log(this.name);
+    }
+  }
+  let person = new Person("mozhi", 25);
+  person.showName();
+
+  // 子类
+  class StarPerson extends Person {
+    constructor (name, age, salary) {
+      super(name, age); // 调用父类的构造方法
+      this.salary = salary;
+    }
+  }
+
+  let starPerson = new StarPerson("mozhi", 25, 40000);
+  console.log(starPerson);
 
 </script>
 </html>
