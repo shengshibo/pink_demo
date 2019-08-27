@@ -6,7 +6,13 @@
  */
 //IIFE模式
 
-
+(function (window) {
+    let msg = "module3"
+    function foo () {
+        console.log("foo", msg)
+    }
+    window.modules = {foo}
+})(window)
 
 
 
