@@ -7,9 +7,11 @@
 <body>
 
 <div id="example1"></div>
+<div id="example2"></div>
 
 <script type="text/javascript" src="../js/react.development.js"></script>
 <script type="text/javascript" src="../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../js/prop-types.js"></script>
 <script type="text/javascript" src="../js/babel.min.js"></script>
 
 <script type="text/babel">
@@ -19,6 +21,67 @@
   1). 如果性别没有指定, 默认为男
   2). 如果年龄没有指定, 默认为18
   */
+
+  // 1. 定义组件
+  // function Person (props) {
+  //   return (
+  //     <ul>
+  //       <li>姓名：{props.username}</li>
+  //       <li>年龄：{props.age}</li>
+  //       <li>性别：{props.sex}</li>
+  //     </ul>
+  //   )
+  // }
+
+  class Person extends React.Component {
+    render () {
+      return (
+        <ul>
+          <li>姓名：{this.props.username}</li>
+          <li>年龄：{this.props.age}</li>
+          <li>性别：{this.props.sex}</li>
+        </ul>
+      )
+    }
+  }
+
+  // 设置默认属性值
+  Person.defaultProps = {
+    age: '16',
+    sex: '女'
+  }
+
+  // 指定属性值的类型和必要性
+  Person.propTypes = {
+    username: PropTypes.string.isRequired,
+    age: PropTypes.number
+  }
+
+  // 2. 渲染组件标签
+  const p1 = {
+    username: 'mozhi',
+    age: 24,
+    sex: '男'
+  }
+
+  /*
+    ...的作用（三点运算符）
+      - 打包
+        function fun (...as) {} 
+        fun(1, 2, 3)
+      - 解包
+        const arr1 = [1, 2, 3]
+        const arr2 = [6, ...arr1, 9]
+  */
+
+  // ReactDOM.render(<Person username={p1.username} age={p1.age} sex={p1.sex} />, document.getElementById('example1'))
+  ReactDOM.render(<Person {...p1} />, document.getElementById('example1'))
+
+  const p2 = {
+    username: 'yangyang'
+  }
+
+  ReactDOM.render(<Person username={p2.username} age={16} />, document.getElementById('example2'))
 
 </script>
 </body>

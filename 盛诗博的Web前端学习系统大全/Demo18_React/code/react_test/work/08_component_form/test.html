@@ -17,6 +17,48 @@
     2. 输入用户名密码后, 点击登陆提示输入信息
     3. 不提交表单
   */
+
+  class LoginForm extends React.Component {
+
+    constructor (props) {
+      super(props)
+
+      this.state = {
+        password: ''
+      }
+
+      this.handleSubmit = this.handleSubmit.bind(this)
+      this.handleChange = this.handleChange.bind(this)
+    }
+
+    handleSubmit (event) {
+
+      alert(`准备提交的用户名为：${this.username.value}，密码为：${this.state.password}`)
+
+      // 阻止事件的默认行为(提交)
+      event.preventDefault();
+    }
+
+    handleChange (event) {
+      // 读取输入的值
+      const password = event.target.value
+      // 更新password的状态
+      this.setState({password})
+    }
+
+    render () {
+      return (
+        <form action="/test" onSubmit={this.handleSubmit}>
+          用户名：<input type="text" ref={username => this.username = username} />
+          密码：<input type="password" value={this.state.password} onChange={this.handleChange} />
+          <input type="submit" value="登录" />
+        </form>
+      )
+    }
+  }
+
+  ReactDOM.render(<LoginForm />, document.getElementById('example'))
+
 </script>
 </body>
 </html>
