@@ -38,6 +38,17 @@
         // 更新状态
         this.setState({repoName: name, repoUrl: html_url})
       })
+      // 使用fetch发送异步的ajax请求
+      fetch(url).then(response => {
+        return response.json()
+      }).then(data => {
+        // 得到数据
+        const {name, html_url} = data.items[0]
+        // 更新状态
+        this.setState({repoName: name, repoUrl: html_url})
+      }).catch(error => {
+        console.log(error.message)
+      })
     }
 
     render () {
