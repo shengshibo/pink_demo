@@ -1,11 +1,9 @@
+// redux最核心的管理对象store
+
 import {createStore, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 
-import {counter} from './reducers'
+import {comments} from './reducers'
 
-// 生成一个Store对象
-const store = createStore(counter, composeWithDevTools(applyMiddleware(thunk))) // 应用上异步的中间件
-console.log(store)
-
-export default store
+export default createStore(comments, applyMiddleware(thunk))
