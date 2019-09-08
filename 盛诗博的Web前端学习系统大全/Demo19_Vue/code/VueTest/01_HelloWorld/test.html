@@ -17,21 +17,26 @@
 -->
 
 <!--模板-->
-<div id="test">
-  <input type="text" v-model="msg"><br><!--指令-->
-  <input type="text" v-model="msg"><!--指令-->
-  <p>hello {{msg}}</p><!--大括号表达式-->
+<div id="app"> <!-- view -->
+  <input type="text" v-model="username">
+  <p>Hello {{username}}</p>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
-  const vm = new Vue({ // 配置对象 options
-    // 配置选项(option)
-    el: '#test',  // element: 指定用vue来管理页面中的哪个标签区域
-    data: {
-      msg: 'atguigu'
+  // 创建Vue实例
+  const vm = new Vue({ // 配置对象 option
+    el: '#app', // element: 选择器
+    data: { // 数据（model）
+      username: 'mozhi'
     }
   })
 </script>
+<!-- 
+  MVVM:
+  model:模型，数据对象（data）
+  view:视图，模板页面
+  viewModel:视图模型（Vue的实例）
+ -->
 </body>
 </html>
