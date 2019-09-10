@@ -4,7 +4,17 @@
   <meta charset="UTF-8">
   <title>10_过渡&动画1</title>
   <style>
-    
+    /* 显示/隐藏的过滤效果 */
+    .xxx-enter-active,
+    .xxx-leave-active {transition: 1s opacity;}
+    /* 隐藏时的样式 */
+    .xxx-enter,
+    .xxx-leave-to {opacity: 0;}
+
+    .yyy-enter-active {transition: 1s all;}
+    .yyy-leave-active {transition: 3s all;}
+    .yyy-enter,
+    .yyy-leave-to {opacity: 0;transform: translateX(20px)}
   </style>
 </head>
 <body>
@@ -23,9 +33,39 @@
   xxx-enter: 指定隐藏时的样式
 -->
 
+<div id="test">
+  <button @click="isShow = !isShow">toggle</button>
+  <transition name="xxx">
+    <p v-show="isShow">hello</p>
+  </transition>
+</div>
+
+<div id="test2">
+  <button @click="isShow = !isShow">toggle</button>
+  <transition name="yyy">
+    <p v-show="isShow">hello</p>
+  </transition>
+</div>
+
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
+  new Vue({
+    el: '#test',
+    data () {
+      return {
+        isShow: true
+      }
+    }
+  })
 
+  new Vue({
+    el: '#test2',
+    data () {
+      return {
+        isShow: true
+      }
+    }
+  })
 </script>
 </body>
 </html>
