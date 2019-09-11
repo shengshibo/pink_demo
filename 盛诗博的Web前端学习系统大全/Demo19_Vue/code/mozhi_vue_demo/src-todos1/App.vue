@@ -1,19 +1,14 @@
 <template>
   <div class="todo-container">
     <div class="todo-wrap">
-      <!-- <TodoHeader @addTodo="addTodo"/>给TodoHeader标签对象绑定addTodo事件监听 -->
-      <TodoHeader ref="header"/>
-      <TodoList :todos='todos'/>
+      <TodoHeader :addTodo="addTodo"/>
+      <TodoList :todos='todos' :deleteTodo="deleteTodo"/>
       <TodoFooter :todos='todos' :deleteCompleteTodos='deleteCompleteTodos' :selectAllTodos='selectAllTodos'/>
     </div>
   </div>
 </template>
-<!--
-  绑定事件监听 --- 订阅消息
-  触发事件 --- 发布消息
--->
+
 <script>
-  import PubSub from 'pubsub-js'
   import TodoHeader from './components/TodoHeader'
   import TodoList from './components/TodoList'
   import TodoFooter from './components/TodoFooter'
@@ -24,15 +19,6 @@
         // 从localStorage读取todos
         todos: JSON.parse(localStorage.getItem('todos_key') || '[]')
       }
-    },
-    mounted() { // 执行异步代码
-      // 给<TodoHeader/>绑定addTodo事件监听
-      this.$refs.header.$on('addTodo', this.addTodo)
-
-      // 订阅消息
-      PubSub.subscribe('deleteTodo', (msg, index) => {
-        this.deleteTodo(index)
-      })
     },
     methods: {
       addTodo (todo) {
