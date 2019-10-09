@@ -104,4 +104,27 @@ router.post('/update', function (req, res) {
   })
 })
 
+// 获取用户信息的路由（根据cookie中的userid）
+router.get('/user', function (req, res) {
+  // 从请求的cookie得到userid
+  const userid = req.cookies.userid
+  if (!userid) return res.send({code: 1, msg: '请先登录'})
+  // 根据userid查询对应的user
+  UserModel.findOne({_id: userid}, filter, function (error, user) {
+    if (user) {
+      res.send({code: 0, data: user})
+    } else {
+      res.send({code: 1, msg: '由于某种未知原因，本次查询的结果返回失败，请重新尝试'})
+    }
+  })
+})
+
+// 获取用户列表（根据类型）
+router.get('/userlist', function (req, res) {
+  const {type} = req.query
+  UserModel.find({type}, filter, function (error, users) {
+    res.send({code: 0, data: users})
+  })
+})
+
 module.exports = router;

@@ -10,7 +10,7 @@ export default function ajax (url, data = {}, type = 'GET') {
     Object.keys(data).forEach(key => {
       paramStr += key + '=' + data[key] + '&'
     })
-    if (paramStr) paramStr = paramStr.subString(0, paramStr.length - 1)
+    if (paramStr) paramStr = paramStr.substring(0, paramStr.length - 1)
     return axios.get(url + '?' + paramStr)
   } else { // 发送POST请求
     return axios.post(url, data)
