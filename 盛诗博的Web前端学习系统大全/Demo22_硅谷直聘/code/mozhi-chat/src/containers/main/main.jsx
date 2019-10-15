@@ -17,6 +17,7 @@ import Message from '../message/message'
 import Personal from '../personal/personal'
 import NotFound from '../../components/not-found/not-found'
 import NavFooter from '../../components/nav-footer/nav-footer'
+import Chat from '../../containers/chat/chat'
 
 class Main extends Component {
 
@@ -67,7 +68,7 @@ class Main extends Component {
     // 如果没有，自动重定向到登录界面
     if (!userid) return <Redirect to="/login"/>
     // 如果有，读取redux中的user状态
-    const {user} = this.props
+    const {user, unReadCount} = this.props
     // 如果user有，没有_id，返回null（不做任何显示）
     if (!user._id) {
       return null
@@ -105,16 +106,17 @@ class Main extends Component {
           }
           <Route path="/laobaninfo" component={LaobanInfo}></Route>
           <Route path="/dasheninfo" component={DashenInfo}></Route>
+          <Route path="/chat/:userid" component={Chat}></Route>
           <Route component={NotFound}/>
         </Switch>
-        {currentNav ? <NavFooter navList={navList}/> : null}
+        {currentNav ? <NavFooter navList={navList} unReadCount={unReadCount}/> : null}
       </div>
     )
   }
 }
 
 export default connect (
-  state => ({user: state.user}),
+  state => ({user: state.user, unReadCount: state.chat.unReadCount}),
   {getUser}
 )(Main)
 
