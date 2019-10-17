@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      #test{
+        margin: 100px 0 0 100px;
+        text-align: center;
+        line-height: 200px;
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="test"></div>
+  </body>
+  <script type="text/javascript">
+    let test = document.querySelector('#test')
+    test.onclick = function () {
+      test.innerHTML = document.documentElement.clientWidth
+    }
+  </script>
+</html>
