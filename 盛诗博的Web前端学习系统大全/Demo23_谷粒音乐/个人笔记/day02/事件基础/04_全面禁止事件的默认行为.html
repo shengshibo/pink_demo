@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .item {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+        font-size: 30px;
+        text-align: center;
+        line-height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="item">dsaaaaaaaa</div>
+  </body>
+  <script typr="text/javascript">
+    // 有的时候模拟器模拟不出来真机的效果，所以有必要的情况下可以使用真机来测试
+    window.onload = function () {
+      document.addEventListener('touchstart', function (ev) {
+        ev = ev || event
+        ev.preventDefault()
+      })
+      // var item = document.querySelector('.item')
+      // item.addEventListener('touchstart', function (ev) {
+      //   ev = ev || event
+      //   ev.preventDefault()
+      // })
+    }
+  </script>
+</html>

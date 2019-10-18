@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .item {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="item"></div>
+  </body>
+  <script typr="text/javascript">
+    /*
+      触屏                指针
+      touchstart          mousedown
+      touchmove           mousemove
+        不可能单独触发       可以单独触发
+      touchend            mouseup
+    */
+    window.onload = function () {
+      const item = document.querySelector('.item')
+      item.addEventListener('touchstart', function () {
+        console.log('ontouchstart')
+      })
+      item.addEventListener('touchmove', function () {
+        console.log('ontouchmove')
+      })
+      item.addEventListener('touchend', function () {
+        console.log('ontouchend')
+      })
+      // item.ontouchstart = function () {
+      //   console.log('ontouchstart')
+      // }
+      // item.ontouchmove = function () {
+      //   console.log('ontouchmove')
+      // }
+      // item.ontouchend = function () {
+      //   console.log('ontouchend')
+      // }
+    }
+  </script>
+</html>
