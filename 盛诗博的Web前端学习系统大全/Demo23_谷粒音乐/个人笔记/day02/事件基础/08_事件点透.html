@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .item {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+        opacity: .5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="item"></div>
+    <a href="http://www.atguigu.com">尚硅谷</a>
+  </body>
+  <script typr="text/javascript">
+    window.onload = function () {
+      /*
+        1. pc端事件可以在移动端触发
+        2. pc端事件有300毫秒延迟
+        3. 移动端事件不会有延迟
+      */
+      const item = document.querySelector('.item')
+      item.addEventListener('touchstart', function () {
+        this.style.display = 'none'
+      })
+    }
+  </script>
+</html>
