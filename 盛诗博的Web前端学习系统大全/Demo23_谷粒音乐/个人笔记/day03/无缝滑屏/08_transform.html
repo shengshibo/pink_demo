@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #test {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+        transform: translateX(100px) scale(2);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="test">
+      
+    </div>
+  </body>
+  <script src="./js/transform.js"></script>
+  <script type="text/javascript">
+    // css函数对transform的值进行读、写操作
+    // css(node, type) 读
+    // css(node, type, value) 写
+    // 规避覆盖的风险
+    var test = document.querySelector('#test')
+    css(test, 'translateX', 100)
+    css(test, 'scale', 2)
+
+  </script>
+</html>
