@@ -166,6 +166,11 @@
         // 手指的初始位置
         var startX = 0
         var minX = wrap.clientWidth - item.offsetWidth
+        // 快速滑屏的必要参数
+        var lastTime = 0
+        var lastPoint = 0
+        var timeDis = 1
+        var pointDis = 0
         wrap.addEventListener('touchstart', function (ev) {
           ev = ev || event
           var touchC = ev.changedTouches[0]
@@ -173,6 +178,12 @@
           item.style.transition = 'none'
           startX = touchC.clientX
           elementX = mozhi.css(item, 'translateX')
+
+          lastTime = new Date().getTime()
+          lastPoint = touchC.clientX
+
+          // 清除速度的残留
+          pointDis = 0
         })
         wrap.addEventListener('touchmove', function (ev) {
           ev = ev || event
@@ -180,30 +191,67 @@
           var nowX = touchC.clientX
           var disX = nowX - startX
           var translateX = elementX + disX
+
+          var nowTime = new Date().getTime()
+          var nowPoint = touchC.clientX
+          // var nowPoint = mozhi.css(item, 'translateX')
+          timeDis = nowTime - lastTime
+          pointDis = nowPoint - lastPoint
+
+          lastTime = nowTime
+          lastPoint = nowPoint
+
           /*
             橡皮筋效果
+
+            translateX = mozhi.css(item, 'translateX') + pointDis * scale
           */
           if (translateX > 0) {
+            item.handMove = true
             var scale = document.documentElement.clientWidth / (document.documentElement.clientWidth + translateX)
-            translateX = elementX + disX * scale
+            translateX = mozhi.css(item, 'translateX') + pointDis * scale
           } else if (translateX < minX) {
+            item.handMove = true
             var over = minX - translateX
             var scale = document.documentElement.clientWidth / (document.documentElement.clientWidth + over)
-            translateX = elementX + disX * scale
+            translateX = mozhi.css(item, 'translateX') + pointDis * scale
           }
           mozhi.css(item, 'translateX', translateX)
         })
         wrap.addEventListener('touchend', function () {
-
           var translateX = mozhi.css(item, 'translateX')
+          if (!item.handMove) {
+            // 速度越大 位移越远
+            var speed = pointDis / timeDis
+            speed = Math.abs(speed) < 0.5 ? 0 : speed
+            var targetX = translateX + speed * 200
 
-          item.style.transition = '.5s transform'
-          if (translateX > 0) {
-            translateX = 0
-            mozhi.css(item, 'translateX', translateX)
-          } else if (translateX < minX) {
-            translateX = minX
-            mozhi.css(item, 'translateX', translateX)
+            var time = Math.abs(speed) * 0.1
+            time = time < 0.8 ? 0.8 : time
+            time = time > 2 ? 2 : time
+
+            // 快速滑屏的橡皮筋效果
+            var bsr = ''
+            if (targetX > 0) {
+              targetX = 0
+              bsr = 'cubic-bezier(.17,1.37,.96,1.59)'
+            } else if (targetX < minX) {
+              targetX = minX
+              bsr = 'cubic-bezier(.17,1.37,.96,1.59)'
+            }
+
+            item.style.transition = time + 's ' + bsr + ' transform'
+            mozhi.css(item, 'translateX', targetX)
+          } else {
+            // 手动橡皮筋回弹效果
+            item.style.transition = '1s transform'
+            if (translateX > 0) {
+              translateX = 0
+              mozhi.css(item, 'translateX', translateX)
+            } else if (translateX < minX) {
+              translateX = minX
+              mozhi.css(item, 'translateX', translateX)
+            }
           }
         })
       }

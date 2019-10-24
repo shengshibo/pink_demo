@@ -166,6 +166,11 @@
         // 手指的初始位置
         var startX = 0
         var minX = wrap.clientWidth - item.offsetWidth
+        // 快速滑屏的必要参数
+        var lastTime = 0
+        var lastPoint = 0
+        var timeDis = 0
+        var pointDis = 0
         wrap.addEventListener('touchstart', function (ev) {
           ev = ev || event
           var touchC = ev.changedTouches[0]
@@ -173,6 +178,9 @@
           item.style.transition = 'none'
           startX = touchC.clientX
           elementX = mozhi.css(item, 'translateX')
+
+          lastTime = new Date().getTime()
+          lastPoint = mozhi.css(item, 'translateX')
         })
         wrap.addEventListener('touchmove', function (ev) {
           ev = ev || event
@@ -180,6 +188,7 @@
           var nowX = touchC.clientX
           var disX = nowX - startX
           var translateX = elementX + disX
+
           /*
             橡皮筋效果
           */
@@ -192,19 +201,31 @@
             translateX = elementX + disX * scale
           }
           mozhi.css(item, 'translateX', translateX)
+
+          var nowTime = new Date().getTime()
+          var nowPoint = mozhi.css(item, 'translateX')
+
+          timeDis = nowTime - lastTime
+          pointDis = nowPoint - lastPoint
+
+          lastTime = nowTime
+          lastPoint = nowPoint
+
         })
         wrap.addEventListener('touchend', function () {
 
           var translateX = mozhi.css(item, 'translateX')
+          // 速度越大 位移越远
+          var speed = pointDis / timeDis
+          var targetX = translateX + speed * 200
 
           item.style.transition = '.5s transform'
-          if (translateX > 0) {
-            translateX = 0
-            mozhi.css(item, 'translateX', translateX)
-          } else if (translateX < minX) {
-            translateX = minX
-            mozhi.css(item, 'translateX', translateX)
+          if (targetX > 0) {
+            targetX = 0
+          } else if (targetX < minX) {
+            targetX = minX
           }
+          mozhi.css(item, 'translateX', targetX)
         })
       }
 
