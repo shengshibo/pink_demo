@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+      * {margin: 0;padding: 0;}
+      #test {width: 100px;height: 100px;background-color: pink;}
+    </style>
+  </head>
+  <body>
+    <div id="test"></div>
+  </body>
+  <script src="./js/mozhi.js"></script>
+  <script type="text/javascript">
+    var Tween = {
+      Linear: function (t, b, c, d) {return c * t / d + b}
+    }
+    /*
+      t:当前是哪一次
+      b:初始位置
+      c:最终位置与初始位置之间的差值
+      d:总次数
+    */
+    var testNode = document.querySelector('#test')
+    var i = 1
+    var clear = setInterval(function () {
+      if (i > 50) {
+        clearInterval(clear)
+        return
+      }
+      // for (let i = 0; i < 10; i++) {
+        mozhi.css(testNode, 'translateY', Tween.Linear(i, 0, 100, 10))
+        i++
+        console.log(Tween.Linear(i + 1, 0, 100, 50))
+      // }
+      // console.log(Tween.Linear(1, 0, 100, 10))
+    }, 1000 / 60)
+  </script>
+</html>

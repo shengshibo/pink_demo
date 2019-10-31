@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html,body {
+        height: 100%;
+        overflow: hidden;
+      }
+      #wrap {
+        height: 100%;
+        overflow: hidden;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <div class="content">
+
+      </div>
+    </div>
+  </body>
+  <script src="./js/mozhi.js"></script>
+  <script typr="text/javascript">
+    window.onload = function () {
+
+      document.addEventListener('touchstart', function (ev) {
+        ev = ev || event
+        ev.preventDefault()
+      })
+
+      var wrap = document.querySelector('#wrap')
+      var content = document.querySelector('#wrap .content')
+      for (let i = 0; i < 80; i++) {
+        content.innerHTML += 'mozhi<br>'
+      }
+      mozhi.vMove(wrap)
+    }
+  </script>
+</html>
